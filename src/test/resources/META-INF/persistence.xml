@@ -37,13 +37,7 @@
 			JPA using this persistence.xml (in the unit tests), it does not 'see' the 
 			entities from src/main/java because they are in another source root. Currently 
 			haven't found an elegant way around this. -->
-		<class>com.realdolmen.course.domain.Person</class>
-		<class>com.realdolmen.course.domain.Passenger</class>
-		<class>com.realdolmen.course.domain.Flight</class>
-		<class>com.realdolmen.course.domain.Plane</class>
-		<class>com.realdolmen.course.domain.DomesticFlight</class>
-		<class>com.realdolmen.course.domain.InternationalFlight</class>
-		<class>com.realdolmen.course.domain.Ticket</class>
+		<class>com.realdolmen.domain.Flight</class>
 
 
 		<properties>
