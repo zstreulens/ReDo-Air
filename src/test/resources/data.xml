@@ -1,13 +1,3 @@
 <dataset>
-	<person id="1000" firstName="John" lastName="Doe" />
-	<person id="2000" firstName="Jane" lastName="Doe" />
-	<passenger ssn="654488" firstName="James" lastName="Hond"
-		city="Leuven" country="Belgium" street1="Alderweg" zipcode="3001"
-		dateOfBirth="1960-06-21" lastFlight="2016-08-08" PassengerType="REGULAR" />
-	<passenger ssn="68944" firstName="Karl" lastName="Emmerald"
-		city="Graz" country="Austria" street1="Am weg" zipcode="224320"
-		dateOfBirth="1950-02-02" lastFlight="2016-08-10" PassengerType="REGULAR" />
-	<ffmiles frequentFlyerMiles="130000" ssn="654488" lastname="Hond" />	
-	<ffmiles frequentFlyerMiles="50000" ssn="68944" lastname="Emmerald" />	
-	<ticket id="1000" price="540.4" passenger_ssn="68944" passenger_lastName="Emmerald"/>
+	<flight id="1000" number="LH-670" />
 </dataset>
