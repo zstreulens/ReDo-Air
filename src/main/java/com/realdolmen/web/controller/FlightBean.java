@@ -37,6 +37,10 @@ public class FlightBean implements Serializable {
 		this.flightService = flightService;
 	}
 	
+	public void addFlight() {
+		flightService.createFlight(flight);
+	}
+	
 	
 	
 }

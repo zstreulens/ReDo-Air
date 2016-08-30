@@ -44,6 +44,7 @@
 		<class>com.realdolmen.course.domain.DomesticFlight</class>
 		<class>com.realdolmen.course.domain.InternationalFlight</class>
 		<class>com.realdolmen.course.domain.Ticket</class>
+		<class>com.realdolmen.domain.Flight</class>
 
 
 		<properties>
