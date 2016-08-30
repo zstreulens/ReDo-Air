@@ -82,7 +82,7 @@ public abstract class PersistenceTest extends Assert {
         private static final DatabaseEngine DEFAULT_DATABASE_ENGINE = DatabaseEngine.mysql;
         private static final String DATABASE_ENGINE_SYSTEM_PARAMETER = "databaseEngine";
         private static final Logger LOGGER = LoggerFactory.getLogger(DatabaseEngine.class);
-        private static final String DATABASE_SCHEMA_NAME = "realdolmen";
+        private static final String DATABASE_SCHEMA_NAME = "redo_air";
 
         public final String url;
         public final String username;
