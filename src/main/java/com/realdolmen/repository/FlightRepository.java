@@ -22,6 +22,10 @@ public class FlightRepository {
 	public List<Flight> findAll() {
 		return em.createQuery("select f from Flight f", Flight.class).getResultList();
 	}
+	
+	public List<Flight> findFlightWithParams() {
+		return em.createNamedQuery("findFlight",Flight.class).getResultList();
+	}
 
 
 }

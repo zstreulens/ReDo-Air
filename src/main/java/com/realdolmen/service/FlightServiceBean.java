@@ -7,7 +7,6 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import com.realdolmen.domain.Flight;
-import com.realdolmen.domain.Location;
 import com.realdolmen.repository.FlightRepository;
 
 @Stateless
@@ -25,6 +24,11 @@ public class FlightServiceBean implements FlightRemoteInterface{
 	@Override
 	public Flight createFlight(Flight flight) {
 		return flightRepository.save(flight);
+	}
+	
+	@Override
+	public List<Flight> findFlightFromQuery() {
+		return flightRepository.findFlightWithParams();
 	}
 
 }

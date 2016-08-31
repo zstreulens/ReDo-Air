@@ -7,12 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 
 @Entity
+@NamedQuery(name = "findFlight", query = "SELECT f FROM Flight f WHERE f.arrivalLocation.id ='1'") 
 public class Flight implements Serializable {
 	// FIELDS
 	@Id

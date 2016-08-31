@@ -7,9 +7,34 @@
 
 <ui:composition template="/facelet-template.xhtml">
 
-	<ui:define name="pageTitle">Search Flights</ui:define>
+
+
+	<ui:define name="pageTitle">Search Flights </ui:define>
 	<ui:define name="pageContent">
+
+
+
+
 		<h:form>
+			<h:panelGrid columns="2">
+				<p:selectOneRadio id="toggleReturn"
+					value="#{searchFlightBean.oneWay}">
+					<f:selectItem itemLabel="One way" itemValue="true" />
+					<f:selectItem id="return" itemLabel="Return" itemValue="false"	/>
+					<f:ajax render="returnDate" />
+				</p:selectOneRadio>
+			</h:panelGrid>
+
+			<p:outputLabel for="departureDate" value="Departure" />
+			<p:calendar id="departureDate" value="#{calendarView.departureDate}"
+				pages="2" effect="fold" />
+
+			<p:outputLabel for="returnDate" value="Return" />
+			<p:calendar id="returnDate" value="#{calendarView.returnDate}"
+				pages="2" disabled="#{searchFlightBean.oneWay}" effect="fold" />
+
+
+
 			<p:growl id="msgs" showDetail="true" />
 
 			<p:panel header="Select a Location" style="margin-bottom:10px;">
@@ -31,15 +56,23 @@
 						<f:selectItems value="#{dropdownView.cities}" />
 					</p:selectOneMenu>
 				</h:panelGrid>
-
 				<p:separator />
+				<h:panelGrid columns="2">
+					<h:commandButton action="#{flightBean.toggleRendered(true)}"
+						value="Search">
+						<f:ajax event="click" render="resultTable" />
+					</h:commandButton>
+					<h:commandButton action="#{flightBean.toggleRendered(false)}"
+						value="Reset">
+						<f:ajax event="click" render="resultTable" />
+					</h:commandButton>
+				</h:panelGrid>
 
-				<h:commandButton action="#{flightBean.toggleRendered()}"
-					value="Search" />
 			</p:panel>
 
-			<p:dataTable var="flight" value="#{flightBean.flights}"
-				sortBy="#{flight.price}" rendered="#{flightBean.rendered}">
+			<p:dataTable id="resultTable" var="flight"
+				value="#{flightBean.flights}" sortBy="#{flight.price}"
+				rendered="true">
 				<p:column headerText="Id" sortBy="#{flight.id}">
 					<h:outputText value="#{flight.id}" />
 				</p:column>

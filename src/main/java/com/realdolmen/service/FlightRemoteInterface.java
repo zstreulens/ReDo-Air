@@ -10,5 +10,6 @@ public interface FlightRemoteInterface {
 
 	List<Flight> findFlights();
 	Flight createFlight(Flight flight);
+	public List<Flight> findFlightFromQuery();
 }
 
