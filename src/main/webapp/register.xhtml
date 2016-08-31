@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/facelet-template.xhtml">
+	<ui:define name="pageTitle">User Registration</ui:define>
+	<ui:define name="pageContent">
+		<h1>Fill in this form to register yourself</h1>
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="First name: "></h:outputText>
+				<h:panelGroup>
+					<h:inputText value="#{customerBean.customer.firstName}" id="fname"></h:inputText>
+				</h:panelGroup>
+				<h:outputText value="Last name: "></h:outputText>
+				<h:panelGroup>
+					<h:inputText value="#{customerBean.customer.lastName}" id="lname"></h:inputText>
+				</h:panelGroup>
+				<h:outputText value="Street"></h:outputText>
+				<h:panelGroup>
+					<h:inputText value="#{customerBean.customer.address.street}"
+						id="street"></h:inputText>
+				</h:panelGroup>
+				<h:outputText value="House number: "></h:outputText>
+				<h:panelGroup>
+					<h:inputText value="#{customerBean.customer.address.number}"
+						id="houseNumber"></h:inputText>
+				</h:panelGroup>
+				<h:outputText value="Zipcode: "></h:outputText>
+				<h:panelGroup>
+					<h:inputText value="#{customerBean.customer.address.zipcode}"
+						id="zipcode"></h:inputText>
+				</h:panelGroup>
+				<h:outputText value="City: "></h:outputText>
+				<h:panelGroup>
+					<h:inputText value="#{customerBean.customer.address.city}"
+						id="city"></h:inputText>
+				</h:panelGroup>
+				<h:outputText value="Country: "></h:outputText>
+				<h:panelGroup>
+					<h:inputText value="#{customerBean.customer.address.country}"
+						id="country"></h:inputText>
+				</h:panelGroup>
+				<h:outputText value="E-mail: "></h:outputText>
+				<h:panelGroup>
+					<h:inputText value="#{customerBean.customer.mailAddress}" id="mail"></h:inputText>
+				</h:panelGroup>
+				<h:outputText value="Password: "></h:outputText>
+				<h:panelGroup>
+					<h:inputSecret value="#{customerBean.customer.password}"
+						id="password"></h:inputSecret>
+				</h:panelGroup>
+			</h:panelGrid>
+			<h:commandButton action="#{customerBean.register()}" value="Register"></h:commandButton>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
