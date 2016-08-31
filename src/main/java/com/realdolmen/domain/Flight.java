@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 
@@ -22,8 +24,10 @@ public class Flight implements Serializable {
 	@NotNull
 	@ManyToOne
 	private Location arrivalLocation;
-	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date departureTime;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date arrivalTime;
 	private Integer duration;
 	private Integer seatsBusiness;
 	private Integer seatsEconomy;
@@ -35,11 +39,12 @@ public class Flight implements Serializable {
 
 	}
 
-	public Flight(Location departureLocation, Location arrivalLocation, Date departureTime, Integer duration,
+	public Flight(Location departureLocation, Location arrivalLocation, Date departureTime, Date arrivalTime, Integer duration,
 			Integer seatsBusiness, Integer seatsEconomy, Integer seatsFirstClass, Double price) {
 		this.departureLocation = departureLocation;
 		this.arrivalLocation = arrivalLocation;
 		this.departureTime = departureTime;
+		this.arrivalTime = arrivalTime;
 		this.duration = duration;
 		this.seatsBusiness = seatsBusiness;
 		this.seatsEconomy = seatsEconomy;
@@ -77,6 +82,14 @@ public class Flight implements Serializable {
 
 	public void setDepartureTime(Date departureTime) {
 		this.departureTime = departureTime;
+	}
+
+	public Date getArrivalTime() {
+		return arrivalTime;
+	}
+
+	public void setArrivalTime(Date arrivalTime) {
+		this.arrivalTime = arrivalTime;
 	}
 
 	public Integer getDuration() {
