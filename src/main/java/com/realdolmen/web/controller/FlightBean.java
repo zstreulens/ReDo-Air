@@ -1,6 +1,7 @@
 package com.realdolmen.web.controller;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -39,6 +40,10 @@ public class FlightBean implements Serializable {
 	
 	public void addFlight() {
 		flightService.createFlight(flight);
+	}
+	
+	public List<Flight> findAllFlights() {
+		return flightService.findFlights();
 	}
 	
 	

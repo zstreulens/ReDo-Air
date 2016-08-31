@@ -10,8 +10,29 @@
 	<ui:define name="pageContent">
 		<h1>Hello World</h1>
 		<h:form>
-			<h:outputLabel for="number" value="Number" />
-			<h:commandButton action="#{flightBean.addFlight()}" value="Register" />
+			<h:dataTable value="#{flightBean.findAllFlights()}" var="flight">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Departure Location" />
+					</f:facet>
+					<h:outputText
+						value="#{flight.departureLocation.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Arrival Location" />
+					</f:facet>
+					<h:outputText
+						value="#{flight.arrivalLocation.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Price" />
+					</f:facet>
+					<h:outputText
+						value="#{flight.price}" />
+				</h:column>
+			</h:dataTable>
 		</h:form>
 	</ui:define>
 
