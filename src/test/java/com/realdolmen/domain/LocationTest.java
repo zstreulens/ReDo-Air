@@ -11,7 +11,9 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class LocationTest {
+import com.realdolmen.utilities.JpaPersistenceTest;
+
+public class LocationTest extends JpaPersistenceTest {
 	private static Validator validator;
 	private static ValidatorFactory factory;
 	

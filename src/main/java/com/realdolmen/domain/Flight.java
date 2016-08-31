@@ -22,7 +22,7 @@ public class Flight implements Serializable {
 	@NotNull
 	@ManyToOne
 	private Location arrivalLocation;
-	@NotNull
+	
 	private Date departureTime;
 	private Integer duration;
 	private Integer seatsBusiness;
