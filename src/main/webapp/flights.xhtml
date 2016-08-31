@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> c2810055acf0f93f080a3185f990d908a0e38884
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -8,10 +12,24 @@
 
 	<ui:define name="pageTitle">Flights</ui:define>
 	<ui:define name="pageContent">
+<<<<<<< HEAD
 
 		<h1>Hello World</h1>
 
+=======
+>>>>>>> c2810055acf0f93f080a3185f990d908a0e38884
 
+		<h1>Hello World</h1>
+		<h:form>
+			<h:outputLabel for="number" value="Number" />
+			<div>
+				<h:inputText id="number" value="#{flightBean.flight.number}">
+				</h:inputText>
+			</div>
+
+			<h:commandButton action="#{flightBean.addFlight()}"
+				value="Register" />
+		</h:form>
 	</ui:define>
 
 </ui:composition>
