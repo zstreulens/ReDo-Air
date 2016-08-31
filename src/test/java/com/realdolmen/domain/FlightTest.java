@@ -16,7 +16,7 @@ import org.junit.Test;
 
 import com.realdolmen.utilities.JpaPersistenceTest;
 
-public class FlightTest extends JpaPersistenceTest{
+public class FlightTest extends JpaPersistenceTest {
 	private static Validator validator;
 	private static ValidatorFactory factory;
 	

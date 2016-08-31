@@ -2,21 +2,37 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/facelet-template.xhtml">
 
-	<ui:define name="pageTitle">Flights</ui:define>
+	<ui:define name="pageTitle">Search Flights</ui:define>
 	<ui:define name="pageContent">
-		<h1>Hello World</h1>
-		<h:form>
-			<h:outputLabel for="number" value="Number" />
-			<div>
-				<h:inputText id="number" value="#{flightBean.flight.number}">
-				</h:inputText>
-			</div>
+		<h1>Search Flights</h1>
 
-			<h:commandButton action="#{flightBean.addFlight()}" value="Register" />
+		<h:form>
+			<p:dataTable var="flight" value="#{flightBean.flights}"
+				sortBy="#{flight.price}">
+				<p:column headerText="Id" sortBy="#{flight.id}">
+					<h:outputText value="#{flight.id}" />
+				</p:column>
+				<p:column headerText="From" sortBy="#{flight.arrivalLocation.country}">
+					<h:outputText value="#{flight.arrivalLocation.country}" />
+				</p:column>
+				<p:column headerText="To" sortBy="#{flight.departureLocation.country}">
+					<h:outputText value="#{flight.departureLocation.country}" />
+				</p:column>
+				<p:column headerText="Depart" sortBy="#{flight.departureTime}">
+					<h:outputText value="#{flight.departureTime}" />
+				</p:column>
+				<p:column headerText="Arrive" sortBy="#{flight.arrivalTime}">
+					<h:outputText value="#{flight.arrivalTime}" />
+				</p:column>
+				<p:column headerText="Price" sortBy="#{flight.price}">
+					<h:outputText value="#{flight.price}" />
+				</p:column>
+			</p:dataTable>
 		</h:form>
 	</ui:define>
 

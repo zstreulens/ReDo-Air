@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import com.realdolmen.domain.Flight;
+import com.realdolmen.domain.Location;
 import com.realdolmen.repository.FlightRepository;
 
 @Stateless
