@@ -16,6 +16,7 @@ import com.realdolmen.service.FlightServiceBean;
 public class FlightBean implements Serializable {
 	
 	List<Flight> flights;
+    private boolean rendered;
 
 	
 	@Inject
@@ -25,6 +26,7 @@ public class FlightBean implements Serializable {
 	@PostConstruct
 	public void setUp() {
 		flights = flightService.findFlights();
+		rendered = false;
 	}
 	private Flight flight = new Flight();
 
@@ -55,6 +57,14 @@ public class FlightBean implements Serializable {
 		this.flights = flights;
 	}
 
+	public boolean isRendered() {
+		return rendered;
+	}
+
+	public void setRendered(boolean rendered) {
+		this.rendered = rendered;
+	}
+
 	public void addFlight() {
 		flightService.createFlight(flight);
 	}
@@ -67,6 +77,9 @@ public class FlightBean implements Serializable {
 		return "searchResults";
 	}
 	
+	public void toggleRendered() {
+    	setRendered(true);
+	}
 	
 	
 }
