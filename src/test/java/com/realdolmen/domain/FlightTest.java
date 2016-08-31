@@ -3,11 +3,14 @@ package com.realdolmen.domain;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Set;
 
+import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -30,13 +33,22 @@ public class FlightTest {
 		flight.setDepartureLocation(departureLocation);
 		flight.setPrice(50.0);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		String departureTimeString = sdf.format("2016-09-01");
-		Date departureTime = sdf.parse(departureTimeString);
+		Date departureTime = sdf.parse("2016-09-01");
 		flight.setDepartureTime(departureTime);
+		Set<ConstraintViolation<Flight>> violations = validator.validate(flight);
+		Assert.assertEquals(0, violations.size());
 	}
 	
 	@Test 
-	public void flightIsInvalid(){
-		
+	public void flightIsInvalid() throws ParseException{
+		Flight flight = new Flight();
+		Location arrivalLocation = new Location("Brussels Airport", "Belgium", "BRU", "Western Europe");
+		flight.setArrivalLocation(arrivalLocation);
+		flight.setPrice(50.0);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date departureTime = sdf.parse("2016-09-01");
+		flight.setDepartureTime(departureTime);
+		Set<ConstraintViolation<Flight>> violations = validator.validate(flight);
+		Assert.assertEquals(1, violations.size());
 	}
 }
