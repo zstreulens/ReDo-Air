@@ -1,66 +1,95 @@
 package com.realdolmen.domain;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.NotBlank;
-
-import com.sun.istack.NotNull;
 
 @Entity
 public class Location {
-	@Id @GeneratedValue
+	@Id
+	@GeneratedValue
 	private Long id;
-	@NotBlank
+	@NotNull
 	private String name;
-	@NotBlank
+	@NotNull
 	private String country;
 	@NotNull
-	private Integer code;
-	@NotBlank
+	private String code;
+	@NotNull
 	private String globalRegion;
-	
-	
-	
+	@OneToMany
+	private List<Flight> departureFlights;
+	@OneToMany
+	private List<Flight> arrivalFlights;
+
 	public Location() {
-		
+
 	}
-	public Location(String name, String country, Integer code, String globalRegion) {
+
+	public Location(String name, String country, String code, String globalRegion) {
 		this.name = name;
 		this.country = country;
 		this.code = code;
 		this.globalRegion = globalRegion;
 	}
-	
-	
+
+	public List<Flight> getDepartureFlights() {
+		return departureFlights;
+	}
+
+	public void setDepartureFlights(List<Flight> departureFlights) {
+		this.departureFlights = departureFlights;
+	}
+
+	public List<Flight> getArrivalFlights() {
+		return arrivalFlights;
+	}
+
+	public void setArrivalFlights(List<Flight> arrivalFlights) {
+		this.arrivalFlights = arrivalFlights;
+	}
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getCountry() {
 		return country;
 	}
+
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	public Integer getCode() {
+
+	public String getCode() {
 		return code;
 	}
-	public void setCode(Integer code) {
+
+	public void setCode(String code) {
 		this.code = code;
 	}
+
 	public String getGlobalRegion() {
 		return globalRegion;
 	}
+
 	public void setGlobalRegion(String globalRegion) {
 		this.globalRegion = globalRegion;
 	}
