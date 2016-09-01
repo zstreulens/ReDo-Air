@@ -1,6 +1,8 @@
 package com.realdolmen.web.controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -9,13 +11,21 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.realdolmen.domain.Flight;
+import com.realdolmen.domain.Location;
 import com.realdolmen.service.FlightServiceBean;
 
 @Named
 @SessionScoped
 public class FlightBean implements Serializable {
 	
-	List<Flight> flights;
+	List<Flight> allFlights;
+	List<Flight> filteredFlights;
+	List<String> countries;
+	
+	String fromLocation = "USA";
+	String toLocation = "UK";
+	
+	
     private boolean rendered;
 
 	
@@ -25,8 +35,16 @@ public class FlightBean implements Serializable {
 	
 	@PostConstruct
 	public void setUp() {
-		flights = flightService.findFlightFromQuery(1L, 9L);
+		allFlights = flightService.findFlights();
+		filteredFlights = null;
 		rendered = false;
+		countries = new ArrayList<>();
+		countries.add("Belgium");
+		countries.add("Spain");
+		countries.add("China");
+		countries.add("Japan");
+		countries.add("USA");
+		countries.add("UK");
 	}
 	private Flight flight = new Flight();
 
@@ -49,12 +67,22 @@ public class FlightBean implements Serializable {
 		this.flightService = flightService;
 	}
 	
-	public List<Flight> getFlights() {
-		return flights;
+
+
+	public List<Flight> getAllFlights() {
+		return allFlights;
 	}
 
-	public void setFlights(List<Flight> flights) {
-		this.flights = flights;
+	public void setAllFlights(List<Flight> allFlights) {
+		this.allFlights = allFlights;
+	}
+
+	public List<Flight> getFilteredFlights() {
+		return filteredFlights;
+	}
+
+	public void setFilteredFlights(List<Flight> filteredFlights) {
+		this.filteredFlights = filteredFlights;
 	}
 
 	public boolean isRendered() {
@@ -63,6 +91,31 @@ public class FlightBean implements Serializable {
 
 	public void setRendered(boolean rendered) {
 		this.rendered = rendered;
+	}
+
+	public List<String> getCountries() {
+		return countries;
+	}
+
+	public void setCountries(List<String> countries) {
+		this.countries = countries;
+	}
+
+
+	public String getFromLocation() {
+		return fromLocation;
+	}
+
+	public void setFromLocation(String fromLocation) {
+		this.fromLocation = fromLocation;
+	}
+
+	public String getToLocation() {
+		return toLocation;
+	}
+
+	public void setToLocation(String toLocation) {
+		this.toLocation = toLocation;
 	}
 
 	public void addFlight() {
@@ -82,8 +135,7 @@ public class FlightBean implements Serializable {
 	}
 	
 	public void findFlightFromQuery() {
-		flights = flightService.findFlightFromQuery(1L, 2L);
+		filteredFlights = flightService.findFlightFromQuery(fromLocation, toLocation);
 	}
-	
 	
 }

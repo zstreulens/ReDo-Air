@@ -1,4 +1,4 @@
-package com.realdolmen.web.controller;
+package com.realdolmen.web.controller.searchFunctionality;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

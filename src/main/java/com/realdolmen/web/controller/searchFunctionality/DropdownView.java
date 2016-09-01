@@ -1,4 +1,4 @@
-package com.realdolmen.web.controller;
+package com.realdolmen.web.controller.searchFunctionality;
 
 import java.io.Serializable;
 import java.util.HashMap;
