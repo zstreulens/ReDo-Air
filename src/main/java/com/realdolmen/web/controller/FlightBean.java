@@ -25,7 +25,7 @@ public class FlightBean implements Serializable {
 	
 	@PostConstruct
 	public void setUp() {
-		flights = flightService.findFlightFromQuery();
+		flights = flightService.findFlightFromQuery(1L, 9L);
 		rendered = false;
 	}
 	private Flight flight = new Flight();
@@ -81,8 +81,8 @@ public class FlightBean implements Serializable {
     	setRendered(value);
 	}
 	
-	public List<Flight> findFlightFromQuery() {
-		return flightService.findFlightFromQuery();
+	public void findFlightFromQuery() {
+		flights = flightService.findFlightFromQuery(1L, 2L);
 	}
 	
 	

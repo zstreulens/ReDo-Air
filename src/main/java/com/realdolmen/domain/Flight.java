@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
-@NamedQuery(name = "findFlight", query = "SELECT f FROM Flight f WHERE f.arrivalLocation.id ='1'") 
+@NamedQuery(name = "findFlight", query = "SELECT f FROM Flight f WHERE f.arrivalLocation.id = :arrivalLoc AND f.departureLocation.id = :departLoc ") 
 public class Flight implements Serializable {
 	// FIELDS
 	@Id

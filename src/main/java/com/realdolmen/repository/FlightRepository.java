@@ -23,8 +23,8 @@ public class FlightRepository {
 		return em.createQuery("select f from Flight f", Flight.class).getResultList();
 	}
 	
-	public List<Flight> findFlightWithParams() {
-		return em.createNamedQuery("findFlight",Flight.class).getResultList();
+	public List<Flight> findFlightWithParams(Long departId, Long arriveId) {
+		return em.createNamedQuery("findFlight",Flight.class).setParameter("arrivalLoc", arriveId).setParameter("departLoc", departId).getResultList();
 	}
 
 
