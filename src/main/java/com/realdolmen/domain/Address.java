@@ -3,19 +3,21 @@ package com.realdolmen.domain;
 import java.io.Serializable;
 
 import javax.persistence.Embeddable;
-import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotBlank;
+
 
 @Embeddable
 public class Address implements Serializable {
-	@NotNull
+	@NotBlank
 	private String street;
-	@NotNull
+	@NotBlank
 	private String number;
-	@NotNull
+	@NotBlank
 	private String city;
-	@NotNull
+	@NotBlank
 	private String zipcode;
-	@NotNull
+	@NotBlank
 	private String country;
 
 	public String getStreet() {

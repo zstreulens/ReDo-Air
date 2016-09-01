@@ -13,44 +13,68 @@
 				<h:outputText value="First name: "></h:outputText>
 				<h:panelGroup>
 					<h:inputText value="#{customerBean.customer.firstName}" id="fname"></h:inputText>
+					<font color="red">* </font>
+					<h:message for="fname" id="fnameMsg"></h:message>
 				</h:panelGroup>
 				<h:outputText value="Last name: "></h:outputText>
 				<h:panelGroup>
 					<h:inputText value="#{customerBean.customer.lastName}" id="lname"></h:inputText>
+					<font color="red">* </font>
+					<h:message for="lname" id="lnameMsg"></h:message>
 				</h:panelGroup>
 				<h:outputText value="Street"></h:outputText>
 				<h:panelGroup>
 					<h:inputText value="#{customerBean.customer.address.street}"
 						id="street"></h:inputText>
+					<font color="red">* </font>
+					<h:message for="street" id="streetMsg"></h:message>
 				</h:panelGroup>
 				<h:outputText value="House number: "></h:outputText>
 				<h:panelGroup>
 					<h:inputText value="#{customerBean.customer.address.number}"
 						id="houseNumber"></h:inputText>
+					<font color="red">* </font>
+					<h:message for="houseNumber" id="houseNumberMsg"></h:message>
 				</h:panelGroup>
 				<h:outputText value="Zipcode: "></h:outputText>
 				<h:panelGroup>
 					<h:inputText value="#{customerBean.customer.address.zipcode}"
 						id="zipcode"></h:inputText>
+					<font color="red">* </font>
+					<h:message for="zipcode" id="zipcodeMsg"></h:message>
 				</h:panelGroup>
 				<h:outputText value="City: "></h:outputText>
 				<h:panelGroup>
 					<h:inputText value="#{customerBean.customer.address.city}"
 						id="city"></h:inputText>
+					<font color="red">* </font>
+					<h:message for="city" id="cityMsg"></h:message>
 				</h:panelGroup>
 				<h:outputText value="Country: "></h:outputText>
 				<h:panelGroup>
 					<h:inputText value="#{customerBean.customer.address.country}"
 						id="country"></h:inputText>
+					<font color="red">* </font>
+					<h:message for="country" id="countryMsg"></h:message>
+				</h:panelGroup>
+				<h:outputText value="Creditcard: "></h:outputText>
+				<h:panelGroup>
+					<h:inputText value="#{customerBean.customer.creditCard}"
+						id="creditcard"></h:inputText>
+					<h:message for="creditcard" id="creditcardMsg"></h:message>
 				</h:panelGroup>
 				<h:outputText value="E-mail: "></h:outputText>
 				<h:panelGroup>
 					<h:inputText value="#{customerBean.customer.mailAddress}" id="mail"></h:inputText>
+					<font color="red">* </font>
+					<h:message for="mail" id="mailMsg"></h:message>
 				</h:panelGroup>
 				<h:outputText value="Password: "></h:outputText>
 				<h:panelGroup>
 					<h:inputSecret value="#{customerBean.customer.password}"
 						id="password"></h:inputSecret>
+					<font color="red">* </font>
+					<h:message for="password" id="passwordMsg"></h:message>
 				</h:panelGroup>
 			</h:panelGrid>
 			<h:commandButton action="#{customerBean.register()}" value="Register"></h:commandButton>

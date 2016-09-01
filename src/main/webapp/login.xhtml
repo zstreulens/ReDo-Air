@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/facelet-template.xhtml">
+	<ui:define name="pageTitle">Login</ui:define>
+	<ui:define name="pageContent">
+		<h1>Fill in your login information</h1>
+		<h:form>
+		<h:panelGrid columns="2">
+		<h:outputText value="E-mail "></h:outputText>
+		<h:panelGroup>
+		<h:inputText value="#{customerBean.customer.mailAddress}" id="mail"></h:inputText>
+		</h:panelGroup>
+		<h:outputText value="Password "></h:outputText>
+		<h:panelGroup>
+		<h:inputSecret value="#{customerBean.password}" id="password"></h:inputSecret>
+		</h:panelGroup>
+		</h:panelGrid>
+		<h:commandButton action="#{customerBean.login()}" value="Login"></h:commandButton>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

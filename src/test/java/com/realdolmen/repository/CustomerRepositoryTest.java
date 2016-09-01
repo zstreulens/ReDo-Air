@@ -10,9 +10,9 @@ import com.realdolmen.utilities.JpaPersistenceTest;
 public class CustomerRepositoryTest extends JpaPersistenceTest {
 	private CustomerRepository customerRepository;
 	private Customer customer;
-	
+
 	@Before
-	public void initializeRepository(){
+	public void initializeRepository() {
 		customerRepository = new CustomerRepository();
 		customerRepository.entityManager = entityManager();
 		customer = new Customer();
@@ -28,28 +28,35 @@ public class CustomerRepositoryTest extends JpaPersistenceTest {
 		customer.setMailAddress("ziggy.streulens@realdolmen.com");
 		customer.setPassword("test");
 	}
-	
+
 	@Test
-	public void shouldSaveCustomer(){
+	public void shouldSaveCustomer() {
 		customerRepository.createCustomer(customer);
 		assertNotNull(customer.getId());
 	}
-	
+
 	@Test
-	public void shouldUpdateCustomer(){
+	public void shouldUpdateCustomer() {
 		customerRepository.createCustomer(customer);
 		customer.setFirstName("Joske");
 		customerRepository.updateCustomer(customer);
 		Customer foundCustomer = customerRepository.findById(customer.getId());
 		assertEquals("Joske", foundCustomer.getFirstName());
 	}
-	
+
 	@Test
-	public void shouldFindCustomer1(){
+	public void shouldFindCustomerById() {
 		customerRepository.createCustomer(customer);
-		Customer foundCostumer = customerRepository.findById(1);
-		assertNotNull(foundCostumer);
-		assertNotNull(foundCostumer.getId());
-		assertEquals("Ziggy", foundCostumer.getFirstName());
+		Customer foundCustomer = customerRepository.findById(1);
+		assertNotNull(foundCustomer);
+		assertNotNull(foundCustomer.getId());
+		assertEquals("Ziggy", foundCustomer.getFirstName());
+	}
+
+	@Test
+	public void shouldFindCustomerByMail() {
+		customerRepository.createCustomer(customer);
+		Customer foundCustomer = customerRepository.findByMail("ziggy.streulens@realdolmen.com");
+		assertEquals("Ziggy", foundCustomer.getFirstName());
 	}
 }
