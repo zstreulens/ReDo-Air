@@ -5,11 +5,13 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 
 @Entity
+@NamedQuery(name = "findCountries", query = "SELECT l.country FROM Location l") 
 public class Location {
 	@Id
 	@GeneratedValue

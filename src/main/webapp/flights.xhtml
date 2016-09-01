@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -7,82 +8,70 @@
 
 <ui:composition template="/facelet-template.xhtml">
 
-
-
-	<ui:define name="pageTitle">Search Flights </ui:define>
+	<ui:define name="pageTitle">Search Flights #{flightBean.fromLocation}</ui:define>
 	<ui:define name="pageContent">
 
-
-
-
 		<h:form>
+
+			<!-- 		RADIO BUTTON  -->
 			<h:panelGrid columns="2">
 				<p:selectOneRadio id="toggleReturn"
 					value="#{searchFlightBean.oneWay}">
 					<f:selectItem itemLabel="One way" itemValue="true" />
-					<f:selectItem id="return" itemLabel="Return" itemValue="false"	/>
+					<f:selectItem id="return" itemLabel="Return" itemValue="false" />
 					<f:ajax render="returnDate" />
 				</p:selectOneRadio>
 			</h:panelGrid>
 
-			<p:outputLabel for="departureDate" value="Departure" />
-			<p:calendar id="departureDate" value="#{calendarView.departureDate}"
-				pages="2" effect="fold" />
+			<!-- 		LOCATION SELECTION  -->
+			<h:panelGrid columns="4">
+				<p:outputLabel for="departureLocation" value="From" />
+				<p:inputText id="departureLocation"
+					value="#{flightBean.fromLocation}">
+					<f:ajax render="resultTable" />
+				</p:inputText>
+				<p:outputLabel for="arrivalLocation" value="To" />
+				<p:inputText id="arrivalLocation" value="#{flightBean.toLocation}">
+					<f:ajax render="resultTable" />
+				</p:inputText>
 
-			<p:outputLabel for="returnDate" value="Return" />
-			<p:calendar id="returnDate" value="#{calendarView.returnDate}"
-				pages="2" disabled="#{searchFlightBean.oneWay}" effect="fold" />
+				<p:outputLabel for="departureDate" value="Departure" />
+				<p:calendar id="departureDate" value="#{calendarView.departureDate}"
+					pages="2" effect="fold" placeholder="Enter date" />
+
+				<p:outputLabel for="returnDate" value="Return" />
+				<p:calendar id="returnDate" value="#{calendarView.returnDate}"
+					pages="2" disabled="#{searchFlightBean.oneWay}" effect="fold"
+					placeholder="Enter date" />
+			</h:panelGrid>
 
 
+			<!-- 		SEARCH and RESET BUTTON  -->
+			<h:panelGrid columns="2">
+				<h:commandButton action="#{flightBean.findFlightFromQuery()}"
+					value="Search">
+					<f:ajax render="resultTable" />
+				</h:commandButton>
+				<h:commandButton action="#{flightBean.toggleRendered(false)}"
+					value="Reset">
+					<f:ajax render="resultTable" />
+				</h:commandButton>
+			</h:panelGrid>
 
-			<p:growl id="msgs" showDetail="true" />
 
-			<p:panel header="Select a Location" style="margin-bottom:10px;">
-				<h:panelGrid columns="2" cellpadding="5">
-					<p:outputLabel for="country" value="Country: " />
-					<p:selectOneMenu id="country" value="#{dropdownView.country}"
-						style="width:150px">
-						<p:ajax listener="#{dropdownView.onCountryChange}" update="city" />
-						<f:selectItem itemLabel="Select Country" itemValue=""
-							noSelectionOption="true" />
-						<f:selectItems value="#{dropdownView.countries}" />
-					</p:selectOneMenu>
-
-					<p:outputLabel for="city" value="City: " />
-					<p:selectOneMenu id="city" value="#{dropdownView.city}"
-						style="width:150px">
-						<f:selectItem itemLabel="Select City" itemValue=""
-							noSelectionOption="true" />
-						<f:selectItems value="#{dropdownView.cities}" />
-					</p:selectOneMenu>
-				</h:panelGrid>
-				<p:separator />
-				<h:panelGrid columns="2">
-					<h:commandButton action="#{flightBean.toggleRendered(true)}"
-						value="Search">
-						<f:ajax event="click" render="resultTable" />
-					</h:commandButton>
-					<h:commandButton action="#{flightBean.toggleRendered(false)}"
-						value="Reset">
-						<f:ajax event="click" render="resultTable" />
-					</h:commandButton>
-				</h:panelGrid>
-
-			</p:panel>
-
+			<!-- 		SEARCH RESULTS  -->
 			<p:dataTable id="resultTable" var="flight"
-				value="#{flightBean.flights}" sortBy="#{flight.price}"
+				value="#{flightBean.filteredFlights}" sortBy="#{flight.price}"
 				rendered="true">
 				<p:column headerText="Id" sortBy="#{flight.id}">
 					<h:outputText value="#{flight.id}" />
 				</p:column>
 				<p:column headerText="From"
-					sortBy="#{flight.arrivalLocation.country}">
-					<h:outputText value="#{flight.arrivalLocation.country}" />
-				</p:column>
-				<p:column headerText="To"
 					sortBy="#{flight.departureLocation.country}">
 					<h:outputText value="#{flight.departureLocation.country}" />
+				</p:column>
+				<p:column headerText="To" sortBy="#{flight.arrivalLocation.country}">
+					<h:outputText value="#{flight.arrivalLocation.country}" />
 				</p:column>
 				<p:column headerText="Depart" sortBy="#{flight.departureTime}">
 					<h:outputText value="#{flight.departureTime}" />
