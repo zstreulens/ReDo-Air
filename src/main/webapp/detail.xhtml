@@ -2,20 +2,39 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/facelet-template.xhtml">
 	<ui:define name="pageTitle">Flight details</ui:define>
 	<ui:define name="pageContent">
 		<h1>Flight details</h1>
-		
-		<h:outputText value="#{flightDetailsBean.findFlight(param.id)}" />
-		
-		Country: #{flightDetailsBean.flight.arrivalLocation.country}
-		Country: #{flightDetailsBean.flight.departureLocation.country}
-		Price: #{flightDetailsBean.flight.price}
 
+		<p:panelGrid columns="2" layout="grid">
+			<h:outputText value="Departure location: " />
+			<h:outputText
+				value="#{flightDetailsBean.flight.departureLocation.country}" />
 
+			<h:outputText value="Departure airport: " />
+			<h:outputText
+				value="#{flightDetailsBean.flight.departureLocation.name} (#{flightDetailsBean.flight.departureLocation.code})" />
+
+			<h:outputText value="Arrival location: " />
+			<h:outputText
+				value="#{flightDetailsBean.flight.arrivalLocation.country}" />
+
+			<h:outputText value="Arrival airport: " />
+			<h:outputText
+				value="#{flightDetailsBean.flight.arrivalLocation.name} (#{flightDetailsBean.flight.arrivalLocation.code})"></h:outputText>
+
+			<h:outputText value="Departure: " />
+			<h:outputText value="#{flightDetailsBean.flight.departureTime}" />
+
+			<h:outputText value="Price: " />
+			<h:outputText value="#{flightDetailsBean.flight.price}" />
+		</p:panelGrid>
+		
+		<p:commandButton action="#{flightDetailsBean.bookFlight()}" value="Book flight"></p:commandButton>
 	</ui:define>
 </ui:composition>
 </html>

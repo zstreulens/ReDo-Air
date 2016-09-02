@@ -1,10 +1,9 @@
 package com.realdolmen.web.controller;
 
+import java.io.IOException;
 import java.io.Serializable;
 
-import javax.annotation.PostConstruct;
-import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -12,17 +11,22 @@ import com.realdolmen.domain.Flight;
 import com.realdolmen.service.FlightServiceBean;
 
 @Named
-@SessionScoped
-public class FlightDetailsBean implements Serializable{
+@ApplicationScoped
+public class FlightDetailsBean implements Serializable {
 
 	Flight flight;
-	
+
 	@Inject
 	FlightServiceBean flightService;
-	
-	public void findFlight(String idParam) {
-		Long id = Long.parseLong(idParam);
+	@Inject
+	BookingBean bookingBean;
+
+	public void findFlight(long id) {
 		flight = flightService.findById(id);
+	}
+	
+	public String bookFlight() throws IOException{
+		return bookingBean.bookFlight(flight);
 	}
 
 	public Flight getFlight() {
@@ -40,6 +44,5 @@ public class FlightDetailsBean implements Serializable{
 	public void setFlightService(FlightServiceBean flightService) {
 		this.flightService = flightService;
 	}
-	
-	
+
 }

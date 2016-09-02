@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/facelet-template.xhtml">
+	<ui:define name="pageTitle">Payment</ui:define>
+	<ui:define name="pageContent">
+		<h1>Select your payment method</h1>
+		<p:selectOneRadio id="paymentMethod"
+			value="#{paymentBean.creditcardPayment}">
+			<f:selectItem itemValue="#{true}" itemLabel="Creditcard" />
+			<f:selectItem itemValue="#{false}" itemLabel="Endorsement" />
+			<f:ajax execute="@this" render="paymentInfo" />
+		</p:selectOneRadio>
+
+		<div id="paymentInfo">
+			<h:outputText rendered="#{paymentBean.creditcardPayment}"
+				value="Creditcard"></h:outputText>
+			<h:outputText rendered="#{not paymentBean.creditcardPayment}"
+				value="Endorsement"></h:outputText>
+		</div>
+
+	</ui:define>
+</ui:composition>
+</html>

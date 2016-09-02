@@ -19,6 +19,8 @@ import com.realdolmen.repository.CustomerRepository;
 public class CustomerBean implements Serializable {
 	@Inject
 	CustomerRepository customerRepository;
+	@Inject
+	BookingBean bookingBean;
 	private Customer customer;
 	private String password;
 	private Customer loggedInCustomer;
@@ -36,7 +38,7 @@ public class CustomerBean implements Serializable {
 	public void init() {
 		customer = new Customer();
 		customer.setAddress(new Address());
-		loggedInCustomer = new Customer();
+		loggedInCustomer = null;
 	}
 
 	public String register() {
@@ -55,14 +57,18 @@ public class CustomerBean implements Serializable {
 			customer = customerRepository.findByMail(customer.getMailAddress());
 			if (BCrypt.checkpw(password, customer.getPassword())) {
 				loggedInCustomer = customer;
-				return "success";
+				errorMessage = "";
+				if (bookingBean.getFlightToBook() != null) {
+					return "booking";
+				} else {
+					return "success";
+				}
 			} else {
 				errorMessage = "Password is incorrect.";
 				return "failure";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			customer = null;
 			errorMessage = "E-mail is incorrect.";
 			return "failure";
 		}

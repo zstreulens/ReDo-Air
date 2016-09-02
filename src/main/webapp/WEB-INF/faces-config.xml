@@ -24,6 +24,22 @@
 			<to-view-id>/flights.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
+			<from-outcome>booking</from-outcome>
+			<to-view-id>/detail.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>failure</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/detail.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/payment.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
 			<from-outcome>failure</from-outcome>
 			<to-view-id>/login.xhtml</to-view-id>
 		</navigation-case>

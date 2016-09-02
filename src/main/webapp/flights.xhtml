@@ -25,7 +25,7 @@
 
 
 
-		<!-- 		LOCATION SELECTION  -->
+			<!-- 		LOCATION SELECTION  -->
 			<h:panelGrid columns="4">
 				<p:outputLabel for="departureLocation" value="From" />
 				<p:inputText id="departureLocation"
@@ -49,11 +49,12 @@
 			</h:panelGrid>
 
 
-		<!-- 		SEARCH and RESET BUTTON  -->
+			<!-- 		SEARCH and RESET BUTTON  -->
 
 			<p:panelGrid columns="2">
 				<p:commandButton id="submitButton"
-					actionListener="#{flightBean.submitAction}" value="Submit" update="resultTable">
+					actionListener="#{flightBean.submitAction}" value="Submit"
+					update="resultTable">
 					<f:ajax />
 				</p:commandButton>
 				<p:commandButton id="resetButton"
@@ -62,7 +63,7 @@
 				</p:commandButton>
 			</p:panelGrid>
 
-		<!-- 		SEARCH RESULTS  -->
+			<!-- 		SEARCH RESULTS  -->
 			<p:dataTable id="resultTable" var="flight"
 				value="#{flightBean.filteredFlights}" selectionMode="single"
 				rowKey="#{flight.id}" sortBy="#{flight.price}">
