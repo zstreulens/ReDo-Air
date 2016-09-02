@@ -15,7 +15,10 @@
 		<h2>
 			<ui:insert name="pageTitle" />
 		</h2>
-		<h:button value="Home" outcome="main" />
+		<h:form>
+		<h:commandButton value="Logout" action="#{customerBean.logout()}"></h:commandButton>
+		</h:form>
+		Welcome, #{user.firstName}
 	</header>
 	<main> <ui:insert name="pageContent">
    	

@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -20,46 +21,72 @@ public class CustomerBean implements Serializable {
 	CustomerRepository customerRepository;
 	private Customer customer;
 	private String password;
+	private Customer loggedInCustomer;
+	private String errorMessage;
 
-	public String getPassword() {
-		return password;
+	public String getErrorMessage() {
+		return errorMessage;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
 	}
 
 	@PostConstruct
 	public void init() {
 		customer = new Customer();
 		customer.setAddress(new Address());
+		loggedInCustomer = new Customer();
 	}
 
-	public void register() {
+	public String register() {
 		try {
 			customerRepository.createCustomer(customer);
 			cleanCustomer();
+			return "success";
 		} catch (Exception e) {
 			e.printStackTrace();
+			return "failure";
 		}
 	}
 
-	public void login() {
+	public String login() {
 		try {
 			customer = customerRepository.findByMail(customer.getMailAddress());
 			if (BCrypt.checkpw(password, customer.getPassword())) {
-				System.out.println("It matches!");
+				loggedInCustomer = customer;
+				return "success";
 			} else {
-				System.out.println("It doesn't match =(");
+				errorMessage = "Password is incorrect.";
+				return "failure";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			customer = null;
+			errorMessage = "E-mail is incorrect.";
+			return "failure";
 		}
 	}
 
+	public String logout() {
+		cleanCustomer();
+		return "/login.xhtml";
+	}
+
 	public void cleanCustomer() {
-		customer = null;
+		customer = new Customer();
+		customer.setAddress(new Address());
+		loggedInCustomer = null;
+	}
+
+	@Produces
+	@Named("user")
+	public Customer getLoggedInCustomer() {
+		return loggedInCustomer;
+	}
+
+	public void setLoggedInCustomer(Customer loggedInCustomer) {
+		this.loggedInCustomer = loggedInCustomer;
 	}
 
 	public Customer getCustomer() {
@@ -68,6 +95,14 @@ public class CustomerBean implements Serializable {
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }
