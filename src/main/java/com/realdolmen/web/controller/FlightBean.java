@@ -1,38 +1,38 @@
 package com.realdolmen.web.controller;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.event.SelectEvent;
+
 import com.realdolmen.domain.Flight;
-import com.realdolmen.domain.Location;
 import com.realdolmen.service.FlightServiceBean;
 
 @Named
 @SessionScoped
 public class FlightBean implements Serializable {
-	
+
 	List<Flight> allFlights;
 	List<Flight> filteredFlights;
 	List<String> countries;
-	
-	String fromLocation = "USA";
-	String toLocation = "UK";
-	
-	
-    private boolean rendered;
 
-	
+	String fromLocation;
+	String toLocation;
+
+	private boolean rendered;
+
 	@Inject
 	FlightServiceBean flightService;
-	
-	
+
 	@PostConstruct
 	public void setUp() {
 		allFlights = flightService.findFlights();
@@ -46,6 +46,7 @@ public class FlightBean implements Serializable {
 		countries.add("USA");
 		countries.add("UK");
 	}
+
 	private Flight flight = new Flight();
 
 	public FlightBean() {
@@ -66,8 +67,6 @@ public class FlightBean implements Serializable {
 	public void setFlightService(FlightServiceBean flightService) {
 		this.flightService = flightService;
 	}
-	
-
 
 	public List<Flight> getAllFlights() {
 		return allFlights;
@@ -101,7 +100,6 @@ public class FlightBean implements Serializable {
 		this.countries = countries;
 	}
 
-
 	public String getFromLocation() {
 		return fromLocation;
 	}
@@ -121,21 +119,30 @@ public class FlightBean implements Serializable {
 	public void addFlight() {
 		flightService.createFlight(flight);
 	}
-	
+
 	public List<Flight> findAllFlights() {
 		return flightService.findFlights();
 	}
-	
+
 	public String search() {
 		return "searchResults";
 	}
-	
+
 	public void toggleRendered(boolean value) {
-    	setRendered(value);
+		setRendered(value);
 	}
-	
+
+	public void toggleRendered() {
+		setRendered(!isRendered());
+	}
+
 	public void findFlightFromQuery() {
 		filteredFlights = flightService.findFlightFromQuery(fromLocation, toLocation);
 	}
-	
+
+	public void searchAction(ActionEvent actionEvent) {
+		findFlightFromQuery();
+		toggleRendered();
+	}
+
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -55,6 +56,10 @@ public class AutoCompleteView {
 	public void onItemSelect(SelectEvent event) {
 		FacesContext.getCurrentInstance().addMessage(null,
 				new FacesMessage("Item Selected", event.getObject().toString()));
+	}
+	
+	public void action(AjaxBehaviorEvent event) {
+		
 	}
 
 }
