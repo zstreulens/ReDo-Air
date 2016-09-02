@@ -180,9 +180,13 @@ td {
 	-o-transition: background .1s linear;
 }
 
+nav {
+	display: flex;
+}
+
 nav .btn_style {
+	flex-direction: reverse-column;
 	border: 2px solid #ffffff;
-	float: right;
 }
 
 .btn_style:hover {

@@ -20,10 +20,38 @@
 					<h:panelGrid columns="1" cellpadding="5">
 						<p:commandButton styleClass="btn_style" value="login"
 							type="button" onclick="PF('dlg3').show();" />
+						<p:commandButton styleClass="btn_style" value="register"
+							type="button" onclick="#{loginBean.register()}" />
 					</h:panelGrid>
 					<p:dialog header="Login" widgetVar="dlg3" showEffect="explode"
-						hideEffect="bounce" height="100">
-						<h:outputText value="This dialog has nice effects." />
+						hideEffect="bounce" height="auto" width="auto">
+						<h:form>
+							<h:panelGrid columns="2" style="margin-bottom:10px"
+								cellpadding="5">
+								<p:selectOneButton value="#{loginBean.userType}" required="true">
+									<f:selectItem itemLabel="customer" itemValue="customer" />
+									<f:selectItem itemLabel="partner" itemValue="partner" />
+									<f:selectItem itemLabel="admin" itemValue="admin" />
+								</p:selectOneButton>
+							</h:panelGrid>
+						</h:form>
+						<h:form>
+							<h:panelGrid columns="2">
+								<h:outputText value="E-mail "></h:outputText>
+								<h:panelGroup>
+									<p:inputText value="#{customerBean.customer.mailAddress}"
+										id="mail"></p:inputText>
+								</h:panelGroup>
+								<h:outputText value="Password "></h:outputText>
+								<h:panelGroup>
+									<p:password value="#{customerBean.password}" id="password"></p:password>
+								</h:panelGroup>
+							</h:panelGrid>
+							<p:commandButton value="Login" id="login"
+								action="#{customerBean.login}" />
+							<p:commandButton value="Cancel" id="cancel"
+								action="#{customerBean.login}" />
+						</h:form>
 					</p:dialog>
 				</nav>
 			</div>
