@@ -37,5 +37,7 @@ public class SearchFlightBean implements Serializable {
 		setOneWay(oneWay);
 	}
 	
+
+	
 	
 }

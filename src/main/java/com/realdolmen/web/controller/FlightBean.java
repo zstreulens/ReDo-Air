@@ -1,18 +1,14 @@
 package com.realdolmen.web.controller;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
-
-import org.primefaces.event.SelectEvent;
 
 import com.realdolmen.domain.Flight;
 import com.realdolmen.service.FlightServiceBean;
@@ -37,7 +33,6 @@ public class FlightBean implements Serializable {
 	public void setUp() {
 		allFlights = flightService.findFlights();
 		filteredFlights = null;
-		rendered = false;
 		countries = new ArrayList<>();
 		countries.add("Belgium");
 		countries.add("Spain");
@@ -84,14 +79,6 @@ public class FlightBean implements Serializable {
 		this.filteredFlights = filteredFlights;
 	}
 
-	public boolean isRendered() {
-		return rendered;
-	}
-
-	public void setRendered(boolean rendered) {
-		this.rendered = rendered;
-	}
-
 	public List<String> getCountries() {
 		return countries;
 	}
@@ -128,21 +115,22 @@ public class FlightBean implements Serializable {
 		return "searchResults";
 	}
 
-	public void toggleRendered(boolean value) {
-		setRendered(value);
-	}
-
-	public void toggleRendered() {
-		setRendered(!isRendered());
-	}
-
 	public void findFlightFromQuery() {
+	}
+
+	public boolean isRendered() {
+		return rendered;
+	}
+
+	public void setRendered(boolean rendered) {
+		this.rendered = rendered;
+	}
+
+	public void submitAction(ActionEvent actionEvent) {
 		filteredFlights = flightService.findFlightFromQuery(fromLocation, toLocation);
+		setRendered(true);
 	}
-
-	public void searchAction(ActionEvent actionEvent) {
-		findFlightFromQuery();
-		toggleRendered();
+	public void resetAction(ActionEvent actionEvent) {
+		setRendered(false);
 	}
-
 }

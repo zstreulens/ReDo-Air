@@ -11,9 +11,9 @@
 	<ui:define name="pageTitle">Search Flights</ui:define>
 	<ui:define name="pageContent">
 
-		<h:form>
 
-			<!-- 		RADIO BUTTON  -->
+		<!-- 		RADIO BUTTON  -->
+		<h:form>
 			<h:panelGrid columns="2">
 				<p:selectOneRadio id="toggleReturn"
 					value="#{searchFlightBean.oneWay}">
@@ -25,8 +25,7 @@
 
 
 
-
-			<!-- 		LOCATION SELECTION  -->
+		<!-- 		LOCATION SELECTION  -->
 			<h:panelGrid columns="4">
 				<p:outputLabel for="departureLocation" value="From" />
 				<p:inputText id="departureLocation"
@@ -50,18 +49,23 @@
 			</h:panelGrid>
 
 
-			<!-- 		SEARCH and RESET BUTTON  -->
+		<!-- 		SEARCH and RESET BUTTON  -->
 
 			<p:panelGrid columns="2">
-					<p:commandButton id="submitButton" actionListener="#{flightBean.findFlightFromQuery()}" value="Submit" update="resultTable" />
-					<p:commandButton id="resetButton" actionListener="#{flightBean.toggleRendered()}" value="Reset" update="resultTable" />
+				<p:commandButton id="submitButton"
+					actionListener="#{flightBean.submitAction}" value="Submit" update="resultTable">
+					<f:ajax />
+				</p:commandButton>
+				<p:commandButton id="resetButton"
+					actionListener="#{flightBean.resetAction}" value="Reset">
+					<f:ajax />
+				</p:commandButton>
 			</p:panelGrid>
 
-
-			<!-- 		SEARCH RESULTS  -->
+		<!-- 		SEARCH RESULTS  -->
 			<p:dataTable id="resultTable" var="flight"
 				value="#{flightBean.filteredFlights}" selectionMode="single"
-				rowKey="#{flight.id}" sortBy="#{flight.price}" rendered="true">
+				rowKey="#{flight.id}" sortBy="#{flight.price}">
 				<p:ajax event="rowSelect" listener="#{selectionBean.onRowSelect}">
 				</p:ajax>
 				<p:column headerText="Id" sortBy="#{flight.id}">
