@@ -8,6 +8,13 @@
 	<ui:define name="pageTitle">Flight details</ui:define>
 	<ui:define name="pageContent">
 		<h1>Flight details</h1>
+		
+		<h:outputText value="#{flightDetailsBean.findFlight(param.id)}" />
+		
+		Country: #{flightDetailsBean.flight.arrivalLocation.country}
+		Country: #{flightDetailsBean.flight.departureLocation.country}
+		Price: #{flightDetailsBean.flight.price}
+
 
 	</ui:define>
 </ui:composition>

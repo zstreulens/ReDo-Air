@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import com.realdolmen.domain.Flight;
-import com.realdolmen.domain.Location;
 
 @Stateless
 public class FlightRepository {
@@ -19,13 +18,17 @@ public class FlightRepository {
 		return flight;
 	}
 
+	public Flight findById(Long id) {
+		return em.find(Flight.class, id);
+	}
+
 	public List<Flight> findAll() {
 		return em.createQuery("select f from Flight f", Flight.class).getResultList();
 	}
-	
-	public List<Flight> findFlightWithParams(String departId, String arriveId) {
-		return em.createNamedQuery("findFlight",Flight.class).setParameter("arrivalLoc", arriveId).setParameter("departLoc", departId).getResultList();
-	}
 
+	public List<Flight> findFlightWithParams(String departId, String arriveId) {
+		return em.createNamedQuery("findFlight", Flight.class).setParameter("arrivalLoc", arriveId)
+				.setParameter("departLoc", departId).getResultList();
+	}
 
 }

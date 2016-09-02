@@ -31,11 +31,12 @@
 				<p:outputLabel for="departureLocation" value="From" />
 				<p:inputText id="departureLocation"
 					value="#{flightBean.fromLocation}">
-					<f:ajax render="resultTable" />
+					<p:watermark for="departureLocation" value="Departure"
+						id="departureWm" />
 				</p:inputText>
 				<p:outputLabel for="arrivalLocation" value="To" />
 				<p:inputText id="arrivalLocation" value="#{flightBean.toLocation}">
-					<f:ajax render="resultTable" />
+					<p:watermark for="arrivalLocation" value="Arrival" id="arrivalWm" />
 				</p:inputText>
 
 				<p:outputLabel for="departureDate" value="Departure" />
@@ -50,15 +51,10 @@
 
 
 			<!-- 		SEARCH and RESET BUTTON  -->
+
 			<p:panelGrid columns="2">
-				<p:commandButton
-					actionListener="#{flightBean.findFlightFromQuery()}" value="Search">
-					<f:ajax render="resultTable" />
-				</p:commandButton>
-				<p:commandButton actionListener="#{flightBean.toggleRendered()}"
-					value="Reset">
-					<f:ajax render="resultTable" />
-				</p:commandButton>
+					<p:commandButton id="submitButton" actionListener="#{flightBean.findFlightFromQuery()}" value="Submit" update="resultTable" />
+					<p:commandButton id="resetButton" actionListener="#{flightBean.toggleRendered()}" value="Reset" update="resultTable" />
 			</p:panelGrid>
 
 
@@ -66,7 +62,7 @@
 			<p:dataTable id="resultTable" var="flight"
 				value="#{flightBean.filteredFlights}" selectionMode="single"
 				rowKey="#{flight.id}" sortBy="#{flight.price}" rendered="true">
-				<p:ajax event="rowSelect" listener="#{selectionBean.onRowSelect}"  >
+				<p:ajax event="rowSelect" listener="#{selectionBean.onRowSelect}">
 				</p:ajax>
 				<p:column headerText="Id" sortBy="#{flight.id}">
 					<h:outputText value="#{flight.id}" />
