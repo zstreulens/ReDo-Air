@@ -140,6 +140,7 @@
 			<version>1.0.3</version> <!-- Version used by Wildfly 10.0.0.Final -->
 			<scope>test</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>

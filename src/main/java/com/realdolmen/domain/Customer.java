@@ -6,26 +6,29 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.mindrot.BCrypt;
 
+
 @Entity
+@NamedQuery(name="Customer.findByMail", query="SELECT c FROM Customer c WHERE c.mailAddress = :mailAddress")
 public class Customer implements Serializable {
 	@Id
 	@GeneratedValue
 	private Integer id;
-	@NotNull
+	@NotBlank
 	private String firstName;
-	@NotNull
+	@NotBlank
 	private String lastName;
 	@Embedded
 	@Valid
 	private Address address;
-	@NotNull
+	@NotBlank
 	private String mailAddress;
-	@NotNull
+	@NotBlank
 	private String password;
 	private String creditCard;
 

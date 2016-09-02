@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/facelet-template.xhtml">
 	<ui:define name="pageTitle">User Registration</ui:define>
@@ -12,48 +13,73 @@
 			<h:panelGrid columns="2">
 				<h:outputText value="First name: "></h:outputText>
 				<h:panelGroup>
-					<h:inputText value="#{customerBean.customer.firstName}" id="fname"></h:inputText>
+					<p:inputText value="#{customerBean.customer.firstName}" id="fname"></p:inputText>
+					<font color="red">* </font>
+					<h:message for="fname" id="fnameMsg"></h:message>
 				</h:panelGroup>
 				<h:outputText value="Last name: "></h:outputText>
 				<h:panelGroup>
-					<h:inputText value="#{customerBean.customer.lastName}" id="lname"></h:inputText>
+					<p:inputText value="#{customerBean.customer.lastName}" id="lname"></p:inputText>
+					<font color="red">* </font>
+					<h:message for="lname" id="lnameMsg"></h:message>
 				</h:panelGroup>
 				<h:outputText value="Street"></h:outputText>
 				<h:panelGroup>
-					<h:inputText value="#{customerBean.customer.address.street}"
-						id="street"></h:inputText>
+					<p:inputText value="#{customerBean.customer.address.street}"
+						id="street"></p:inputText>
+					<font color="red">* </font>
+					<h:message for="street" id="streetMsg"></h:message>
 				</h:panelGroup>
 				<h:outputText value="House number: "></h:outputText>
 				<h:panelGroup>
-					<h:inputText value="#{customerBean.customer.address.number}"
-						id="houseNumber"></h:inputText>
+					<p:inputText value="#{customerBean.customer.address.number}"
+						id="houseNumber"></p:inputText>
+					<font color="red">* </font>
+					<h:message for="houseNumber" id="houseNumberMsg"></h:message>
 				</h:panelGroup>
 				<h:outputText value="Zipcode: "></h:outputText>
 				<h:panelGroup>
-					<h:inputText value="#{customerBean.customer.address.zipcode}"
-						id="zipcode"></h:inputText>
+					<p:inputText value="#{customerBean.customer.address.zipcode}"
+						id="zipcode"></p:inputText>
+					<font color="red">* </font>
+					<h:message for="zipcode" id="zipcodeMsg"></h:message>
 				</h:panelGroup>
 				<h:outputText value="City: "></h:outputText>
 				<h:panelGroup>
-					<h:inputText value="#{customerBean.customer.address.city}"
-						id="city"></h:inputText>
+					<p:inputText value="#{customerBean.customer.address.city}"
+						id="city"></p:inputText>
+					<font color="red">* </font>
+					<h:message for="city" id="cityMsg"></h:message>
 				</h:panelGroup>
 				<h:outputText value="Country: "></h:outputText>
 				<h:panelGroup>
-					<h:inputText value="#{customerBean.customer.address.country}"
-						id="country"></h:inputText>
+					<p:inputText value="#{customerBean.customer.address.country}"
+						id="country"></p:inputText>
+					<font color="red">* </font>
+					<h:message for="country" id="countryMsg"></h:message>
+				</h:panelGroup>
+				<h:outputText value="Creditcard: "></h:outputText>
+				<h:panelGroup>
+					<p:inputText value="#{customerBean.customer.creditCard}"
+						id="creditcard"></p:inputText>
+					<h:message for="creditcard" id="creditcardMsg"></h:message>
 				</h:panelGroup>
 				<h:outputText value="E-mail: "></h:outputText>
 				<h:panelGroup>
-					<h:inputText value="#{customerBean.customer.mailAddress}" id="mail"></h:inputText>
+					<p:inputText value="#{customerBean.customer.mailAddress}" id="mail"></p:inputText>
+					<font color="red">* </font>
+					<h:message for="mail" id="mailMsg"></h:message>
 				</h:panelGroup>
 				<h:outputText value="Password: "></h:outputText>
 				<h:panelGroup>
-					<h:inputSecret value="#{customerBean.customer.password}"
-						id="password"></h:inputSecret>
+					<p:password value="#{customerBean.customer.password}" id="password"></p:password>
+					<font color="red">* </font>
+					<h:message for="password" id="passwordMsg"></h:message>
 				</h:panelGroup>
 			</h:panelGrid>
-			<h:commandButton action="#{customerBean.register()}" value="Register"></h:commandButton>
+			<p:commandButton value="Register" id="register"
+				action="#{customerBean.register()}"
+				styleClass="ui-priority-primary" />
 		</h:form>
 	</ui:define>
 </ui:composition>

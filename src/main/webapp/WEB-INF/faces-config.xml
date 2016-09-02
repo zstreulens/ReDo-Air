@@ -5,19 +5,43 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
 	version="2.2">
 
+	<navigation-rule>
+		<from-view-id>/register.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>failure</from-outcome>
+			<to-view-id>/register.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/login.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/flights.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>failure</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
 	<application>
 		<locale-config>
 			<default-locale>en</default-locale>
 			<supported-locale>nl_BE</supported-locale>
 		</locale-config>
 
-       <resource-bundle>
-            <base-name>resources</base-name>
-            <var>msgs</var>
-        </resource-bundle>
+		<resource-bundle>
+			<base-name>resources</base-name>
+			<var>msgs</var>
+		</resource-bundle>
 
 
-	<message-bundle>Messages</message-bundle>
+		<message-bundle>Messages</message-bundle>
 	</application>
 
 
