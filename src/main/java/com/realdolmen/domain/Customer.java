@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.validation.Valid;
 
-import org.hibernate.validator.constraints.NotBlank;
 import org.mindrot.BCrypt;
 
 
@@ -19,16 +18,12 @@ public class Customer implements Serializable {
 	@Id
 	@GeneratedValue
 	private Integer id;
-	@NotBlank
 	private String firstName;
-	@NotBlank
 	private String lastName;
 	@Embedded
 	@Valid
 	private Address address;
-	@NotBlank
 	private String mailAddress;
-	@NotBlank
 	private String password;
 	private String creditCard;
 

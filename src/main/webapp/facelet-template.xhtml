@@ -7,29 +7,50 @@
 
 <h:head>
 	<title><ui:insert name="pageTitle" /></title>
-	<h:outputStylesheet library="css" name="styles.css" />
+
 </h:head>
 <h:body>
-	<header>
-		<h:graphicImage id="headerLogo" name="planeIcon.png" library="img"
-			alt="REDO AIR" />
-		<h2>
-			<ui:insert name="pageTitle" />
-		</h2>
-		<h:form>
-			<p:commandButton value="Logout" id="logout"
-				actionListener="#{customerBean.logout()}"
-				styleClass="ui-priority-primary" />
-		</h:form>
-		Welcome, #{user.firstName}
-	</header>
-	<main> <ui:insert name="pageContent">
+	<h:outputStylesheet library="css" name="reset.css" />
+	<h:outputStylesheet library="css" name="responsive.css" />
+	<section class="hero">
+		<header>
+			<div class="wrapper">
+				<a href="#" class="hamburger"></a>
+				<nav>
+					<h:panelGrid columns="1" cellpadding="5">
+						<p:commandButton styleClass="btn_style" value="login"
+							type="button" onclick="PF('dlg3').show();" />
+					</h:panelGrid>
+					<p:dialog header="Login" widgetVar="dlg3" showEffect="explode"
+						hideEffect="bounce" height="100">
+						<h:outputText value="This dialog has nice effects." />
+					</p:dialog>
+				</nav>
+			</div>
+		</header>
+		<!--  end header section  -->
+
+
+		<main>
+		<div id="globalContainer">
+
+			<ui:insert name="pageContent">
    	
    		Place content here
    	
-   	</ui:insert> </main>
-
+   	
+   	
+   	
+   	</ui:insert>
+		</div>
+		</main>
+	</section>
+	<!--  end hero section  -->
+	<footer>
+		<div class="copyrights wrapper">Copyright © 2016 ReDo Air. All
+			Rights Reserved.</div>
+	</footer>
+	<!--  end footer  -->
 </h:body>
-<footer>Copyright ReDo Air. All Rights Reserved.</footer>
 
 </html>
