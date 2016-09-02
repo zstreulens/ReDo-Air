@@ -56,3 +56,11 @@ main  input[type=button], main input[type=submit] {
 
 .old {
 }
+
+.leftDiv {
+	width: 20vw;
+}
+
+.rightDiv {
+	width: 20vw;
+}
