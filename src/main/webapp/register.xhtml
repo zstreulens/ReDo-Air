@@ -72,13 +72,14 @@
 				</h:panelGroup>
 				<h:outputText value="Password: "></h:outputText>
 				<h:panelGroup>
-					<p:password value="#{customerBean.customer.password}"
-						id="password"></p:password>
+					<p:password value="#{customerBean.customer.password}" id="password"></p:password>
 					<font color="red">* </font>
 					<h:message for="password" id="passwordMsg"></h:message>
 				</h:panelGroup>
 			</h:panelGrid>
-			<h:commandButton action="#{customerBean.register()}" value="Register"></h:commandButton>
+			<p:commandButton value="Register" id="register"
+				action="#{customerBean.register()}"
+				styleClass="ui-priority-primary" />
 		</h:form>
 	</ui:define>
 </ui:composition>

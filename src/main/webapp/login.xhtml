@@ -11,17 +11,18 @@
 		<h1>Fill in your login information</h1>
 		#{customerBean.errorMessage}
 		<h:form>
-		<h:panelGrid columns="2">
-		<h:outputText value="E-mail "></h:outputText>
-		<h:panelGroup>
-		<p:inputText value="#{customerBean.customer.mailAddress}" id="mail"></p:inputText>
-		</h:panelGroup>
-		<h:outputText value="Password "></h:outputText>
-		<h:panelGroup>
-		<p:password value="#{customerBean.password}" id="password"></p:password>
-		</h:panelGroup>
-		</h:panelGrid>
-		<h:commandButton action="#{customerBean.login()}" value="Login"></h:commandButton>
+			<h:panelGrid columns="2">
+				<h:outputText value="E-mail "></h:outputText>
+				<h:panelGroup>
+					<p:inputText value="#{customerBean.customer.mailAddress}" id="mail"></p:inputText>
+				</h:panelGroup>
+				<h:outputText value="Password "></h:outputText>
+				<h:panelGroup>
+					<p:password value="#{customerBean.password}" id="password"></p:password>
+				</h:panelGroup>
+			</h:panelGrid>
+			<p:commandButton value="Login" id="login"
+				action="#{customerBean.login}" styleClass="ui-priority-primary" />
 		</h:form>
 	</ui:define>
 </ui:composition>
