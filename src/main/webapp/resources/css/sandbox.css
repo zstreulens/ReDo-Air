@@ -249,7 +249,7 @@ header nav ul li a, .btn_style {
 /*  Hero Section  */
 .hero {
 	width: 100%;
-	height: 100vh;
+	height: 94vh;
 	position: relative;
 	background: url('../resources/img/hero.jpg') no-repeat bottom center;
 	background-size: cover;
@@ -587,9 +587,6 @@ header nav ul li a, .btn_style {
 /*  footer  */
 footer {
 	background: #95badf;
-	position: absolute;
-	bottom: 0;
-	width: 100vw;
 }
 
 footer .footer>ul {
@@ -707,7 +704,7 @@ footer .copyrights a.ph_link {
 /*  responsive css */
 @media ( max-width :1500px) {
 	.hero {
-		height: 100vh;
+		height: 94vh;
 	}
 }
 
@@ -748,7 +745,7 @@ footer .copyrights a.ph_link {
 
 @media ( max-width :800px) {
 	.hero {
-		height: 100vh;
+		height: 94vh;
 	}
 	.hero .caption {
 		width: 92.72727272727273%;
