@@ -150,6 +150,11 @@ td {
 	background: rgba(0, 180, 255, .5);
 }
 
+#searchPanelGrid .ui-widget-content {
+	background: transparent;
+	border: none;
+}
+
 .btn_style, .menuButton {
 	margin: 1rem;
 	padding: .5rem;
@@ -1149,17 +1154,19 @@ to {
 /*  */
 
 /*  responsive css */
-@media ( max-width :1500px) {
+@media ( max-width :1200px) {
 	.hero {
 		height: 100vh;
 	}
+	
+.backgroundSwitch {
+	height: 100vh;
+	width: auto;
+}
 }
 
 @media ( max-width :800px) {
-	.backgroundSwitch {
-		height: 100vh;
-		width: auto;
-	}
+
 	.hero {
 		height: 100vh;
 	}

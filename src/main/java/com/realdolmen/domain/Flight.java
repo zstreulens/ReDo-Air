@@ -133,4 +133,5 @@ public class Flight implements Serializable {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
+
 }

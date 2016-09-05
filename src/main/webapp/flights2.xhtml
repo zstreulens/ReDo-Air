@@ -42,8 +42,8 @@
 				<p:calendar id="departureDate" value="#{searchFlightBean.departureDate}"
 					mindate="#{searchFlightBean.currentDate}" pages="2"
 					placeholder="Enter date">
-					<p:ajax event="dateSelect" update="returnDate" />
-					<p:ajax event="change" update="returnDate" />
+					<p:ajax event="dateSelect" execute="@this" render="returnDate" />
+					<p:ajax event="change" execute="@this" render="returnDate" />
 				</p:calendar>
 
 				<p:outputLabel for="returnDate" value="Return" />
