@@ -1,7 +1,6 @@
 package com.realdolmen.web.controller;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -10,8 +9,9 @@ import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.context.RequestContext;
+
 import com.realdolmen.domain.Flight;
-import com.realdolmen.domain.Location;
 import com.realdolmen.repository.LocationRepository;
 import com.realdolmen.service.FlightServiceBean;
 import com.realdolmen.service.LocationServiceBean;
@@ -131,7 +131,7 @@ public class FlightBean implements Serializable {
 		setRendered(true);
 	}
 
-	public void resetAction(ActionEvent actionEvent) {
-		setRendered(false);
-	}
+    public void reset() {
+        RequestContext.getCurrentInstance().reset("form:panel");
+    }
 }

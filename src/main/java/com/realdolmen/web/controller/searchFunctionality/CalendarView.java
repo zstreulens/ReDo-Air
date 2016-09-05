@@ -14,27 +14,10 @@ import org.primefaces.event.SelectEvent;
 @Named
 @SessionScoped
 public class CalendarView {
-	private Date departureDate;
-	private Date returnDate;
 
 	public CalendarView() {
 	}
 	
-	public Date getDepartureDate() {
-		return departureDate;
-	}
-
-	public void setDepartureDate(Date departureDate) {
-		this.departureDate = departureDate;
-	}
-
-	public Date getReturnDate() {
-		return returnDate;
-	}
-
-	public void setReturnDate(Date returnDate) {
-		this.returnDate = returnDate;
-	}
 
 	public void onDateSelect(SelectEvent event) {
 		FacesContext facesContext = FacesContext.getCurrentInstance();
