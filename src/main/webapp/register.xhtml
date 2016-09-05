@@ -13,7 +13,8 @@
 			<h:panelGrid columns="2">
 				<h:outputText value="First name: "></h:outputText>
 				<h:panelGroup>
-					<p:inputText value="#{customerBean.customer.firstName}" id="fname"></p:inputText>
+					<p:inputText value="#{customerBean.customer.firstName}" id="fname">
+					</p:inputText>
 					<font color="red">* </font>
 					<h:message for="fname" id="fnameMsg"></h:message>
 				</h:panelGroup>
@@ -78,8 +79,7 @@
 				</h:panelGroup>
 			</h:panelGrid>
 			<p:commandButton value="Register" id="register"
-				action="#{customerBean.register()}"
-				styleClass="ui-priority-primary" />
+				action="#{customerBean.register()}" styleClass="btn_style" />
 		</h:form>
 	</ui:define>
 </ui:composition>

@@ -7,61 +7,83 @@
 
 <h:head>
 	<title><ui:insert name="pageTitle" /></title>
-
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
 </h:head>
 <h:body>
 	<h:outputStylesheet library="css" name="reset.css" />
 	<h:outputStylesheet library="css" name="responsive.css" />
+
+
 	<section class="hero">
+		<!--  BACKGROUND IMAGES CYCLE -->
+		<p:imageSwitch effect="fade" styleClass="fadeEffect" speed="2000"
+			slideshowSpeed="8000">
+			<ui:repeat value="#{imagesView.images}" var="image"
+				id="fadeEffectImages">
+				<p:graphicImage name="/img/#{image}" styleClass="backgroundSwitch" />
+			</ui:repeat>
+		</p:imageSwitch>
 		<header>
-			<div class="wrapper">
-				<a href="#" class="hamburger"></a>
-				<nav>
-					<h:panelGrid columns="2" cellpadding="5">
-						<p:commandButton styleClass="btn_style" value="login"
-							type="button" onclick="PF('dlg3').show();" />
-						<p:commandButton styleClass="btn_style" value="register"
-							type="button" onclick="#{loginBean.register()}" />
-					</h:panelGrid>
-					<p:dialog header="Login" widgetVar="dlg3" showEffect="explode"
-						hideEffect="bounce" height="auto" width="auto">
-						<h:form>
-							<h:panelGrid columns="2" style="margin-bottom:10px"
-								cellpadding="5">
-								<p:selectOneButton value="#{loginBean.userType}" required="true">
-									<f:selectItem itemLabel="customer" itemValue="customer" />
-									<f:selectItem itemLabel="partner" itemValue="partner" />
-									<f:selectItem itemLabel="admin" itemValue="admin" />
-								</p:selectOneButton>
-							</h:panelGrid>
-						</h:form>
-						<h:form>
-							<h:panelGrid columns="2">
-								<h:outputText value="E-mail "></h:outputText>
-								<h:panelGroup>
-									<p:inputText value="#{customerBean.customer.mailAddress}"
-										id="mail"></p:inputText>
-								</h:panelGroup>
-								<h:outputText value="Password "></h:outputText>
-								<h:panelGroup>
-									<p:password value="#{customerBean.password}" id="password"></p:password>
-								</h:panelGroup>
-							</h:panelGrid>
-							<p:commandButton value="Login" id="login"
-								action="#{customerBean.login}" />
-							<p:commandButton value="Cancel" id="cancel"
-								action="#{customerBean.login}" />
-						</h:form>
-					</p:dialog>
-				</nav>
-			</div>
+
+
+			<!-- MENU   -->
+			<nav  class="mainMenu">
+				<h:panelGrid columns="2">
+					<h:form>
+						<h:commandLink action="flights">
+							<h:outputText id="find" value="Find Flights" />
+						</h:commandLink>
+					</h:form>
+				</h:panelGrid>
+			</nav>
+			
+			<!--  LOGIN BUTTONS -->
+			<nav class="loginMenu">
+				<h:panelGrid columns="2" cellpadding="5">
+					<p:commandButton styleClass="btn_style" value="login" type="button"
+						onclick="PF('dlg3').show();" />
+					<p:button styleClass="btn_style" value="register" type="button"
+						outcome="#{loginBean.register()}" update="globalContainer">
+					</p:button>
+				</h:panelGrid>
+				<p:dialog header="Login" widgetVar="dlg3" showEffect="explode"
+					hideEffect="bounce" height="auto" width="auto">
+					<h:form>
+						<h:panelGrid columns="2" style="margin-bottom:10px"
+							cellpadding="5">
+							<p:selectOneButton value="#{loginBean.userType}" required="true">
+								<f:selectItem itemLabel="customer" itemValue="customer" />
+								<f:selectItem itemLabel="partner" itemValue="partner" />
+								<f:selectItem itemLabel="admin" itemValue="admin" />
+							</p:selectOneButton>
+						</h:panelGrid>
+					</h:form>
+					<h:form>
+						<h:panelGrid columns="2">
+							<h:outputText value="E-mail "></h:outputText>
+							<h:panelGroup>
+								<p:inputText value="#{customerBean.customer.mailAddress}"
+									id="mail"></p:inputText>
+							</h:panelGroup>
+							<h:outputText value="Password "></h:outputText>
+							<h:panelGroup>
+								<p:password value="#{customerBean.password}" id="password"></p:password>
+							</h:panelGroup>
+						</h:panelGrid>
+						<p:commandButton value="Login" id="login"
+							action="#{customerBean.login}" />
+						<p:commandButton value="Cancel" id="cancel"
+							action="#{customerBean.login}" />
+					</h:form>
+				</p:dialog>
+			</nav>
 		</header>
 		<!--  end header section  -->
 
 
 		<main>
 		<div id="globalContainer">
-
 			<ui:insert name="pageContent">
    	
    		Place content here
@@ -75,9 +97,9 @@
 	</section>
 	<!--  end hero section  -->
 	<footer>
-		<div class="copyrights wrapper">Copyright © 2016 ReDo Air. All
-			Rights Reserved.</div>
+		<p>Copyright © 2016 ReDo Air. All Rights Reserved.</p>
 	</footer>
+
 	<!--  end footer  -->
 </h:body>
 

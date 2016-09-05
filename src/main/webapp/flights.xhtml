@@ -8,7 +8,7 @@
 
 <ui:composition template="/facelet-template.xhtml">
 
-	<ui:define name="pageTitle">Search Flights</ui:define>
+	<ui:define name="pageTitle">Find Flights</ui:define>
 	<ui:define name="pageContent">
 
 			<h:form>
@@ -54,8 +54,8 @@
 				<!-- 		SEARCH and RESET BUTTON  -->
 				<div id="searchButtons">
 					<p:commandButton styleClass="btn_style" id="submitButton"
-						actionListener="#{flightBean.submitAction}" value="Submit"
-						update="resultTable">
+						actionListener="#{flightBean.submitAction}" value="Find"
+						update="resultTable" icon="ui-icon-search">
 						<f:ajax />
 					</p:commandButton>
 					<p:commandButton styleClass="btn_style" id="resetButton"
