@@ -14,6 +14,7 @@ import com.realdolmen.domain.Flight;
 import com.realdolmen.domain.Location;
 import com.realdolmen.repository.LocationRepository;
 import com.realdolmen.service.FlightServiceBean;
+import com.realdolmen.service.LocationServiceBean;
 
 @Named
 @SessionScoped
@@ -22,6 +23,11 @@ public class FlightBean implements Serializable {
 	List<Flight> allFlights;
 	List<Flight> filteredFlights;
 	List<String> countries;
+
+	Location departureLocation;
+	Location arrivalLocation;
+
+	List<Location> departureLocations;
 
 	String fromLocation;
 	String toLocation;
@@ -32,36 +38,43 @@ public class FlightBean implements Serializable {
 	FlightServiceBean flightService;
 	@Inject
 	LocationRepository locationRepository;
+	@Inject
+	LocationServiceBean locationService;
 
 	@PostConstruct
 	public void setUp() {
 		allFlights = flightService.findFlights();
 		filteredFlights = null;
-		countries = new ArrayList<>();
-		countries.add("Belgium");
-		countries.add("Spain");
-		countries.add("China");
-		countries.add("Japan");
-		countries.add("USA");
-		countries.add("UK");
+		departureLocations = locationService.findLocations();
+	}
+
+	public Location getDepartureLocation() {
+		return departureLocation;
+	}
+
+	public List<Location> getDepartureLocations() {
+		return departureLocations;
+	}
+
+	public void setDepartureLocations(List<Location> departureLocations) {
+		this.departureLocations = departureLocations;
+	}
+
+	public void setDepartureLocation(Location departureLocation) {
+		this.departureLocation = departureLocation;
+	}
+
+	public Location getArrivalLocation() {
+		return arrivalLocation;
+	}
+
+	public void setArrivalLocation(Location arrivalLocation) {
+		this.arrivalLocation = arrivalLocation;
 	}
 
 	private Flight flight = new Flight();
 
 	public FlightBean() {
-	}
-	
-	public List<Location> completeLocation(String query){
-		List<Location> allLocations = locationRepository.findAll();
-		List<Location> filteredLocations = new ArrayList<Location>();
-		
-		for (int i = 0; i < allLocations.size(); i++){
-			Location location = allLocations.get(i);
-			if (location.getCountry().toLowerCase().startsWith(query)){
-				filteredLocations.add(location);
-			}
-		}
-		return filteredLocations;
 	}
 
 	public Flight getFlight() {
@@ -147,11 +160,8 @@ public class FlightBean implements Serializable {
 		filteredFlights = flightService.findFlightFromQuery(fromLocation, toLocation);
 		setRendered(true);
 	}
+
 	public void resetAction(ActionEvent actionEvent) {
 		setRendered(false);
-	}
-	
-	public String searchPage() {
-		return "flights";
 	}
 }

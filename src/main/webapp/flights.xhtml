@@ -26,78 +26,81 @@
 
 
 			<!-- 		LOCATION SELECTION  -->
-			<div id="searchframe">
-				<h:panelGrid columns="4">
-					<p:outputLabel for="departureLocation" value="From" />
-					<p:autoComplete id="departureLocation"
-						value="#{flightBean.fromLocation}"
-						completeMethod="#{flightBean.completeLocation}" var="fromLocation"
-						itemValue="#{fromLocation}">
-						<p:watermark for="departureLocation" value="Departure"
-							id="departureWm" />
-					</p:autoComplete>
-					<p:outputLabel for="arrivalLocation" value="To" />
-					<p:autoComplete id="arrivalLocation"
-						value="#{flightBean.toLocation}"
-						completeMethod="#{flightBean.completeLocation()}">
-						<p:watermark for="arrivalLocation" value="Arrival" id="arrivalWm" />
-					</p:autoComplete>
-
-					<p:outputLabel for="departureDate" value="Departure" />
-					<p:calendar id="departureDate"
-						value="#{calendarView.departureDate}" pages="2" effect="fold"
-						placeholder="Enter date" />
-
-					<p:outputLabel for="returnDate" value="Return" />
-					<p:calendar id="returnDate" value="#{calendarView.returnDate}"
-						pages="2" disabled="#{searchFlightBean.oneWay}" effect="fold"
-						placeholder="Enter date" />
-				</h:panelGrid>
+			<h:panelGrid columns="4">
+				<p:outputLabel for="departureLocation" value="From" />
 
 
-				<!-- 		SEARCH and RESET BUTTON  -->
-				<p:panelGrid columns="2">
-					<div id="searchButtons">
-						<p:commandButton styleClass="btn_style" id="submitButton"
-							actionListener="#{flightBean.submitAction}" value="Find"
-							update="resultTable" icon="ui-icon-search">
-							<f:ajax />
-						</p:commandButton>
-						<p:commandButton id="resetButton"
-							actionListener="#{flightBean.resetAction}" value="Reset">
-							<f:ajax />
-						</p:commandButton>
-					</div>
-				</p:panelGrid>
+				<p:selectOneMenu id="departureLocation"
+					value="#{flightBean.departureLocation}"
+					converter="#{locationConverter}" var="depLoc" filter="true"
+					filterMatchMode="contains" style="width:160px" effect="fade"
+					panelStyle="width:180px">
+					<f:selectItems value="#{flightbean.departureLocations}"
+						var="location" itemLabel="#{location}" itemValue="#{location}" />
+					<p:column>
+						<h:outputText value="#{depLoc}" />
+					</p:column>
+				</p:selectOneMenu>
 
-				<!-- 		SEARCH RESULTS  -->
-				<p:dataTable id="resultTable" var="flight"
-					value="#{flightBean.filteredFlights}" selectionMode="single"
-					rowKey="#{flight.id}" sortBy="#{flight.price}">
-					<p:ajax event="rowSelect" listener="#{selectionBean.onRowSelect}">
-					</p:ajax>
-					<p:column headerText="Id" sortBy="#{flight.id}">
-						<h:outputText value="#{flight.id}" />
-					</p:column>
-					<p:column headerText="From"
-						sortBy="#{flight.departureLocation.country}">
-						<h:outputText value="#{flight.departureLocation.country}" />
-					</p:column>
-					<p:column headerText="To"
-						sortBy="#{flight.arrivalLocation.country}">
-						<h:outputText value="#{flight.arrivalLocation.country}" />
-					</p:column>
-					<p:column headerText="Depart" sortBy="#{flight.departureTime}">
-						<h:outputText value="#{flight.departureTime}" />
-					</p:column>
-					<p:column headerText="Arrive" sortBy="#{flight.arrivalTime}">
-						<h:outputText value="#{flight.arrivalTime}" />
-					</p:column>
-					<p:column headerText="Price" sortBy="#{flight.price}">
-						<h:outputText value="#{flight.price}" />
-					</p:column>
-				</p:dataTable>
-			</div>
+
+
+				<p:outputLabel for="arrivalLocation" value="To" />
+				<p:inputText id="arrivalLocation" value="#{flightBean.toLocation}">
+					<p:watermark for="arrivalLocation" value="Arrival" id="arrivalWm" />
+				</p:inputText>
+
+				<p:outputLabel for="departureDate" value="Departure" />
+				<p:calendar id="departureDate" value="#{calendarView.departureDate}"
+					pages="2" effect="fold" placeholder="Enter date" />
+
+				<p:outputLabel for="returnDate" value="Return" />
+				<p:calendar id="returnDate" value="#{calendarView.returnDate}"
+					pages="2" disabled="#{searchFlightBean.oneWay}" effect="fold"
+					placeholder="Enter date" />
+			</h:panelGrid>
+
+
+			<!-- 		SEARCH and RESET BUTTON  -->
+			<p:panelGrid columns="2">
+				<div id="searchButtons">
+					<p:commandButton styleClass="btn_style" id="submitButton"
+						actionListener="#{flightBean.submitAction}" value="Find"
+						update="resultTable" icon="ui-icon-search">
+						<f:ajax />
+					</p:commandButton>
+					<p:commandButton id="resetButton"
+						actionListener="#{flightBean.resetAction}" value="Reset">
+						<f:ajax />
+					</p:commandButton>
+				</div>
+			</p:panelGrid>
+
+			<!-- 		SEARCH RESULTS  -->
+			<p:dataTable id="resultTable" var="flight"
+				value="#{flightBean.filteredFlights}" selectionMode="single"
+				rowKey="#{flight.id}" sortBy="#{flight.price}">
+				<p:ajax event="rowSelect" listener="#{selectionBean.onRowSelect}">
+				</p:ajax>
+				<p:column headerText="Id" sortBy="#{flight.id}">
+					<h:outputText value="#{flight.id}" />
+				</p:column>
+				<p:column headerText="From"
+					sortBy="#{flight.departureLocation.country}">
+					<h:outputText value="#{flight.departureLocation.country}" />
+				</p:column>
+				<p:column headerText="To" sortBy="#{flight.arrivalLocation.country}">
+					<h:outputText value="#{flight.arrivalLocation.country}" />
+				</p:column>
+				<p:column headerText="Depart" sortBy="#{flight.departureTime}">
+					<h:outputText value="#{flight.departureTime}" />
+				</p:column>
+				<p:column headerText="Arrive" sortBy="#{flight.arrivalTime}">
+					<h:outputText value="#{flight.arrivalTime}" />
+				</p:column>
+				<p:column headerText="Price" sortBy="#{flight.price}">
+					<h:outputText value="#{flight.price}" />
+				</p:column>
+			</p:dataTable>
 		</h:form>
 	</ui:define>
 
