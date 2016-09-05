@@ -150,4 +150,8 @@ public class FlightBean implements Serializable {
 	public void resetAction(ActionEvent actionEvent) {
 		setRendered(false);
 	}
+	
+	public String searchPage() {
+		return "flights";
+	}
 }

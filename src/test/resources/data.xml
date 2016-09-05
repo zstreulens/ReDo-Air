@@ -51,8 +51,17 @@
 		departureLocation_id="2" arrivalLocation_id="1" departureTime="2016-12-01 06:31:16" arrivalTime="2016-12-01 08:31:16" seatsFirstClass="20"
 		price="50.0" />
 	<flight id="11" duration="2" seatsBusiness="30" seatsEconomy="40"
-		departureLocation_id="9" arrivalLocation_id="1" departureTime="2016-12-01 06:31:16" arrivalTime="2016-12-01 08:31:16" seatsFirstClass="20"
+		departureLocation_id="9" arrivalLocation_id="1" departureTime="2016-12-01 06:30:00" arrivalTime="2016-12-01 08:30:00" seatsFirstClass="20"
 		price="120.0" />
+	<flight id="12" duration="2" seatsBusiness="15" seatsEconomy="20"
+		departureLocation_id="9" arrivalLocation_id="1" departureTime="2016-12-01 08:00:00" arrivalTime="2016-12-01 10:00:00" seatsFirstClass="20"
+		price="130.0" />
+	<flight id="13" duration="2" seatsBusiness="30" seatsEconomy="40"
+		departureLocation_id="9" arrivalLocation_id="1" departureTime="2016-12-01 09:30:00" arrivalTime="2016-12-01 11:30:00" seatsFirstClass="20"
+		price="115" />
+	<flight id="14" duration="2" seatsBusiness="30" seatsEconomy="40"
+		departureLocation_id="9" arrivalLocation_id="1" departureTime="2016-12-01 11:00:00" arrivalTime="2016-12-01 13:00:00" seatsFirstClass="20"
+		price="280.0" />
 
 
 

@@ -8,7 +8,7 @@
 
 <ui:composition template="/facelet-template.xhtml">
 
-	<ui:define name="pageTitle">Search Flights</ui:define>
+	<ui:define name="pageTitle">Find Flights</ui:define>
 	<ui:define name="pageContent">
 
 		<h:form>
@@ -31,8 +31,7 @@
 					<p:outputLabel for="departureLocation" value="From" />
 					<p:autoComplete id="departureLocation"
 						value="#{flightBean.fromLocation}"
-						completeMethod="#{flightBean.completeLocation}"
-						var="fromLocation"
+						completeMethod="#{flightBean.completeLocation}" var="fromLocation"
 						itemValue="#{fromLocation}">
 						<p:watermark for="departureLocation" value="Departure"
 							id="departureWm" />
@@ -57,17 +56,18 @@
 
 
 				<!-- 		SEARCH and RESET BUTTON  -->
-
 				<p:panelGrid columns="2">
-					<p:commandButton id="submitButton"
-						actionListener="#{flightBean.submitAction}" value="Submit"
-						update="resultTable">
-						<f:ajax />
-					</p:commandButton>
-					<p:commandButton id="resetButton"
-						actionListener="#{flightBean.resetAction}" value="Reset">
-						<f:ajax />
-					</p:commandButton>
+					<div id="searchButtons">
+						<p:commandButton styleClass="btn_style" id="submitButton"
+							actionListener="#{flightBean.submitAction}" value="Find"
+							update="resultTable" icon="ui-icon-search">
+							<f:ajax />
+						</p:commandButton>
+						<p:commandButton id="resetButton"
+							actionListener="#{flightBean.resetAction}" value="Reset">
+							<f:ajax />
+						</p:commandButton>
+					</div>
 				</p:panelGrid>
 
 				<!-- 		SEARCH RESULTS  -->
