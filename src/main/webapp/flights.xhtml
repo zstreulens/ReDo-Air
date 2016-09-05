@@ -39,7 +39,8 @@
 				</p:inputText>
 
 				<p:outputLabel for="departureDate" value="Departure" />
-				<p:calendar id="departureDate" value="#{searchFlightBean.departureDate}"
+				<p:calendar id="departureDate"
+					value="#{searchFlightBean.departureDate}"
 					mindate="#{searchFlightBean.currentDate}" pages="2"
 					placeholder="Enter date">
 					<p:ajax event="dateSelect" update="returnDate" />
@@ -55,14 +56,14 @@
 				<p:outputLabel for="cabinClass" value="Cabin class" />
 				<p:selectOneMenu id="cabinClass"
 					value="#{searchFlightBean.cabinClass}" effect="fade">
-					<f:selectItem itemLabel="economy" itemValue="1" />
-					<f:selectItem itemLabel="business" itemValue="2" />
-					<f:selectItem itemLabel="first class" itemValue="3" />
+					<f:selectItem itemLabel="economy" itemValue="Economy" />
+					<f:selectItem itemLabel="business" itemValue="Business" />
+					<f:selectItem itemLabel="first class" itemValue="FirstClass" />
 				</p:selectOneMenu>
 
 				<p:outputLabel for="preferredAirline" value="Preferred airline" />
 				<p:selectOneMenu id="preferredAirline"
-					value="#{searchFlightBean.cabinClass}" effect="fade">
+					value="#{searchFlightBean.cabinClass}" effect="fade">	
 					<f:selectItem itemLabel="Lufthansa" itemValue="1" />
 					<f:selectItem itemLabel="Brussels Airlines" itemValue="2" />
 					<f:selectItem itemLabel="ANA" itemValue="3" />
@@ -75,18 +76,19 @@
 				<p:commandButton styleClass="btn_style" id="submitButton"
 					actionListener="#{flightBean.submitAction}" value="Find"
 					update="resultTable">
-					<f:ajax />
+					<f:ajax execute="@form" render="@form" />
 				</p:commandButton>
 				<p:commandButton styleClass="btn_style" id="resetButton"
-					value="reset">
-					<p:resetInput target="departureLocation" />
+					actionListener="#{flightBean.reset()}" value="reset">
+					<f:ajax execute="@form" render="@form" />
 				</p:commandButton>
 			</div>
 
 			<!-- 		SEARCH RESULTS  -->
 			<p:dataTable id="resultTable" var="flight"
 				value="#{flightBean.filteredFlights}" selectionMode="single"
-				rowKey="#{flight.id}" sortBy="#{flight.price}">
+				rowKey="#{flight.id}" sortBy="#{flight.price}"
+				rendered="#{flightBean.rendered}">
 				<p:ajax event="rowSelect" listener="#{selectionBean.onRowSelect}">
 				</p:ajax>
 				<p:column headerText="Id" sortBy="#{flight.id}">
@@ -105,6 +107,11 @@
 				<p:column headerText="Arrive" sortBy="#{flight.arrivalTime}">
 					<h:outputText value="#{flight.arrivalTime}" />
 				</p:column>
+				
+				<p:column headerText="Seats" sortBy="Seats">
+					<h:outputText value="#{searchFlightBean.cabinClass} == 'Economy' ? 'yes' : 'no'" />
+				</p:column>
+				
 				<p:column headerText="Price" sortBy="#{flight.price}">
 					<h:outputText value="#{flight.price}" />
 				</p:column>

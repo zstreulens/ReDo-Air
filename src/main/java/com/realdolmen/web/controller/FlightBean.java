@@ -127,11 +127,12 @@ public class FlightBean implements Serializable {
 	}
 
 	public void submitAction(ActionEvent actionEvent) {
-		filteredFlights = flightService.findFlightFromQuery(fromLocation, toLocation);
 		setRendered(true);
+		filteredFlights = flightService.findFlightFromQuery(fromLocation, toLocation);
 	}
 
     public void reset() {
-        RequestContext.getCurrentInstance().reset("form:panel");
+		setRendered(false);
+        RequestContext.getCurrentInstance().reset("form");
     }
 }
