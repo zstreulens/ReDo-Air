@@ -24,11 +24,6 @@ public class FlightBean implements Serializable {
 	List<Flight> filteredFlights;
 	List<String> countries;
 
-	Location departureLocation;
-	Location arrivalLocation;
-
-	List<Location> departureLocations;
-
 	String fromLocation;
 	String toLocation;
 
@@ -45,31 +40,6 @@ public class FlightBean implements Serializable {
 	public void setUp() {
 		allFlights = flightService.findFlights();
 		filteredFlights = null;
-		departureLocations = locationService.findLocations();
-	}
-
-	public Location getDepartureLocation() {
-		return departureLocation;
-	}
-
-	public List<Location> getDepartureLocations() {
-		return departureLocations;
-	}
-
-	public void setDepartureLocations(List<Location> departureLocations) {
-		this.departureLocations = departureLocations;
-	}
-
-	public void setDepartureLocation(Location departureLocation) {
-		this.departureLocation = departureLocation;
-	}
-
-	public Location getArrivalLocation() {
-		return arrivalLocation;
-	}
-
-	public void setArrivalLocation(Location arrivalLocation) {
-		this.arrivalLocation = arrivalLocation;
 	}
 
 	private Flight flight = new Flight();

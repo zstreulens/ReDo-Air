@@ -28,21 +28,11 @@
 			<!-- 		LOCATION SELECTION  -->
 			<h:panelGrid columns="4">
 				<p:outputLabel for="departureLocation" value="From" />
-
-
-				<p:selectOneMenu id="departureLocation"
-					value="#{flightBean.departureLocation}"
-					converter="#{locationConverter}" var="depLoc" filter="true"
-					filterMatchMode="contains" style="width:160px" effect="fade"
-					panelStyle="width:180px">
-					<f:selectItems value="#{flightbean.departureLocations}"
-						var="location" itemLabel="#{location}" itemValue="#{location}" />
-					<p:column>
-						<h:outputText value="#{depLoc}" />
-					</p:column>
-				</p:selectOneMenu>
-
-
+				<p:inputText id="departureLocation"
+					value="#{flightBean.fromLocation}">
+					<p:watermark for="departureLocation" value="Departure"
+						id="departureWm" />
+				</p:inputText>
 
 				<p:outputLabel for="arrivalLocation" value="To" />
 				<p:inputText id="arrivalLocation" value="#{flightBean.toLocation}">
