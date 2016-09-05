@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/facelet-template.xhtml">
+	<ui:define name="pageTitle">Overview</ui:define>
+	<ui:define name="pageContent">
+		<p:dataTable id="bookingsForCustomer" var="bookings"
+			value="#{overviewBean.bookings}">
+			<p:ajax event="rowSelect"></p:ajax>
+			<p:column headerText="Inbound"
+				sortBy="#{bookings.outbound.departureLocation.country}">
+				<h:outputText
+					value="#{bookings.outbound.departureLocation.country} - #{bookings.outbound.arrivalLocation.country}"></h:outputText>
+			</p:column>
+			<p:column headerText="Departure"
+				sortBy="#{bookings.outbound.departureTime}">
+				<h:outputText value="#{bookings.outbound.departureTime}"></h:outputText>
+			</p:column>
+			<p:column headerText="Outbound"
+				sortBy="#{bookings.inbound.departureLocation.country}">
+				<h:outputText
+					value="#{bookings.inbound.departureLocation.country} - #{bookings.inbound.arrivalLocation.country}"></h:outputText>
+			</p:column>
+			<p:column headerText="Departure"
+				sortBy="#{bookings.inbound.departureLocation.departureTime}">
+				<h:outputText value="#{bookings.inbound.departureTime}"></h:outputText>
+			</p:column>
+			<p:column headerText="Total price"
+				sortBy="#{overviewBean.completePrice}">
+				<h:outputText value="#{bookings.outbound.price + bookings.inbound.price}"></h:outputText>
+			</p:column>
+		</p:dataTable>
+	</ui:define>
+</ui:composition>
+</html>

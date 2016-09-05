@@ -31,8 +31,11 @@
 			<nav class="mainMenu">
 				<h:panelGrid columns="2">
 					<h:form>
-						<h:commandLink action="flights">
+						<h:commandLink action="flights.xhtml">
 							<h:outputText id="find" value="Find Flights" />
+						</h:commandLink>
+						<h:commandLink action="overview.xhtml" rendered="#{user.id != null}">
+							<h:outputText id="overview" value="Overview" />
 						</h:commandLink>
 					</h:form>
 				</h:panelGrid>
@@ -42,12 +45,12 @@
 			<nav class="loginMenu">
 				<!--  LOGGED IN -->
 				<h:panelGrid columns="2" cellpadding="5"
-					rendered="#{customerBean.customer.id != null}">
+					rendered="#{user.id != null}">
 					<h:outputText
 						value="logged in as #{customerBean.customer.fullName}" />
 					<h:form>
 						<p:commandButton styleClass="btn_style" value="logout"
-							action="#{customerBean.logout()}" ajax="false"/>
+							action="#{customerBean.logout()}" ajax="false" />
 					</h:form>
 				</h:panelGrid>
 				<!-- NOT LOGGED IN -->
