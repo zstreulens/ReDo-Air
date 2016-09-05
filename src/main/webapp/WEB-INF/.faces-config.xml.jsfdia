@@ -31,8 +31,19 @@
    PATH="/detail.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="success::#payment.xhtml" NAME="output"
     PATH="/payment.xhtml" TARGET="rules:#payment.xhtml" TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="failure::#login.xhtml" NAME="output1"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="failure" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#payment.xhtml" PATH="/payment.xhtml"
-  SHAPE="496,193,0,0" model-entity="JSFProcessGroup"/>
+  SHAPE="496,193,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#payment.xhtml:0" NAME="item"
+   PATH="/payment.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success::#overview.xhtml" NAME="output"
+    PATH="/overview.xhtml" TARGET="rules:#overview.xhtml"
+    TITLE="success" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#overview.xhtml" PATH="/overview.xhtml"
+  SHAPE="720,209,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

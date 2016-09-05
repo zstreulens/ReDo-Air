@@ -25,7 +25,6 @@ public class FlightDetailsBean implements Serializable {
 	}
 	
 	public String bookFlight(){
-		System.out.println("Booking flight");
 		return bookingBean.bookFlight(flight);
 	}
 

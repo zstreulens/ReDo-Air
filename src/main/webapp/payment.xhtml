@@ -8,20 +8,21 @@
 <ui:composition template="/facelet-template.xhtml">
 	<ui:define name="pageTitle">Payment</ui:define>
 	<ui:define name="pageContent">
-		<h1>Select your payment method</h1>
-		<p:selectOneRadio id="paymentMethod"
-			value="#{paymentBean.creditcardPayment}">
-			<f:selectItem itemValue="#{true}" itemLabel="Creditcard" />
-			<f:selectItem itemValue="#{false}" itemLabel="Endorsement" />
-			<f:ajax execute="@this" render="paymentInfo" />
-		</p:selectOneRadio>
-
-		<div id="paymentInfo">
-			<h:outputText rendered="#{paymentBean.creditcardPayment}"
-				value="Creditcard"></h:outputText>
-			<h:outputText rendered="#{not paymentBean.creditcardPayment}"
-				value="Endorsement"></h:outputText>
-		</div>
+		<h1>Payment by creditcard</h1>
+		<h:form>
+			<h:panelGrid columns="2">
+				<p:outputLabel for="newCreditcard" value="Add new creditcard: " />
+				<p:inputText id="newCreditcard" value="#{paymentBean.newCreditcard}">
+					<p:watermark value="Creditcard number" id="newCreditcardNumber"
+						for="newCreditcard"></p:watermark>
+				</p:inputText>
+				<p:outputLabel for="existingCreditcards"
+					value="Select a creditcard: " />
+				<p:inputText id="existingCreditcards"
+					value="#{customerBean.customer.creditcard}" />
+			</h:panelGrid>
+			<p:commandButton value="Confirm payment" action="#{paymentBean.pay()}"></p:commandButton>
+		</h:form>
 
 	</ui:define>
 </ui:composition>

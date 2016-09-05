@@ -17,14 +17,15 @@ public class BookingBean implements Serializable {
 	private Flight flightToBook;
 	@Inject
 	CustomerBean customerbean;
+	@Inject
+	PaymentBean paymentBean;
 
 	public String bookFlight(Flight flight) {
 		setFlightToBook(flight);
 		if (customerbean.getLoggedInCustomer() != null) {
-			System.out.println("success");
+			paymentBean.findFlight(flightToBook.getId());
 			return "success";
 		} else {
-			System.out.println("failure");
 			try {
 				FacesContext.getCurrentInstance().getExternalContext().redirect("login.jsf");
 			} catch (IOException e) {

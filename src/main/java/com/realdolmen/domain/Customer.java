@@ -1,12 +1,14 @@
 package com.realdolmen.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.validation.Valid;
 
@@ -27,10 +29,20 @@ public class Customer implements Serializable {
 	private Address address;
 	private String mailAddress;
 	private String password;
-	private String creditCard;
+	private String creditcard;
+	@OneToMany(mappedBy="customer")
+	private List<Booking> bookings;
 
 	public Customer() {
 
+	}
+
+	public List<Booking> getBookings() {
+		return bookings;
+	}
+
+	public void setBookings(List<Booking> bookings) {
+		this.bookings = bookings;
 	}
 
 	public Customer(String firstName, String lastName, Address address, String mailAddress, String password,
@@ -40,7 +52,7 @@ public class Customer implements Serializable {
 		this.address = address;
 		this.mailAddress = mailAddress;
 		this.password = password;
-		this.creditCard = creditCard;
+		this.creditcard = creditCard;
 	}
 
 	public Integer getId() {
@@ -96,12 +108,12 @@ public class Customer implements Serializable {
 		this.password = hashed;
 	}
 
-	public String getCreditCard() {
-		return creditCard;
+	public String getCreditcard() {
+		return creditcard;
 	}
 
-	public void setCreditCard(String creditCard) {
-		this.creditCard = creditCard;
+	public void setCreditcard(String creditCard) {
+		this.creditcard = creditCard;
 	}
 
 }
