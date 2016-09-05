@@ -18,12 +18,18 @@ public class BookingBean implements Serializable {
 	@Inject
 	CustomerBean customerbean;
 
-	public String bookFlight(Flight flight) throws IOException {
+	public String bookFlight(Flight flight) {
 		setFlightToBook(flight);
 		if (customerbean.getLoggedInCustomer() != null) {
+			System.out.println("success");
 			return "success";
 		} else {
-			FacesContext.getCurrentInstance().getExternalContext().redirect("login.jsf");
+			System.out.println("failure");
+			try {
+				FacesContext.getCurrentInstance().getExternalContext().redirect("login.jsf");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			return "failure";
 		}
 	}

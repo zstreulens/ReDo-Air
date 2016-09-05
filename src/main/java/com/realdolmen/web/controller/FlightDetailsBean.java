@@ -1,6 +1,5 @@
 package com.realdolmen.web.controller;
 
-import java.io.IOException;
 import java.io.Serializable;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -25,7 +24,8 @@ public class FlightDetailsBean implements Serializable {
 		flight = flightService.findById(id);
 	}
 	
-	public String bookFlight() throws IOException{
+	public String bookFlight(){
+		System.out.println("Booking flight");
 		return bookingBean.bookFlight(flight);
 	}
 

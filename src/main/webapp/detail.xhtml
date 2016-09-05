@@ -33,8 +33,11 @@
 			<h:outputText value="Price: " />
 			<h:outputText value="#{flightDetailsBean.flight.price}" />
 		</p:panelGrid>
-		
-		<p:commandButton action="#{flightDetailsBean.bookFlight()}" value="Book flight"></p:commandButton>
+
+		<h:form>
+			<p:commandButton action="#{flightDetailsBean.bookFlight()}"
+				value="Book flight"></p:commandButton>
+		</h:form>
 	</ui:define>
 </ui:composition>
 </html>

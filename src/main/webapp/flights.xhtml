@@ -29,15 +29,20 @@
 			<div id="searchframe">
 				<h:panelGrid columns="4">
 					<p:outputLabel for="departureLocation" value="From" />
-					<p:inputText id="departureLocation"
-						value="#{flightBean.fromLocation}">
+					<p:autoComplete id="departureLocation"
+						value="#{flightBean.fromLocation}"
+						completeMethod="#{flightBean.completeLocation}"
+						var="fromLocation"
+						itemValue="#{fromLocation}">
 						<p:watermark for="departureLocation" value="Departure"
 							id="departureWm" />
-					</p:inputText>
+					</p:autoComplete>
 					<p:outputLabel for="arrivalLocation" value="To" />
-					<p:inputText id="arrivalLocation" value="#{flightBean.toLocation}">
+					<p:autoComplete id="arrivalLocation"
+						value="#{flightBean.toLocation}"
+						completeMethod="#{flightBean.completeLocation()}">
 						<p:watermark for="arrivalLocation" value="Arrival" id="arrivalWm" />
-					</p:inputText>
+					</p:autoComplete>
 
 					<p:outputLabel for="departureDate" value="Departure" />
 					<p:calendar id="departureDate"

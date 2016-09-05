@@ -10,23 +10,21 @@ import com.realdolmen.domain.Location;
 
 @Stateless
 public class LocationRepository {
-	
-		@PersistenceContext
-		EntityManager em;
 
-		public Location save(Location location) {
-			em.persist(location);
-			return location;
-		}
+	@PersistenceContext
+	EntityManager em;
 
-		public List<Location> findAll() {
-			return em.createQuery("select l from Location l", Location.class).getResultList();
-		}
-
-		public List<String> findCountries() {
-			return em.createQuery("select l.country from Location l", String.class).getResultList();
-		}
-		
-
-
+	public Location save(Location location) {
+		em.persist(location);
+		return location;
 	}
+
+	public List<Location> findAll() {
+		return em.createQuery("select l from Location l", Location.class).getResultList();
+	}
+
+	public List<String> findCountries() {
+		return em.createQuery("select l.country from Location l", String.class).getResultList();
+	}
+
+}

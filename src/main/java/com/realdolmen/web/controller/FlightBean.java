@@ -11,6 +11,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.realdolmen.domain.Flight;
+import com.realdolmen.domain.Location;
+import com.realdolmen.repository.LocationRepository;
 import com.realdolmen.service.FlightServiceBean;
 
 @Named
@@ -28,6 +30,8 @@ public class FlightBean implements Serializable {
 
 	@Inject
 	FlightServiceBean flightService;
+	@Inject
+	LocationRepository locationRepository;
 
 	@PostConstruct
 	public void setUp() {
@@ -45,6 +49,19 @@ public class FlightBean implements Serializable {
 	private Flight flight = new Flight();
 
 	public FlightBean() {
+	}
+	
+	public List<Location> completeLocation(String query){
+		List<Location> allLocations = locationRepository.findAll();
+		List<Location> filteredLocations = new ArrayList<Location>();
+		
+		for (int i = 0; i < allLocations.size(); i++){
+			Location location = allLocations.get(i);
+			if (location.getCountry().toLowerCase().startsWith(query)){
+				filteredLocations.add(location);
+			}
+		}
+		return filteredLocations;
 	}
 
 	public Flight getFlight() {
