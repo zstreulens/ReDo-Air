@@ -7,9 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 
-import org.hibernate.validator.constraints.NotBlank;
 import org.mindrot.BCrypt;
 
 @Entity
@@ -18,16 +18,14 @@ public class Customer implements Serializable {
 	@Id
 	@GeneratedValue
 	private Integer id;
-	@NotBlank
 	private String firstName;
-	@NotBlank
 	private String lastName;
+	@Transient
+	private String fullName;
 	@Embedded
 	@Valid
 	private Address address;
-	@NotBlank
 	private String mailAddress;
-	@NotBlank
 	private String password;
 	private String creditCard;
 
@@ -68,6 +66,10 @@ public class Customer implements Serializable {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	public String getFullName() {
+		return firstName + " " + lastName;
+	}
+	
 
 	public Address getAddress() {
 		return address;

@@ -28,7 +28,7 @@
 
 
 			<!-- MENU   -->
-			<nav  class="mainMenu">
+			<nav class="mainMenu">
 				<h:panelGrid columns="2">
 					<h:form>
 						<h:commandLink action="flights">
@@ -37,14 +37,26 @@
 					</h:form>
 				</h:panelGrid>
 			</nav>
-			
+
 			<!--  LOGIN BUTTONS -->
 			<nav class="loginMenu">
-				<h:panelGrid columns="2" cellpadding="5">
-					<p:commandButton styleClass="btn_style" value="login" type="button"
-						onclick="PF('dlg3').show();" />
-					<p:button styleClass="btn_style" value="register" type="button"
-						outcome="#{loginBean.register()}" update="globalContainer">
+				<!--  LOGGED IN -->
+				<h:panelGrid columns="2" cellpadding="5"
+					rendered="#{customerBean.customer.id != null}">
+					<h:outputText
+						value="logged in as #{customerBean.customer.fullName}" />
+					<h:form>
+						<p:commandButton styleClass="btn_style" value="logout"
+							action="#{customerBean.logout()}" ajax="false"/>
+					</h:form>
+				</h:panelGrid>
+				<!-- NOT LOGGED IN -->
+				<h:panelGrid columns="2" cellpadding="5"
+					rendered="#{customerBean.customer.id == null}">
+					<p:button styleClass="btn_style" value="login"
+						outcome="#{customerBean.goToLogin()}" />
+					<p:button styleClass="btn_style" value="register"
+						outcome="#{customerBean.goToRegistration()}">
 					</p:button>
 				</h:panelGrid>
 				<p:dialog header="Login" widgetVar="dlg3" showEffect="explode"
@@ -72,9 +84,9 @@
 							</h:panelGroup>
 						</h:panelGrid>
 						<p:commandButton value="Login" id="login"
-							action="#{customerBean.login}" />
+							oncomplete="#{customerBean.login()}" />
 						<p:commandButton value="Cancel" id="cancel"
-							action="#{customerBean.login}" />
+							oncomplete="#{customerBean.login()}" />
 					</h:form>
 				</p:dialog>
 			</nav>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -51,19 +50,17 @@
 
 
 			<!-- 		SEARCH and RESET BUTTON  -->
-			<p:panelGrid columns="2">
-				<div id="searchButtons">
-					<p:commandButton styleClass="btn_style" id="submitButton"
-						actionListener="#{flightBean.submitAction}" value="Find"
-						update="resultTable" icon="ui-icon-search">
-						<f:ajax />
-					</p:commandButton>
-					<p:commandButton id="resetButton"
-						actionListener="#{flightBean.resetAction}" value="Reset">
-						<f:ajax />
-					</p:commandButton>
-				</div>
-			</p:panelGrid>
+			<div id="searchButtons">
+				<p:commandButton styleClass="btn_style" id="submitButton"
+					actionListener="#{flightBean.submitAction}" value="Find"
+					update="resultTable">
+					<f:ajax />
+				</p:commandButton>
+				<p:commandButton styleClass="btn_style" id="resetButton"
+					actionListener="#{flightBean.resetAction}" value="Reset">
+					<f:ajax />
+				</p:commandButton>
+			</div>
 
 			<!-- 		SEARCH RESULTS  -->
 			<p:dataTable id="resultTable" var="flight"
