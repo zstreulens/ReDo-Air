@@ -76,7 +76,7 @@ public class CustomerBean implements Serializable {
 
 	public String logout() {
 		cleanCustomer();
-		return "/login.xhtml";
+		return "flights";
 	}
 
 	public void cleanCustomer() {
@@ -110,5 +110,11 @@ public class CustomerBean implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	
+	public String goToLogin() {
+		return "login";
+	}
+	public String goToRegistration() {
+		return "register";
+	}
 }

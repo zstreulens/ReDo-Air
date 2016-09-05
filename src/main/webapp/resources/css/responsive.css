@@ -136,6 +136,20 @@ td {
 }
 
 /*  Override Primefaces Default  */
+.ui-datatable-tablewrapper {
+	border-radius: 10px;
+}
+
+
+.ui-datatable .ui-sortable-column {
+	background: rgba(28, 54, 85, .5);
+    color: white;	
+}
+
+.ui-datatable .ui-state-active {
+	background: rgba(0, 180, 255, .5);
+}
+
 .btn_style, .menuButton {
 	margin: 1rem;
 	padding: .5rem;
@@ -239,11 +253,23 @@ footer {
 -webkit-transform
 
 
+
+
+
+
 :
+
+
 
  
 
+
+
 translate
+
+
+
+
 
 
 (-1
@@ -253,27 +279,48 @@ px
 px
 
 
+
+
+
+
 )
 rotate
 
 
+
+
+
+
 (-1
 deg
+
+
+
+
 );
-
- 
-
 }
 20%
 {
 -webkit-transform
 
 
+
+
+
+
 :
+
+
 
  
 
+
+
 translate
+
+
+
+
 
 
 (-3
@@ -283,27 +330,48 @@ px
 px
 
 
+
+
+
+
 )
 rotate
 
 
+
+
+
+
 (1
 deg
+
+
+
+
 );
-
- 
-
 }
 30%
 {
 -webkit-transform
 
 
+
+
+
+
 :
+
+
 
  
 
+
+
 translate
+
+
+
+
 
 
 (0
@@ -313,27 +381,48 @@ px
 px
 
 
+
+
+
+
 )
 rotate
 
 
+
+
+
+
 (0
 deg
+
+
+
+
 );
-
- 
-
 }
 40%
 {
 -webkit-transform
 
 
+
+
+
+
 :
+
+
 
  
 
+
+
 translate
+
+
+
+
 
 
 (1
@@ -343,27 +432,48 @@ px
 px
 
 
+
+
+
+
 )
 rotate
 
 
+
+
+
+
 (1
 deg
+
+
+
+
 );
-
- 
-
 }
 50%
 {
 -webkit-transform
 
 
+
+
+
+
 :
+
+
 
  
 
+
+
 translate
+
+
+
+
 
 
 (-1
@@ -373,27 +483,48 @@ px
 px
 
 
+
+
+
+
 )
 rotate
 
 
+
+
+
+
 (-1
 deg
+
+
+
+
 );
-
- 
-
 }
 60%
 {
 -webkit-transform
 
 
+
+
+
+
 :
+
+
 
  
 
+
+
 translate
+
+
+
+
 
 
 (-3
@@ -403,27 +534,48 @@ px
 px
 
 
+
+
+
+
 )
 rotate
 
 
+
+
+
+
 (0
 deg
+
+
+
+
 );
-
- 
-
 }
 70%
 {
 -webkit-transform
 
 
+
+
+
+
 :
+
+
 
  
 
+
+
 translate
+
+
+
+
 
 
 (2
@@ -433,27 +585,48 @@ px
 px
 
 
+
+
+
+
 )
 rotate
 
 
+
+
+
+
 (-1
 deg
+
+
+
+
 );
-
- 
-
 }
 80%
 {
 -webkit-transform
 
 
+
+
+
+
 :
+
+
 
  
 
+
+
 translate
+
+
+
+
 
 
 (-1
@@ -463,27 +636,48 @@ px
 px
 
 
+
+
+
+
 )
 rotate
 
 
+
+
+
+
 (1
 deg
+
+
+
+
 );
-
- 
-
 }
 90%
 {
 -webkit-transform
 
 
+
+
+
+
 :
+
+
 
  
 
+
+
 translate
+
+
+
+
 
 
 (2
@@ -493,27 +687,48 @@ px
 px
 
 
+
+
+
+
 )
 rotate
 
 
+
+
+
+
 (0
 deg
+
+
+
+
 );
-
- 
-
 }
 100%
 {
 -webkit-transform
 
 
+
+
+
+
 :
+
+
 
  
 
+
+
 translate
+
+
+
+
 
 
 (1
@@ -523,16 +738,25 @@ px
 px
 
 
+
+
+
+
 )
 rotate
 
 
+
+
+
+
 (-1
 deg
+
+
+
+
 );
-
- 
-
 }
 }
 .plane {

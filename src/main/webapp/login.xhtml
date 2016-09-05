@@ -6,8 +6,10 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/facelet-template.xhtml">
+
 	<ui:define name="pageTitle">Login</ui:define>
 	<ui:define name="pageContent">
+
 		<h1>Fill in your login information</h1>
 		#{customerBean.errorMessage}
 		<h:form>
@@ -25,5 +27,6 @@
 				action="#{customerBean.login}" />
 		</h:form>
 	</ui:define>
+
 </ui:composition>
 </html>

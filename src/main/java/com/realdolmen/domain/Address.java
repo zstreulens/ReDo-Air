@@ -4,19 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.Embeddable;
 
-import org.hibernate.validator.constraints.NotBlank;
-
 @Embeddable
 public class Address implements Serializable {
-	@NotBlank
 	private String street;
-	@NotBlank
 	private String number;
-	@NotBlank
 	private String city;
-	@NotBlank
 	private String zipcode;
-	@NotBlank
 	private String country;
 
 	public String getStreet() {
