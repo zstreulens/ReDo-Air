@@ -42,6 +42,7 @@ public class FlightBean implements Serializable {
 	@PostConstruct
 	public void setUp() {
 		allFlights = flightService.findFlights();
+		countries = locationService.findCountries();
 		outboundFlights = null;
 	}
 
