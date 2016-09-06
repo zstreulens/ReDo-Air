@@ -3,14 +3,17 @@ package com.realdolmen.domain;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Basic;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.validation.Valid;
+import javax.validation.constraints.Size;
 
 import org.mindrot.BCrypt;
 
@@ -20,16 +23,21 @@ public class Customer implements Serializable {
 	@Id
 	@GeneratedValue
 	private Integer id;
+	@Size(min = 1)
 	private String firstName;
+	@Size(min = 1)
 	private String lastName;
 	@Transient
 	private String fullName;
 	@Embedded
 	@Valid
 	private Address address;
+	@Size(min = 1)
 	private String mailAddress;
+	@Size(min = 1)
 	private String password;
-	private String creditcard;
+	@OneToMany(fetch = FetchType.EAGER,  mappedBy = "customer")
+	private List<Creditcard> creditcard;
 	@OneToMany(mappedBy="customer")
 	private List<Booking> bookings;
 
@@ -46,13 +54,13 @@ public class Customer implements Serializable {
 	}
 
 	public Customer(String firstName, String lastName, Address address, String mailAddress, String password,
-			String creditCard) {
+			List<Creditcard> creditcardList) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
 		this.mailAddress = mailAddress;
 		this.password = password;
-		this.creditcard = creditCard;
+		this.creditcard = creditcardList;
 	}
 
 	public Integer getId() {
@@ -108,11 +116,11 @@ public class Customer implements Serializable {
 		this.password = hashed;
 	}
 
-	public String getCreditcard() {
+	public List<Creditcard> getCreditcard() {
 		return creditcard;
 	}
 
-	public void setCreditcard(String creditCard) {
+	public void setCreditcard(List<Creditcard> creditCard) {
 		this.creditcard = creditCard;
 	}
 

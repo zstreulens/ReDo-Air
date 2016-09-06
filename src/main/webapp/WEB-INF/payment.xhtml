@@ -4,28 +4,68 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-      xmlns:rd="http://java.sun.com/jsf/composite/realdolmen">
+	xmlns:rd="http://java.sun.com/jsf/composite/realdolmen">
 
 <ui:composition>
 	<rd:steps page="3" />
 
 	<div id="searchContainer">
-	
+
 		<h1>Payment by creditcard</h1>
 		<h:form>
+			<h2>Add new creditcard</h2>
 			<h:panelGrid columns="2">
-				<p:outputLabel for="newCreditcard" value="Add new creditcard: " />
-				<p:inputText id="newCreditcard" value="#{paymentBean.newCreditcard}">
-					<p:watermark value="Creditcard number" id="newCreditcardNumber"
-						for="newCreditcard"></p:watermark>
-				</p:inputText>
-				<p:outputLabel for="existingCreditcards"
-					value="Select a creditcard: " />
-				<p:inputText id="existingCreditcards"
-					value="#{customerBean.customer.creditcard}" />
+				<p:outputLabel for="creditcardType" value="New creditcard type: " />
+				<p:selectOneMenu id="creditcardType"
+					value="#{paymentBean.newCreditcard.creditcardType}">
+					<f:selectItems value="#{paymentBean.types}"></f:selectItems>
+				</p:selectOneMenu>
+				<p:outputLabel for="newCreditcardNumber"
+					value="New creditcard number: " />
+				<h:panelGroup>
+					<p:inputText id="newCreditcardNumber"
+						value="#{paymentBean.newCreditcard.number}">
+						<p:watermark value="Creditcard number" for="newCreditcardNumber"></p:watermark>
+					</p:inputText>
+				</h:panelGroup>
+				<p:outputLabel for="newCreditcardControl"
+					value="New creditcard control number: " />
+				<h:panelGroup>
+					<p:inputText id="newCreditcardControl"
+						value="#{paymentBean.newCreditcard.controlnumber}">
+						<p:watermark value="Control number" for="newCreditcardControl"></p:watermark>
+					</p:inputText>
+				</h:panelGroup>
+				<p:outputLabel for="newCreditcardExpiryDate"
+					value="New creditcard expiry date: " />
+				<h:panelGroup>
+					<p:inputText id="newCreditcardExpiryDate"
+						value="#{paymentBean.newCreditcard.expiryDate}">
+						<f:convertDateTime pattern="MM/yy"></f:convertDateTime>
+						<p:watermark value="__/__" for="newCreditcardExpiryDate"></p:watermark>
+					</p:inputText>
+				</h:panelGroup>
 			</h:panelGrid>
-			<p:commandButton value="Confirm payment" action="#{paymentBean.pay()}"></p:commandButton>
-			</h:form>
+			<p:commandButton value="Confirm payment"
+				action="#{paymentBean.pay()}"></p:commandButton>
+		</h:form>
+		<h:form>
+			<h2>Use creditcard</h2>
+			<h:panelGrid columns="2">
+				<p:outputLabel value="Select creditcard: " for="selectCreditcard" />
+				<p:selectOneMenu id="selectCreditcard"
+					converter="omnifaces.SelectItemsConverter"
+					value="#{paymentBean.creditcard}">
+					<f:selectItem itemLabel="Select One" itemValue="" />
+					<f:selectItems value="#{paymentBean.creditcards}" var="creditcard"
+						itemLabel="#{creditcard.number} (#{creditcard.creditcardType})"
+						itemValue="#{creditcard}" />
+				</p:selectOneMenu>
+			</h:panelGrid>
+			<p:commandButton value="Confirm payment"
+				action="#{paymentBean.pay()}"></p:commandButton>
+		</h:form>
+
 
 			<!-- 		SEARCH and RESET BUTTON  -->
 			<rd:searchButton nextPage="details" previousPage="inbound"/>

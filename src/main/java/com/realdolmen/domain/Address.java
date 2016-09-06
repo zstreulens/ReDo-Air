@@ -3,13 +3,19 @@ package com.realdolmen.domain;
 import java.io.Serializable;
 
 import javax.persistence.Embeddable;
+import javax.validation.constraints.Size;
 
 @Embeddable
 public class Address implements Serializable {
+	@Size (min = 1)
 	private String street;
+	@Size (min = 1)
 	private String number;
+	@Size (min = 1)
 	private String city;
+	@Size (min = 1)
 	private String zipcode;
+	@Size (min = 1)
 	private String country;
 
 	public String getStreet() {
