@@ -25,6 +25,7 @@ public class PaymentBean implements Serializable {
 	private Booking booking;
 	private Flight flight;
 	private List<Creditcard> creditcards;
+	private Creditcard creditcard;
 	private String creditcardType;
 	@Inject
 	CustomerBean customerBean;
@@ -39,21 +40,19 @@ public class PaymentBean implements Serializable {
 	@Inject
 	OverviewBean overviewBean;
 	Customer loggedInCustomer;
-	
+
 	@PostConstruct
-	public void init(){
+	public void init() {
 		newCreditcard = new Creditcard();
+		creditcard = new Creditcard();
 		getTypes();
-	}
-	
-	public CreditcardType[] getTypes(){
-		return CreditcardType.values();
+		loggedInCustomer = customerBean.getLoggedInCustomer();
+		creditcards = loggedInCustomer.getCreditcard();
 	}
 
 	public String pay() {
-		loggedInCustomer = customerBean.getLoggedInCustomer();
-		creditcards = loggedInCustomer.getCreditcard();
-		if (newCreditcard != null) {
+		System.out.println("in payment");
+		if (newCreditcard.getNumber() != "") {
 			newCreditcard.setCustomer(loggedInCustomer);
 			creditcardRepository.createCreditcard(newCreditcard);
 		}
@@ -68,6 +67,18 @@ public class PaymentBean implements Serializable {
 		}
 	}
 
+	public CreditcardType[] getTypes() {
+		return CreditcardType.values();
+	}
+
+	public Creditcard getCreditcard() {
+		return creditcard;
+	}
+
+	public void setCreditcard(Creditcard creditcard) {
+		this.creditcard = creditcard;
+	}
+
 	public void findFlight(long id) {
 		flight = flightService.findById(id);
 	}
@@ -78,5 +89,13 @@ public class PaymentBean implements Serializable {
 
 	public void setNewCreditcard(Creditcard newCreditcard) {
 		this.newCreditcard = newCreditcard;
+	}
+
+	public List<Creditcard> getCreditcards() {
+		return creditcards;
+	}
+
+	public void setCreditcards(List<Creditcard> creditcards) {
+		this.creditcards = creditcards;
 	}
 }

@@ -27,6 +27,14 @@ public class Creditcard implements Serializable {
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Customer customer;
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public String getControlnumber() {
 		return controlnumber;
 	}

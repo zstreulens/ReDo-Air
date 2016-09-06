@@ -13,6 +13,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.validation.Valid;
+import javax.validation.constraints.Size;
 
 import org.mindrot.BCrypt;
 
@@ -22,14 +23,18 @@ public class Customer implements Serializable {
 	@Id
 	@GeneratedValue
 	private Integer id;
+	@Size(min = 1)
 	private String firstName;
+	@Size(min = 1)
 	private String lastName;
 	@Transient
 	private String fullName;
 	@Embedded
 	@Valid
 	private Address address;
+	@Size(min = 1)
 	private String mailAddress;
+	@Size(min = 1)
 	private String password;
 	@OneToMany(fetch = FetchType.EAGER,  mappedBy = "customer")
 	private List<Creditcard> creditcard;
