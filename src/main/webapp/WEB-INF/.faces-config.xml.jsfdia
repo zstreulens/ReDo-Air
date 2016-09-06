@@ -23,8 +23,6 @@
     PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="failure" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#flights.xhtml" PATH="/flights.xhtml"
-  SHAPE="480,17,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#detail.xhtml" PATH="/detail.xhtml"
   SHAPE="32,161,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#detail.xhtml:0" NAME="item"
@@ -46,4 +44,6 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#overview.xhtml" PATH="/overview.xhtml"
   SHAPE="720,209,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#flights.xhtml" PATH="/flights.xhtml"
+  SHAPE="512,17,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

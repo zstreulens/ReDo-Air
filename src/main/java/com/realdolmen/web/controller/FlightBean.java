@@ -21,11 +21,14 @@ import com.realdolmen.service.LocationServiceBean;
 public class FlightBean implements Serializable {
 
 	List<Flight> allFlights;
-	List<Flight> filteredFlights;
+	List<Flight> outboundFlights;
+	List<Flight> inboundFlights;
 	List<String> countries;
 
 	String fromLocation;
 	String toLocation;
+
+	String page = "search";
 
 	private boolean rendered;
 
@@ -39,7 +42,7 @@ public class FlightBean implements Serializable {
 	@PostConstruct
 	public void setUp() {
 		allFlights = flightService.findFlights();
-		filteredFlights = null;
+		outboundFlights = null;
 	}
 
 	private Flight flight = new Flight();
@@ -71,14 +74,6 @@ public class FlightBean implements Serializable {
 		this.allFlights = allFlights;
 	}
 
-	public List<Flight> getFilteredFlights() {
-		return filteredFlights;
-	}
-
-	public void setFilteredFlights(List<Flight> filteredFlights) {
-		this.filteredFlights = filteredFlights;
-	}
-
 	public List<String> getCountries() {
 		return countries;
 	}
@@ -101,6 +96,22 @@ public class FlightBean implements Serializable {
 
 	public void setToLocation(String toLocation) {
 		this.toLocation = toLocation;
+	}
+
+	public List<Flight> getOutboundFlights() {
+		return outboundFlights;
+	}
+
+	public void setOutboundFlights(List<Flight> outboundFlights) {
+		this.outboundFlights = outboundFlights;
+	}
+
+	public List<Flight> getInboundFlights() {
+		return inboundFlights;
+	}
+
+	public void setInboundFlights(List<Flight> inboundFlights) {
+		this.inboundFlights = inboundFlights;
 	}
 
 	public void addFlight() {
@@ -126,13 +137,22 @@ public class FlightBean implements Serializable {
 		this.rendered = rendered;
 	}
 
-	public void submitAction(ActionEvent actionEvent) {
-		setRendered(true);
-		filteredFlights = flightService.findFlightFromQuery(fromLocation, toLocation);
+	public void submitAction() {
+		outboundFlights = flightService.findFlightFromQuery(fromLocation, toLocation);
+		inboundFlights = flightService.findFlightFromQuery(toLocation, fromLocation);
+		setPage("outbound");
 	}
 
-    public void reset() {
+	public void reset() {
 		setRendered(false);
-        RequestContext.getCurrentInstance().reset("form");
-    }
+		RequestContext.getCurrentInstance().reset("form");
+	}
+
+	public void setPage(String page) {
+		this.page = page;
+	}
+
+	public String getPage() {
+		return page;
+	}
 }

@@ -3,11 +3,14 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:rd="http://java.sun.com/jsf/composite/realdolmen">
 
-<ui:composition template="/facelet-template.xhtml">
-	<ui:define name="pageTitle">Payment</ui:define>
-	<ui:define name="pageContent">
+<ui:composition>
+	<rd:steps page="3" />
+
+	<div id="searchContainer">
+
 		<h1>Payment by creditcard</h1>
 		<h:form>
 			<h2>Add new creditcard</h2>
@@ -63,6 +66,10 @@
 				action="#{paymentBean.pay()}"></p:commandButton>
 		</h:form>
 
-	</ui:define>
+
+		<!-- 		SEARCH and RESET BUTTON  -->
+		<rd:searchButton nextPage="confirmation" previousPage="inbound" />
+	</div>
+
 </ui:composition>
 </html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:rd="http://java.sun.com/jsf/composite/realdolmen">
+
+<ui:composition>
+
+		<rd:steps page="1" />
+
+		<div id="searchContainer">
+
+			<h:form id="form">
+				<!-- 		SEARCH RESULTS  -->
+				<h2>
+					<p:outputLabel for="outboundResults" value="Departing flights" />
+				</h2>
+				<p:dataTable id="outboundResults" var="flight"
+					value="#{flightBean.outboundFlights}" selectionMode="single"
+					rowKey="#{flight.id}" sortBy="#{flight.price}">
+					<p:ajax event="rowSelect" listener="#{selectionBean.onRowSelect}">
+					</p:ajax>
+					<p:column headerText="Date" sortBy="#{flight.id}">
+						<h:outputText value="#{flight.departureTime.date}" />
+					</p:column>
+					<p:column headerText="From"
+						sortBy="#{flight.departureLocation.country}">
+						<h:outputText value="#{flight.departureLocation.country}" />
+					</p:column>
+					<p:column headerText="To"
+						sortBy="#{flight.arrivalLocation.country}">
+						<h:outputText value="#{flight.arrivalLocation.country}" />
+					</p:column>
+					<p:column headerText="Depart" sortBy="#{flight.departureTime.time}">
+						<h:outputText value="#{flight.departureTime}" />
+					</p:column>
+					<p:column headerText="Arrive" sortBy="#{flight.arrivalTime}">
+						<h:outputText value="#{flight.arrivalTime}" />
+					</p:column>
+
+					<p:column headerText="Seats" sortBy="Seats">
+						<h:outputText
+							value="#{searchFlightBean.cabinClass == 'economy' ? 'yes' : 'no'}" />
+					</p:column>
+
+					<p:column headerText="Price" sortBy="#{flight.price}">
+						<h:outputText value="#{flight.price}" />
+					</p:column>
+				</p:dataTable>
+
+			</h:form>
+			
+						<!-- 		SEARCH and RESET BUTTON  -->
+			<rd:searchButton nextPage="inbound" previousPage="search"/>
+			
+		</div>
+
+</ui:composition>
+</html>
