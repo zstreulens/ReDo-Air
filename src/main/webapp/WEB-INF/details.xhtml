@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+	<h1>Flight details</h1>
+	<h2>Outbound flights</h2>
+	<p:panelGrid columns="2" layout="grid">
+		<h:outputText value="Departure location: " />
+		<h:outputText
+			value="#{bookingBean.outboundFlight.departureLocation.country}" />
+
+		<h:outputText value="Departure airport: " />
+		<h:outputText
+			value="#{bookingBean.outboundFlight.departureLocation.name}" />
+
+		<h:outputText value="Arrival location: " />
+		<h:outputText
+			value="#{bookingBean.outboundFlight.arrivalLocation.country}" />
+
+		<h:outputText value="Arrival airport: " />
+		<h:outputText
+			value="#{bookingBean.outboundFlight.arrivalLocation.name}"></h:outputText>
+
+		<h:outputText value="Departure: " />
+		<h:outputText value="#{bookingBean.outboundFlight.departureTime.date}" />
+
+		<h:outputText value="Price: " />
+		<h:outputText value="#{bookingBean.outboundFlight.price}" />
+	</p:panelGrid>
+	
+	
+	<h2>Inbound Flight</h2>
+		<p:panelGrid columns="2" layout="grid">
+		<h:outputText value="Departure location: " />
+		<h:outputText
+			value="#{bookingBean.inboundFlight.departureLocation.country}" />
+
+		<h:outputText value="Departure airport: " />
+		<h:outputText
+			value="#{bookingBean.inboundFlight.departureLocation.name}" />
+
+		<h:outputText value="Arrival location: " />
+		<h:outputText
+			value="#{bookingBean.inboundFlight.arrivalLocation.country}" />
+
+		<h:outputText value="Arrival airport: " />
+		<h:outputText
+			value="#{bookingBean.inboundFlight.arrivalLocation.name}"></h:outputText>
+
+		<h:outputText value="Departure: " />
+		<h:outputText value="#{bookingBean.inboundFlight.departureTime.date}" />
+
+		<h:outputText value="Price: " />
+		<h:outputText value="#{bookingBean.inboundFlight.price}" />
+	</p:panelGrid>
+	
+	
+	
+
+	<h:form>
+		<p:commandButton action="#{flightDetailsBean.bookFlight()}"
+			value="Book flight"></p:commandButton>
+	</h:form>
+</ui:composition>
+</html>

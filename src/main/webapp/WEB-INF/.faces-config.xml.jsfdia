@@ -17,16 +17,16 @@
    PATH="/login.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="success::#flights.xhtml" NAME="output"
     PATH="/flights.xhtml" TARGET="rules:#flights.xhtml" TITLE="success" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="booking::#detail.xhtml" NAME="output1"
-    PATH="/detail.xhtml" TARGET="rules:#detail.xhtml" TITLE="booking" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="booking::#details.xhtml" NAME="output1"
+    PATH="/details.xhtml" TARGET="rules:#details.xhtml" TITLE="booking" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT ID="failure::#login.xhtml" NAME="output2"
     PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="failure" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#detail.xhtml" PATH="/detail.xhtml"
+ <PROCESS-ITEM NAME="rules:#details.xhtml" PATH="/details.xhtml"
   SHAPE="32,161,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#detail.xhtml:0" NAME="item"
-   PATH="/detail.xhtml" model-entity="JSFProcessItem">
+  <PROCESS-ITEM ID="rules:#details.xhtml:0" NAME="item"
+   PATH="/details.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="success::#payment.xhtml" NAME="output"
     PATH="/payment.xhtml" TARGET="rules:#payment.xhtml" TITLE="success" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT ID="failure::#login.xhtml" NAME="output1"
