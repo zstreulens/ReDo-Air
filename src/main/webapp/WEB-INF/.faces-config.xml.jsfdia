@@ -17,8 +17,9 @@
    PATH="/login.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="success::#flights.xhtml" NAME="output"
     PATH="/flights.xhtml" TARGET="rules:#flights.xhtml" TITLE="success" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="booking::#details.xhtml" NAME="output1"
-    PATH="/details.xhtml" TARGET="rules:#details.xhtml" TITLE="booking" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="booking::WEB-INF#details.xhtml"
+    NAME="output1" PATH="WEB-INF/details.xhtml"
+    TARGET="rules:WEB-INF#details.xhtml" TITLE="booking" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT ID="failure::#login.xhtml" NAME="output2"
     PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="failure" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
@@ -46,4 +47,6 @@
   SHAPE="720,209,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#flights.xhtml" PATH="/flights.xhtml"
   SHAPE="512,17,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:WEB-INF#details.xhtml"
+  PATH="WEB-INF/details.xhtml" SHAPE="512,337,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

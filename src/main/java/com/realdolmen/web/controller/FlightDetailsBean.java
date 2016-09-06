@@ -24,12 +24,6 @@ public class FlightDetailsBean implements Serializable {
 		flight = flightService.findById(id);
 	}
 	
-	public void bookOutboundFlight(){
-		bookingBean.bookOutboundFlight(flight);
-	}
-	public void bookInboundFlight(){
-		bookingBean.bookInboundFlight(flight);
-	}
 
 	public Flight getFlight() {
 		return flight;

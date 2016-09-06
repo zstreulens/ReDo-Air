@@ -59,7 +59,7 @@ public class CustomerBean implements Serializable {
 				loggedInCustomer = customer;
 				errorMessage = "";
 				if (bookingBean.getOutboundFlight() != null) {
-					return "booking";
+					return "flights";
 				} else {
 					return "success";
 				}

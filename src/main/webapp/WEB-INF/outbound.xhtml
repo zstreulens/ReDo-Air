@@ -20,7 +20,7 @@
 				<p:dataTable id="outboundResults" var="flight"
 					value="#{flightBean.outboundFlights}" selectionMode="single"
 					rowKey="#{flight.id}" sortBy="#{flight.price}">
-					<p:ajax event="rowSelect" listener="#{bookingBean.bookOutboundFlight}">
+					<p:ajax event="rowSelect" listener="#{bookingBean.bookOutboundFlight}" update=":content">
 					</p:ajax>
 					<p:column headerText="Date" sortBy="#{flight.id}">
 						<h:outputText value="#{flight.departureTime.date}" />
