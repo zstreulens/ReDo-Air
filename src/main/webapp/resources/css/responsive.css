@@ -1,12 +1,10 @@
 /*
-
     Template Author : pixelhint.com
     Author Email    : contact@pixelhint.com
     Template Name   : La Casa
     
     
     *****************************************
-
 */
 
 /*  Fonts  */
@@ -115,6 +113,17 @@ h1, h2, h3, h4, h5, h6 {
 	border-radius: 25px;
 }
 
+#searchContainer {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#searchContainer div {
+	
+}
+
 #globalContainer .ui-widget {
 	font-size: 1.5rem;
 }
@@ -140,10 +149,9 @@ td {
 	border-radius: 10px;
 }
 
-
 .ui-datatable .ui-sortable-column {
 	background: rgba(28, 54, 85, .5);
-    color: white;	
+	color: white;
 }
 
 .ui-datatable .ui-state-active {
@@ -173,6 +181,43 @@ td {
 .btn_style:hover {
 	background: #ffffff;
 	color: #1c3655;
+}
+
+/* STEPS  */
+.ui-steps .ui-steps-item {
+	width: 20%;
+}
+
+.ui-state-highlight {
+	text-shadow: none !important;
+}
+
+.ui-steps.custom {
+	margin: 30px 0;
+}
+
+.ui-steps.custom .ui-steps-item .ui-menuitem-link {
+	height: 10px;
+	padding: 0 1em;
+}
+
+.ui-steps.custom .ui-steps-item .ui-steps-number {
+	background-color: rgb(0, 90, 150);
+	color: #FFFFFF;
+	display: inline-block;
+	width: 30px;
+	border-radius: 10px;
+	margin-top: -10px;
+	margin-bottom: 10px;
+}
+
+.ui-steps.custom .ui-state-default a, .ui-state-default a:link,
+	.ui-state-default a:visited {
+	color: white;
+}
+
+.ui-steps.custom .ui-state-highlight a {
+	color: #f9dd34;
 }
 
 /*  Header Section  */
@@ -235,6 +280,14 @@ a {
 	height: auto;
 }
 
+
+
+#searchForm {
+	position: absolute;
+	bottom: 1rem;
+}
+
+
 /*  footer  */
 footer {
 	display: flex;
@@ -262,7 +315,10 @@ footer {
 
 
 
+
+
 :
+
 
 
 
@@ -270,7 +326,10 @@ footer {
 
 
 
+
 translate
+
+
 
 
 
@@ -288,6 +347,8 @@ px
 
 
 
+
+
 )
 rotate
 
@@ -296,8 +357,12 @@ rotate
 
 
 
+
+
 (-1
 deg
+
+
 
 
 
@@ -313,7 +378,10 @@ deg
 
 
 
+
+
 :
+
 
 
 
@@ -321,7 +389,10 @@ deg
 
 
 
+
 translate
+
+
 
 
 
@@ -339,6 +410,8 @@ px
 
 
 
+
+
 )
 rotate
 
@@ -347,8 +420,12 @@ rotate
 
 
 
+
+
 (1
 deg
+
+
 
 
 
@@ -364,7 +441,10 @@ deg
 
 
 
+
+
 :
+
 
 
 
@@ -372,7 +452,10 @@ deg
 
 
 
+
 translate
+
+
 
 
 
@@ -390,6 +473,8 @@ px
 
 
 
+
+
 )
 rotate
 
@@ -398,8 +483,12 @@ rotate
 
 
 
+
+
 (0
 deg
+
+
 
 
 
@@ -415,7 +504,10 @@ deg
 
 
 
+
+
 :
+
 
 
 
@@ -423,7 +515,10 @@ deg
 
 
 
+
 translate
+
+
 
 
 
@@ -441,6 +536,8 @@ px
 
 
 
+
+
 )
 rotate
 
@@ -449,8 +546,12 @@ rotate
 
 
 
+
+
 (1
 deg
+
+
 
 
 
@@ -466,7 +567,10 @@ deg
 
 
 
+
+
 :
+
 
 
 
@@ -474,7 +578,10 @@ deg
 
 
 
+
 translate
+
+
 
 
 
@@ -492,6 +599,8 @@ px
 
 
 
+
+
 )
 rotate
 
@@ -500,8 +609,12 @@ rotate
 
 
 
+
+
 (-1
 deg
+
+
 
 
 
@@ -517,7 +630,10 @@ deg
 
 
 
+
+
 :
+
 
 
 
@@ -525,7 +641,10 @@ deg
 
 
 
+
 translate
+
+
 
 
 
@@ -543,6 +662,8 @@ px
 
 
 
+
+
 )
 rotate
 
@@ -551,8 +672,12 @@ rotate
 
 
 
+
+
 (0
 deg
+
+
 
 
 
@@ -568,7 +693,10 @@ deg
 
 
 
+
+
 :
+
 
 
 
@@ -576,7 +704,10 @@ deg
 
 
 
+
 translate
+
+
 
 
 
@@ -594,6 +725,8 @@ px
 
 
 
+
+
 )
 rotate
 
@@ -602,8 +735,12 @@ rotate
 
 
 
+
+
 (-1
 deg
+
+
 
 
 
@@ -619,7 +756,10 @@ deg
 
 
 
+
+
 :
+
 
 
 
@@ -627,7 +767,10 @@ deg
 
 
 
+
 translate
+
+
 
 
 
@@ -645,6 +788,8 @@ px
 
 
 
+
+
 )
 rotate
 
@@ -653,8 +798,12 @@ rotate
 
 
 
+
+
 (1
 deg
+
+
 
 
 
@@ -670,7 +819,10 @@ deg
 
 
 
+
+
 :
+
 
 
 
@@ -678,7 +830,10 @@ deg
 
 
 
+
 translate
+
+
 
 
 
@@ -696,6 +851,8 @@ px
 
 
 
+
+
 )
 rotate
 
@@ -704,8 +861,12 @@ rotate
 
 
 
+
+
 (0
 deg
+
+
 
 
 
@@ -721,7 +882,10 @@ deg
 
 
 
+
+
 :
+
 
 
 
@@ -729,7 +893,10 @@ deg
 
 
 
+
 translate
+
+
 
 
 
@@ -747,6 +914,8 @@ px
 
 
 
+
+
 )
 rotate
 
@@ -755,8 +924,12 @@ rotate
 
 
 
+
+
 (-1
 deg
+
+
 
 
 
@@ -1158,15 +1331,13 @@ to {
 	.hero {
 		height: 100vh;
 	}
-	
-.backgroundSwitch {
-	height: 100vh;
-	width: auto;
-}
+	.backgroundSwitch {
+		height: 100vh;
+		width: auto;
+	}
 }
 
 @media ( max-width :800px) {
-
 	.hero {
 		height: 100vh;
 	}
