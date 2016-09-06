@@ -3,8 +3,10 @@ package com.realdolmen.domain;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Basic;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
@@ -29,7 +31,8 @@ public class Customer implements Serializable {
 	private Address address;
 	private String mailAddress;
 	private String password;
-	private String creditcard;
+	@OneToMany(fetch = FetchType.EAGER,  mappedBy = "customer")
+	private List<Creditcard> creditcard;
 	@OneToMany(mappedBy="customer")
 	private List<Booking> bookings;
 
@@ -46,13 +49,13 @@ public class Customer implements Serializable {
 	}
 
 	public Customer(String firstName, String lastName, Address address, String mailAddress, String password,
-			String creditCard) {
+			List<Creditcard> creditcardList) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
 		this.mailAddress = mailAddress;
 		this.password = password;
-		this.creditcard = creditCard;
+		this.creditcard = creditcardList;
 	}
 
 	public Integer getId() {
@@ -108,11 +111,11 @@ public class Customer implements Serializable {
 		this.password = hashed;
 	}
 
-	public String getCreditcard() {
+	public List<Creditcard> getCreditcard() {
 		return creditcard;
 	}
 
-	public void setCreditcard(String creditCard) {
+	public void setCreditcard(List<Creditcard> creditCard) {
 		this.creditcard = creditCard;
 	}
 
