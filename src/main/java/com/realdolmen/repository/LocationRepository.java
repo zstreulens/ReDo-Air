@@ -20,11 +20,11 @@ public class LocationRepository {
 	}
 
 	public List<Location> findAll() {
-		return em.createQuery("select l from Location l", Location.class).getResultList();
+		return em.createQuery("SELECT l FROM Location l", Location.class).getResultList();
 	}
 
 	public List<String> findCountries() {
-		return em.createQuery("select l.country from Location l", String.class).getResultList();
+		return em.createQuery("SELECT DISTINCT l.country FROM Location l", String.class).getResultList();
 	}
 
 }

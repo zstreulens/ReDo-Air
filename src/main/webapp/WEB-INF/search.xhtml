@@ -28,18 +28,22 @@
 			<!-- 		SELECTION  -->
 			<h:panelGrid columns="4">
 				<p:outputLabel for="departureLocation" value="From" />
-				<p:inputText id="departureLocation"
-					value="#{flightBean.fromLocation}">
-					<p:watermark for="departureLocation" value="Departure"
-						id="departureWm" />
-					<p:ajax />
-				</p:inputText>
+				<p:selectOneMenu id="departureLocation"
+					converter="omnifaces.SelectItemsConverter"
+					value="#{flightBean.fromLocation}" var="f" filter="true"
+					filterMatchMode="startsWith">
+					<f:selectItems value="#{flightBean.countries}" var="location"
+						itemLabel="#{location}" itemValue="#{location}" />
+				</p:selectOneMenu>
 
 				<p:outputLabel for="arrivalLocation" value="To" />
-				<p:inputText id="arrivalLocation" value="#{flightBean.toLocation}">
-					<p:watermark for="arrivalLocation" value="Arrival" id="arrivalWm" />
-					<p:ajax />
-				</p:inputText>
+				<p:selectOneMenu id="arrivalLocation"
+					converter="omnifaces.SelectItemsConverter"
+					value="#{flightBean.toLocation}" var="f" filter="true"
+					filterMatchMode="startsWith">
+					<f:selectItems value="#{flightBean.countries}" var="location"
+						itemLabel="#{location}" itemValue="#{location}" />
+				</p:selectOneMenu>
 
 				<p:outputLabel for="departureDate" value="Departure" />
 				<p:calendar id="departureDate"
