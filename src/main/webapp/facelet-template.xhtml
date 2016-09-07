@@ -41,8 +41,9 @@
 			<nav class="mainMenu">
 				<h:panelGrid columns="2">
 					<h:form>
-						<h:commandLink action="flights.xhtml">
+						<h:commandLink actionListener="#{flightBean.setPage('search')}" action="flights.xhtml">
 							<h:outputText id="find" value="Find Flights" />
+							
 						</h:commandLink>
 						<h:commandLink action="overview.xhtml"
 							rendered="#{user.id != null}">
