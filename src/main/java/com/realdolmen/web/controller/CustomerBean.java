@@ -58,8 +58,8 @@ public class CustomerBean implements Serializable {
 			if (BCrypt.checkpw(password, customer.getPassword())) {
 				loggedInCustomer = customer;
 				errorMessage = "";
-				if (bookingBean.getFlightToBook() != null) {
-					return "booking";
+				if (bookingBean.getOutboundFlight() != null) {
+					return "flights";
 				} else {
 					return "success";
 				}
