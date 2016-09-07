@@ -33,7 +33,7 @@ public class FlightTest extends JpaPersistenceTest {
 		Location departureLocation = new Location("John F. Kennedy International Airport", "USA", "JFK", "North America");
 		flight.setArrivalLocation(arrivalLocation);
 		flight.setDepartureLocation(departureLocation);
-		flight.setPrice(50.0);
+		flight.setBasePrice(50.0);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date departureTime = sdf.parse("2016-09-01");
 		flight.setDepartureTime(departureTime);
@@ -46,7 +46,7 @@ public class FlightTest extends JpaPersistenceTest {
 		Flight flight = new Flight();
 		Location arrivalLocation = new Location("Brussels Airport", "Belgium", "BRU", "Western Europe");
 		flight.setArrivalLocation(arrivalLocation);
-		flight.setPrice(50.0);
+		flight.setBasePrice(50.0);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date departureTime = sdf.parse("2016-09-01");
 		flight.setDepartureTime(departureTime);

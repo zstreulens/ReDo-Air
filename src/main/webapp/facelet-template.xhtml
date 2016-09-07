@@ -13,27 +13,33 @@
 </h:head>
 <h:body>
 	<h:outputStylesheet library="css" name="reset.css" />
-	<h:outputStylesheet library="css" name="responsive.css" position="last"/>
+	<h:outputStylesheet library="css" name="responsive.css" position="last" />
 
 
 	<section class="hero">
 		<!--  BACKGROUND IMAGES CYCLE -->
-		<b:carousel id="backgroundCarousel" style="width:100vw" pause="false" showControls="true" interval="6000">
-   <b:carouselItem >
-     <img src="resources/img/wallpaper1.jpg" alt="ReDo" style="width: 100vw; height: auto" />
-   </b:carouselItem>
-   <b:carouselItem>
-     <img src="resources/img/wallpaper2.jpg" alt="ReDo" style="width: 100vw; height: auto" />
-   </b:carouselItem>
-   <b:carouselItem>
-     <img src="resources/img/wallpaper3.jpg" alt="ReDo" style="width: 100vw; height: auto" />
-   </b:carouselItem>
-   <b:carouselItem>
-     <img src="resources/img/wallpaper4.jpg" alt="ReDo" style="width: 100vw; height: auto" />
-   </b:carouselItem>
-   <b:carouselItem>
-     <img src="resources/img/wallpaper5.jpg" alt="ReDo" style="width: 100vw; height: auto" />
-   </b:carouselItem>
+		<b:carousel id="backgroundCarousel" style="width:100vw" pause="false"
+			showControls="true" interval="6000">
+			<b:carouselItem>
+				<img src="resources/img/wallpaper1.jpg" alt="ReDo"
+					style="width: 100vw; height: auto" />
+			</b:carouselItem>
+			<b:carouselItem>
+				<img src="resources/img/wallpaper2.jpg" alt="ReDo"
+					style="width: 100vw; height: auto" />
+			</b:carouselItem>
+			<b:carouselItem>
+				<img src="resources/img/wallpaper3.jpg" alt="ReDo"
+					style="width: 100vw; height: auto" />
+			</b:carouselItem>
+			<b:carouselItem>
+				<img src="resources/img/wallpaper4.jpg" alt="ReDo"
+					style="width: 100vw; height: auto" />
+			</b:carouselItem>
+			<b:carouselItem>
+				<img src="resources/img/wallpaper5.jpg" alt="ReDo"
+					style="width: 100vw; height: auto" />
+			</b:carouselItem>
 		</b:carousel>
 
 		<header>
@@ -41,13 +47,18 @@
 			<nav class="mainMenu">
 				<h:panelGrid columns="2">
 					<h:form>
-						<h:commandLink actionListener="#{flightBean.setPage('search')}" action="flights.xhtml">
+						<h:commandLink actionListener="#{flightBean.setPage('search')}"
+							action="flights.xhtml">
 							<h:outputText id="find" value="Find Flights" />
-							
+
 						</h:commandLink>
 						<h:commandLink action="overview.xhtml"
 							rendered="#{user.id != null}">
 							<h:outputText id="overview" value="Overview" />
+						</h:commandLink>
+						<h:commandLink action="pricing.xhtml"
+							rendered="#{employee.id != null}">
+							<h:outputText id="pricing" value="Pricing" />
 						</h:commandLink>
 					</h:form>
 				</h:panelGrid>
@@ -58,51 +69,28 @@
 				<!--  LOGGED IN -->
 				<h:panelGrid columns="2" cellpadding="5"
 					rendered="#{user.id != null}">
-					<h:outputText value="logged in as #{user.fullName}" />
+					<h:outputText value="logged in as #{user.fullName}"/>
 					<h:form>
 						<p:commandButton styleClass="btn_style" value="logout"
 							action="#{customerBean.logout()}" ajax="false" />
 					</h:form>
 				</h:panelGrid>
+				<h:panelGrid columns="2" cellpadding="5"
+					rendered="#{employee.id != null}">
+					<h:form>
+						<p:commandButton styleClass="btn_style" value="logout"
+							action="#{employeeBean.logout()}" ajax="false" />
+					</h:form>
+				</h:panelGrid>
 				<!-- NOT LOGGED IN -->
 				<h:panelGrid columns="2" cellpadding="5"
-					rendered="#{user.id == null}">
+					rendered="#{user.id == null and employee.id == null}">
 					<p:button styleClass="btn_style" value="login"
 						outcome="#{customerBean.goToLogin()}" />
 					<p:button styleClass="btn_style" value="register"
 						outcome="#{customerBean.goToRegistration()}">
 					</p:button>
 				</h:panelGrid>
-				<p:dialog header="Login" widgetVar="dlg3" showEffect="explode"
-					hideEffect="bounce" height="auto" width="auto">
-					<h:form>
-						<h:panelGrid columns="2" style="margin-bottom:10px"
-							cellpadding="5">
-							<p:selectOneButton value="#{loginBean.userType}" required="true">
-								<f:selectItem itemLabel="customer" itemValue="customer" />
-								<f:selectItem itemLabel="partner" itemValue="partner" />
-								<f:selectItem itemLabel="admin" itemValue="admin" />
-							</p:selectOneButton>
-						</h:panelGrid>
-					</h:form>
-					<h:form>
-						<h:panelGrid columns="2">
-							<h:outputText value="E-mail "></h:outputText>
-							<h:panelGroup>
-								<p:inputText value="#{customerBean.customer.mailAddress}"
-									id="mail"></p:inputText>
-							</h:panelGroup>
-							<h:outputText value="Password "></h:outputText>
-							<h:panelGroup>
-								<p:password value="#{customerBean.password}" id="password"></p:password>
-							</h:panelGroup>
-						</h:panelGrid>
-						<p:commandButton value="Login" id="login"
-							oncomplete="#{customerBean.login()}" />
-						<p:commandButton value="Cancel" id="cancel"
-							oncomplete="#{customerBean.login()}" />
-					</h:form>
-				</p:dialog>
 			</nav>
 		</header>
 		<!--  end header section  -->

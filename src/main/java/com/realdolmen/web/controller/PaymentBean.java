@@ -22,11 +22,9 @@ import com.realdolmen.service.FlightServiceBean;
 @SessionScoped
 public class PaymentBean implements Serializable {
 	private Creditcard newCreditcard;
-	private Booking booking;
 	private Flight flight;
 	private List<Creditcard> creditcards;
 	private Creditcard creditcard;
-	private String creditcardType;
 	@Inject
 	CustomerBean customerBean;
 	@Inject
@@ -50,20 +48,11 @@ public class PaymentBean implements Serializable {
 		creditcards = loggedInCustomer.getCreditcard();
 	}
 
-	public String pay() {
-		System.out.println("in payment");
+	public void addNewCreditcard() {
+		System.out.println("Adding new creditcard");
 		if (newCreditcard.getNumber() != "") {
 			newCreditcard.setCustomer(loggedInCustomer);
 			creditcardRepository.createCreditcard(newCreditcard);
-		}
-		booking = new Booking(loggedInCustomer, flight);
-		try {
-			bookingRepository.createBooking(booking);
-			overviewBean.findBookingsForCustomer(loggedInCustomer.getId());
-			return "success";
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "failure";
 		}
 	}
 

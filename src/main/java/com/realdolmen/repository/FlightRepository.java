@@ -65,5 +65,10 @@ public class FlightRepository {
 		c.add(Calendar.DAY_OF_MONTH, addedDays);
 		return c.getTime();
 	}
+	
+	public Flight update(Flight flight){
+		em.merge(flight);
+		return flight;
+	}
 
 }

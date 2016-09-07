@@ -31,7 +31,7 @@
 			</p:column>
 			<p:column headerText="Total price"
 				sortBy="#{overviewBean.completePrice}">
-				<h:outputText value="#{bookings.outbound.price + bookings.inbound.price}"></h:outputText>
+				<h:outputText value="#{bookings.outbound.redoPrice + bookings.inbound.redoPrice}"></h:outputText>
 			</p:column>
 		</p:dataTable>
 	</ui:define>

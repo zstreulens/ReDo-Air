@@ -19,7 +19,7 @@
 			</h2>
 			<p:dataTable id="outboundResults" var="flight" scrollable="true" scrollHeight="100%"
 				value="#{flightBean.outboundFlights}" selectionMode="single"
-				rowKey="#{flight.id}" sortBy="#{flight.price}">
+				rowKey="#{flight.id}" sortBy="#{flight.redoPrice}">
 				<p:ajax event="rowSelect"
 					listener="#{bookingBean.bookOutboundFlight}" update=":content">
 				</p:ajax>
@@ -42,8 +42,8 @@
 						value="#{flightBean.cabinClass == 'Economy' ? flight.seatsEconomy : (flightBean.cabinClass == 'Business' ? flight.seatsBusiness : flight.seatsFirstClass)}" />
 				</p:column>
 
-				<p:column headerText="Price per Ticket" sortBy="#{flight.price}">
-					<h:outputText value="#{flight.price} EUR" />
+				<p:column headerText="Price per Ticket" sortBy="#{flight.redoPrice}">
+					<h:outputText value="#{flight.redoPrice}" />
 				</p:column>
 			</p:dataTable>
 

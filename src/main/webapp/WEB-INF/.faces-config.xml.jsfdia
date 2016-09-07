@@ -28,10 +28,11 @@
   SHAPE="32,161,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#details.xhtml:0" NAME="item"
    PATH="/details.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="success::#payment.xhtml" NAME="output"
-    PATH="/payment.xhtml" TARGET="rules:#payment.xhtml" TITLE="success" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="failure::#login.xhtml" NAME="output1"
-    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="failure" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="success::#overview.xhtml" NAME="output"
+    PATH="/overview.xhtml" TARGET="rules:#overview.xhtml"
+    TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="failure::#details.xhtml" NAME="output1"
+    PATH="/details.xhtml" TARGET="rules:#details.xhtml" TITLE="failure" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#payment.xhtml" PATH="/payment.xhtml"
