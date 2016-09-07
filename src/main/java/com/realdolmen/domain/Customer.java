@@ -23,22 +23,22 @@ public class Customer implements Serializable {
 	@Id
 	@GeneratedValue
 	private Integer id;
-	@Size(min = 1)
+	@Size(min = 1, max = 30)
 	private String firstName;
-	@Size(min = 1)
+	@Size(min = 1, max = 50)
 	private String lastName;
 	@Transient
 	private String fullName;
 	@Embedded
 	@Valid
 	private Address address;
-	@Size(min = 1)
+	@Size(min = 1, max = 50)
 	private String mailAddress;
 	@Size(min = 1)
 	private String password;
-	@OneToMany(fetch = FetchType.EAGER,  mappedBy = "customer")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "customer")
 	private List<Creditcard> creditcard;
-	@OneToMany(mappedBy="customer")
+	@OneToMany(mappedBy = "customer")
 	private List<Booking> bookings;
 
 	public Customer() {
@@ -86,10 +86,10 @@ public class Customer implements Serializable {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
 	public String getFullName() {
 		return firstName + " " + lastName;
 	}
-	
 
 	public Address getAddress() {
 		return address;

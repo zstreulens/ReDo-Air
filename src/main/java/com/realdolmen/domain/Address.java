@@ -7,15 +7,15 @@ import javax.validation.constraints.Size;
 
 @Embeddable
 public class Address implements Serializable {
-	@Size (min = 1)
+	@Size(min = 1, max = 30)
 	private String street;
-	@Size (min = 1)
+	@Size(min = 1, max = 5)
 	private String number;
-	@Size (min = 1)
+	@Size(min = 1, max = 30)
 	private String city;
-	@Size (min = 1)
+	@Size(min = 1, max = 10)
 	private String zipcode;
-	@Size (min = 1)
+	@Size(min = 1, max = 30)
 	private String country;
 
 	public String getStreet() {
