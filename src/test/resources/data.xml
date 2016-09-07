@@ -22,46 +22,46 @@
 
 	<flight id="1" duration="5" seatsBusiness="30" seatsEconomy="40"
 		departureLocation_id="1" arrivalLocation_id="9" departureTime="2016-12-01 06:31:16" arrivalTime="2016-12-01 08:31:16" seatsFirstClass="20"
-		price="50.0" />
+		basePrice="50.0" redoPrice="52.5" />
 	<flight id="2" duration="10" seatsBusiness="30" seatsEconomy="40"
 		departureLocation_id="2" arrivalLocation_id="5" departureTime="2016-12-01 06:31:16" arrivalTime="2016-12-01 08:31:16" seatsFirstClass="20"
-		price="30.0" />
+		basePrice="30.0"  redoPrice="31.5"/>
 	<flight id="3" duration="18" seatsBusiness="30" seatsEconomy="40"
 		departureLocation_id="3" arrivalLocation_id="1" departureTime="2016-12-01 06:31:16" arrivalTime="2016-12-01 08:31:16" seatsFirstClass="20"
-		price="20.0" />
+		basePrice="20.0" redoPrice="21.0"/>
 	<flight id="4" duration="20" seatsBusiness="30" seatsEconomy="40"
 		departureLocation_id="8" arrivalLocation_id="7" departureTime="2016-12-01 06:31:16" arrivalTime="2016-12-01 08:31:16" seatsFirstClass="20"
-		price="80.0" />
+		basePrice="80.0" redoPrice="84.0" />
 	<flight id="5" duration="31" seatsBusiness="30" seatsEconomy="40"
 		departureLocation_id="6" arrivalLocation_id="2" departureTime="2016-12-01 06:31:16" arrivalTime="2016-12-01 08:31:16" seatsFirstClass="20"
-		price="40.0" />
+		basePrice="40.0" redoPrice="42.0"/>
 	<flight id="6" duration="7" seatsBusiness="30" seatsEconomy="40"
 		departureLocation_id="1" arrivalLocation_id="6" departureTime="2016-12-01 06:31:16" arrivalTime="2016-12-01 08:31:16" seatsFirstClass="20"
-		price="30.0" />
+		basePrice="30.0" redoPrice="31.5" />
 	<flight id="7" duration="12" seatsBusiness="30" seatsEconomy="40"
 		departureLocation_id="3" arrivalLocation_id="4" departureTime="2016-12-01 06:31:16" arrivalTime="2016-12-01 08:31:16" seatsFirstClass="20"
-		price="25.0" />
+		basePrice="25.0" redoPrice="26.25" />
 	<flight id="8" duration="5" seatsBusiness="30" seatsEconomy="40"
 		departureLocation_id="4" arrivalLocation_id="8" departureTime="2016-12-01 06:31:16" arrivalTime="2016-12-01 08:31:16" seatsFirstClass="20"
-		price="36.0" />
+		basePrice="36.0" redoPrice="37.8" />
 	<flight id="9" duration="28" seatsBusiness="30" seatsEconomy="40"
 		departureLocation_id="5" arrivalLocation_id="2" departureTime="2016-12-01 06:31:16" arrivalTime="2016-12-01 08:31:16" seatsFirstClass="20"
-		price="98.0" />
+		basePrice="98.0" redoPrice="102.9"/>
 	<flight id="10" duration="13" seatsBusiness="30" seatsEconomy="40"
 		departureLocation_id="2" arrivalLocation_id="1" departureTime="2016-12-01 06:31:16" arrivalTime="2016-12-01 08:31:16" seatsFirstClass="20"
-		price="50.0" />
+		basePrice="50.0" redoPrice="52.5" />
 	<flight id="11" duration="2" seatsBusiness="30" seatsEconomy="40"
 		departureLocation_id="9" arrivalLocation_id="1" departureTime="2016-12-01 06:30:00" arrivalTime="2016-12-01 08:30:00" seatsFirstClass="20"
-		price="120.0" />
+		basePrice="120.0" redoPrice="126" />
 	<flight id="12" duration="2" seatsBusiness="15" seatsEconomy="20"
 		departureLocation_id="9" arrivalLocation_id="1" departureTime="2016-12-01 08:00:00" arrivalTime="2016-12-01 10:00:00" seatsFirstClass="20"
-		price="130.0" />
+		basePrice="130.0" redoPrice="136.5"/>
 	<flight id="13" duration="2" seatsBusiness="30" seatsEconomy="40"
 		departureLocation_id="9" arrivalLocation_id="1" departureTime="2016-12-01 09:30:00" arrivalTime="2016-12-01 11:30:00" seatsFirstClass="20"
-		price="115" />
+		basePrice="115" redoPrice="120.75" />
 	<flight id="14" duration="2" seatsBusiness="30" seatsEconomy="40"
 		departureLocation_id="9" arrivalLocation_id="1" departureTime="2016-12-01 11:00:00" arrivalTime="2016-12-01 13:00:00" seatsFirstClass="20"
-		price="280.0" />
+		basePrice="280.0" redoPrice="294.0"/>
 
 
 	<employee id="1" mailAddress="ziggy@test.be" password="test"/>

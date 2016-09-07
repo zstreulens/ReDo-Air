@@ -8,6 +8,8 @@ import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.realdolmen.domain.Address;
+import com.realdolmen.domain.Customer;
 import com.realdolmen.domain.Employee;
 import com.realdolmen.repository.EmployeeRepository;
 
@@ -33,7 +35,7 @@ public class EmployeeBean implements Serializable {
 			if (password.equals(employee.getPassword())) {
 				loggedInEmployee = employee;
 				errorMessage = "";
-				return "success";
+				return "pricing.xhtml";
 			} else {
 				errorMessage = "Password is incorrect";
 				return "failure";
@@ -43,6 +45,16 @@ public class EmployeeBean implements Serializable {
 			errorMessage = "E-mail is incorrect.";
 			return "failure";
 		}
+	}
+
+	public String logout() {
+		cleanEmployee();
+		return "employee.xhtml";
+	}
+
+	public void cleanEmployee() {
+		employee = new Employee();
+		loggedInEmployee = null;
 	}
 
 	public Employee getEmployee() {

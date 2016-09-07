@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/facelet-template.xhtml">
+
+	<ui:define name="pageTitle">Flight details</ui:define>
+	<ui:define name="pageContent">
+		<h1>Flight details</h1>
+		<h:form>
+		<h:panelGrid columns="2">
+		<h:outputText value="From: "/>
+		<h:outputText value="#{pricingBean.flightPricing.departureLocation.country}"/>
+		<h:outputText value="To: "/>
+		<h:outputText value="#{pricingBean.flightPricing.arrivalLocation.country}"/>
+		<h:outputText value="Depart: "/>
+		<h:outputText value="#{pricingBean.flightPricing.departureTime}" />
+		<h:outputText value="Arrive: "/>
+		<h:outputText value="#{pricingBean.flightPricing.arrivalTime}"/>
+		<h:outputText value="Base price: "/>
+		<h:outputText value="#{pricingBean.flightPricing.basePrice}"/>
+		<h:outputText value="Redo price: "/>
+		<h:inputText value="#{pricingBean.flightPricing.redoPrice}"/>
+		</h:panelGrid>
+		<p:commandButton value="Change price" action="#{pricingBean.updatePrice()}"></p:commandButton>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/facelet-template.xhtml">
+
+	<ui:define name="pageTitle">Pricing</ui:define>
+	<ui:define name="pageContent">
+		<h1>Flights</h1>
+		<h:form id="form">
+			<p:dataTable id="allFlights" var="flight"
+				value="#{pricingBean.flights}" selectionMode="single"
+				rowKey="#{flight.id}" sortBy="#{flight.id}" scrollable="true" scrollHeight="50%">
+				<p:ajax event="rowSelect" listener="#{pricingBean.detailFlight}" />
+				<p:column headerText="Date" sortBy="#{flight.id}">
+					<h:outputText value="#{flight.departureTime.date}" />
+				</p:column>
+				<p:column headerText="Route"
+					sortBy="#{flight.departureLocation.country}">
+					<h:outputText
+						value="#{flight.departureLocation.country} - #{flight.arrivalLocation.country}" />
+				</p:column>
+				<p:column headerText="Depart" sortBy="#{flight.departureTime.time}">
+					<h:outputText value="#{flight.departureTime}" />
+				</p:column>
+				<p:column headerText="Arrive" sortBy="#{flight.arrivalTime.time}">
+					<h:outputText value="#{flight.arrivalTime}" />
+				</p:column>
+				<p:column headerText="Base Price" sortBy="#{flight.basePrice}">
+					<h:outputText value="#{flight.basePrice}" />
+				</p:column>
+				<p:column headerText="Redo Price" sortBy="#{flight.redoPrice}">
+					<h:outputText value="#{flight.redoPrice}"></h:outputText>
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

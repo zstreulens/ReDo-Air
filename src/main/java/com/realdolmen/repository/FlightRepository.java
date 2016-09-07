@@ -30,5 +30,10 @@ public class FlightRepository {
 		return em.createNamedQuery("findFlight", Flight.class).setParameter("arrivalLoc", arriveId)
 				.setParameter("departLoc", departId).getResultList();
 	}
+	
+	public Flight update(Flight flight){
+		em.merge(flight);
+		return flight;
+	}
 
 }

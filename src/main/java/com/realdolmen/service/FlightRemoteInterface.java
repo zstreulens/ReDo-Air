@@ -12,6 +12,7 @@ public interface FlightRemoteInterface {
 	Flight createFlight(Flight flight);
 	List<Flight> findFlightFromQuery(String departId, String arriveId);
 	public Flight findById(Long id);
+	public Flight updateFlight(Flight flight);
 
 }
 

@@ -4,25 +4,29 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-      xmlns:rd="http://java.sun.com/jsf/composite/realdolmen">
+	xmlns:rd="http://java.sun.com/jsf/composite/realdolmen">
 
 <ui:composition>
 
-		<rd:steps page="2" />
+	<rd:steps page="2" />
 
-		<div id="searchContainer">
+	<div id="searchContainer">
 
-			<h:form id="form">
-				<!-- 		SEARCH RESULTS  -->
+		<h:form id="form">
+			<!-- 		SEARCH RESULTS  -->
 			<h2>
 				<p:outputLabel for="inboundResults" value="Return flights" />
 			</h2>
-		<h3><h:outputText value="You have selected a one way itinerary" rendered="#{searchFlightBean.oneWay}"/></h3>
+			<h3>
+				<h:outputText value="You have selected a one way itinerary"
+					rendered="#{searchFlightBean.oneWay}" />
+			</h3>
 			<p:dataTable id="inboundResults" var="flight"
 				value="#{flightBean.inboundFlights}" selectionMode="single"
-				rowKey="#{flight.id}" sortBy="#{flight.price}"
+				rowKey="#{flight.id}" sortBy="#{flight.redoPrice}"
 				rendered="#{not searchFlightBean.oneWay}">
-				<p:ajax event="rowSelect" listener="#{bookingBean.bookInboundFlight}" update=":content">
+				<p:ajax event="rowSelect"
+					listener="#{bookingBean.bookInboundFlight}" update=":content">
 				</p:ajax>
 				<p:column headerText="Id" sortBy="#{flight.id}">
 					<h:outputText value="#{flight.id}" />
@@ -46,14 +50,15 @@
 						value="#{searchFlightBean.cabinClass} == 'Economy' ? 'yes' : 'no'" />
 				</p:column>
 
-				<p:column headerText="Price" sortBy="#{flight.price}">
-					<h:outputText value="#{flight.price}" />
+				<p:column headerText="Price" sortBy="#{flight.redoPrice}">
+					<h:outputText value="#{flight.redoPrice}" />
 				</p:column>
 			</p:dataTable>
-			</h:form>
-			</div>		
-						<!-- 		SEARCH and RESET BUTTON  -->
-			<rd:searchButton id="buttons" nextPage="payment" previousPage="outbound"/>
+		</h:form>
+	</div>
+	<!-- 		SEARCH and RESET BUTTON  -->
+	<rd:searchButton id="buttons" nextPage="payment"
+		previousPage="outbound" />
 
 
 </ui:composition>

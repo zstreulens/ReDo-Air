@@ -29,7 +29,7 @@
 		<h:outputText value="#{bookingBean.outboundFlight.departureTime.date}" />
 
 		<h:outputText value="Price: " />
-		<h:outputText value="#{bookingBean.outboundFlight.price}" />
+		<h:outputText value="#{bookingBean.outboundFlight.redoPrice}" />
 	</p:panelGrid>
 
 	<h:panelGroup rendered="#{not searchFlightBean.oneWay}">
@@ -55,7 +55,7 @@
 			<h:outputText value="#{bookingBean.inboundFlight.departureTime.date}" />
 
 			<h:outputText value="Price: " />
-			<h:outputText value="#{bookingBean.inboundFlight.price}" />
+			<h:outputText value="#{bookingBean.inboundFlight.redoPrice}" />
 		</p:panelGrid>
 		</h:panelGroup>
 

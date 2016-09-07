@@ -47,13 +47,18 @@
 			<nav class="mainMenu">
 				<h:panelGrid columns="2">
 					<h:form>
-						<h:commandLink actionListener="#{flightBean.setPage('search')}" action="flights.xhtml">
+						<h:commandLink actionListener="#{flightBean.setPage('search')}"
+							action="flights.xhtml">
 							<h:outputText id="find" value="Find Flights" />
-							
+
 						</h:commandLink>
 						<h:commandLink action="overview.xhtml"
 							rendered="#{user.id != null}">
 							<h:outputText id="overview" value="Overview" />
+						</h:commandLink>
+						<h:commandLink action="pricing.xhtml"
+							rendered="#{employee.id != null}">
+							<h:outputText id="pricing" value="Pricing" />
 						</h:commandLink>
 					</h:form>
 				</h:panelGrid>
@@ -64,15 +69,22 @@
 				<!--  LOGGED IN -->
 				<h:panelGrid columns="2" cellpadding="5"
 					rendered="#{user.id != null}">
-					<h:outputText value="logged in as #{user.fullName}" />
+					<h:outputText value="logged in as #{user.fullName}"/>
 					<h:form>
 						<p:commandButton styleClass="btn_style" value="logout"
 							action="#{customerBean.logout()}" ajax="false" />
 					</h:form>
 				</h:panelGrid>
+				<h:panelGrid columns="2" cellpadding="5"
+					rendered="#{employee.id != null}">
+					<h:form>
+						<p:commandButton styleClass="btn_style" value="logout"
+							action="#{employeeBean.logout()}" ajax="false" />
+					</h:form>
+				</h:panelGrid>
 				<!-- NOT LOGGED IN -->
 				<h:panelGrid columns="2" cellpadding="5"
-					rendered="#{user.id == null}">
+					rendered="#{user.id == null and employee.id == null}">
 					<p:button styleClass="btn_style" value="login"
 						outcome="#{customerBean.goToLogin()}" />
 					<p:button styleClass="btn_style" value="register"

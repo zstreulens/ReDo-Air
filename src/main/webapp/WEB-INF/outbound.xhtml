@@ -19,7 +19,7 @@
 			</h2>
 			<p:dataTable id="outboundResults" var="flight"
 				value="#{flightBean.outboundFlights}" selectionMode="single"
-				rowKey="#{flight.id}" sortBy="#{flight.price}">
+				rowKey="#{flight.id}" sortBy="#{flight.redoPrice}">
 				<p:ajax event="rowSelect"
 					listener="#{bookingBean.bookOutboundFlight}" update=":content">
 				</p:ajax>
@@ -45,8 +45,8 @@
 						value="#{searchFlightBean.cabinClass == 'economy' ? 'yes' : 'no'}" />
 				</p:column>
 
-				<p:column headerText="Price" sortBy="#{flight.price}">
-					<h:outputText value="#{flight.price}" />
+				<p:column headerText="Price" sortBy="#{flight.redoPrice}">
+					<h:outputText value="#{flight.redoPrice}" />
 				</p:column>
 			</p:dataTable>
 

@@ -12,9 +12,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
-
 @Entity
-@NamedQuery(name = "findFlight", query = "SELECT f FROM Flight f WHERE f.arrivalLocation.country = :arrivalLoc AND f.departureLocation.country = :departLoc ") 
+@NamedQuery(name = "findFlight", query = "SELECT f FROM Flight f WHERE f.arrivalLocation.country = :arrivalLoc AND f.departureLocation.country = :departLoc ")
 public class Flight implements Serializable {
 	// FIELDS
 	@Id
@@ -35,14 +34,15 @@ public class Flight implements Serializable {
 	private Integer seatsEconomy;
 	private Integer seatsFirstClass;
 	@NotNull
-	private Double price;
+	private Double basePrice;
+	private Double redoPrice;
 
 	public Flight() {
 
 	}
 
-	public Flight(Location departureLocation, Location arrivalLocation, Date departureTime, Date arrivalTime, Integer duration,
-			Integer seatsBusiness, Integer seatsEconomy, Integer seatsFirstClass, Double price) {
+	public Flight(Location departureLocation, Location arrivalLocation, Date departureTime, Date arrivalTime,
+			Integer duration, Integer seatsBusiness, Integer seatsEconomy, Integer seatsFirstClass, Double price) {
 		this.departureLocation = departureLocation;
 		this.arrivalLocation = arrivalLocation;
 		this.departureTime = departureTime;
@@ -51,7 +51,7 @@ public class Flight implements Serializable {
 		this.seatsBusiness = seatsBusiness;
 		this.seatsEconomy = seatsEconomy;
 		this.seatsFirstClass = seatsFirstClass;
-		this.price = price;
+		this.basePrice = price;
 	}
 
 	public Long getId() {
@@ -126,12 +126,21 @@ public class Flight implements Serializable {
 		this.seatsFirstClass = seatsFirstClass;
 	}
 
-	public Double getPrice() {
-		return price;
+	public Double getBasePrice() {
+		return basePrice;
 	}
 
-	public void setPrice(Double price) {
-		this.price = price;
+	public void setBasePrice(Double basePrice) {
+		this.basePrice = basePrice;
+		setRedoPrice(basePrice + basePrice*0.05);
+	}
+
+	public Double getRedoPrice() {
+		return redoPrice;
+	}
+
+	public void setRedoPrice(Double redoPrice) {
+		this.redoPrice = redoPrice;
 	}
 
 }
