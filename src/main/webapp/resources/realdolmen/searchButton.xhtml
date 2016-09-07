@@ -12,12 +12,12 @@
 </cc:interface>
 
 <cc:implementation>
-	<h:form id="searchForm">
-			<p:commandButton styleClass="btn_style" id="submitButton"
+	<h:form id="navigationForm">
+			<p:commandButton styleClass="btn_style" id="previousButton"
 				actionListener="#{flightBean.setPage(cc.attrs.previousPage)}"
 				value="Back" update=":content">
 			</p:commandButton>
-			<p:commandButton styleClass="btn_style" id="resetButton"
+			<p:commandButton styleClass="btn_style" id="nextButton"
 				actionListener="#{flightBean.setPage(cc.attrs.nextPage)}"
 				value="Next" update=":content">
 			</p:commandButton>

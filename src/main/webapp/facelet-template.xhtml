@@ -3,7 +3,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui"
 	xmlns:rd="http://java.sun.com/jsf/composite/realdolmen">
 
 <h:head>
@@ -13,21 +13,30 @@
 </h:head>
 <h:body>
 	<h:outputStylesheet library="css" name="reset.css" />
-	<h:outputStylesheet library="css" name="responsive.css" />
+	<h:outputStylesheet library="css" name="responsive.css" position="last"/>
 
 
 	<section class="hero">
 		<!--  BACKGROUND IMAGES CYCLE -->
-		<p:imageSwitch effect="fade" styleClass="fadeEffect" speed="2000"
-			slideshowSpeed="8000">
-			<ui:repeat value="#{imagesView.images}" var="image"
-				id="fadeEffectImages">
-				<p:graphicImage name="/img/#{image}" styleClass="backgroundSwitch" />
-			</ui:repeat>
-		</p:imageSwitch>
+		<b:carousel id="backgroundCarousel" style="width:100vw" pause="false" showControls="true" interval="6000">
+   <b:carouselItem >
+     <img src="resources/img/wallpaper1.jpg" alt="ReDo" style="width: 100vw; height: auto" />
+   </b:carouselItem>
+   <b:carouselItem>
+     <img src="resources/img/wallpaper2.jpg" alt="ReDo" style="width: 100vw; height: auto" />
+   </b:carouselItem>
+   <b:carouselItem>
+     <img src="resources/img/wallpaper3.jpg" alt="ReDo" style="width: 100vw; height: auto" />
+   </b:carouselItem>
+   <b:carouselItem>
+     <img src="resources/img/wallpaper4.jpg" alt="ReDo" style="width: 100vw; height: auto" />
+   </b:carouselItem>
+   <b:carouselItem>
+     <img src="resources/img/wallpaper5.jpg" alt="ReDo" style="width: 100vw; height: auto" />
+   </b:carouselItem>
+		</b:carousel>
+
 		<header>
-
-
 			<!-- MENU   -->
 			<nav class="mainMenu">
 				<h:panelGrid columns="2">
@@ -35,7 +44,8 @@
 						<h:commandLink action="flights.xhtml">
 							<h:outputText id="find" value="Find Flights" />
 						</h:commandLink>
-						<h:commandLink action="overview.xhtml" rendered="#{user.id != null}">
+						<h:commandLink action="overview.xhtml"
+							rendered="#{user.id != null}">
 							<h:outputText id="overview" value="Overview" />
 						</h:commandLink>
 					</h:form>
@@ -47,8 +57,7 @@
 				<!--  LOGGED IN -->
 				<h:panelGrid columns="2" cellpadding="5"
 					rendered="#{user.id != null}">
-					<h:outputText
-						value="logged in as #{user.fullName}" />
+					<h:outputText value="logged in as #{user.fullName}" />
 					<h:form>
 						<p:commandButton styleClass="btn_style" value="logout"
 							action="#{customerBean.logout()}" ajax="false" />
@@ -98,7 +107,6 @@
 		<!--  end header section  -->
 
 
-		<main>
 		<div id="globalContainer">
 			<ui:insert name="pageContent">
 
@@ -110,7 +118,6 @@
    	
    	</ui:insert>
 		</div>
-		</main>
 	</section>
 	<!--  end hero section  -->
 	<footer>

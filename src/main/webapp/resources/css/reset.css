@@ -17,15 +17,13 @@
         font-size:100%;
         vertical-align:baseline;
         background:transparent;
+        z-index: 0;
     }
 
     body {
         line-height:1;
     }
 
-    img{
-        max-width: 100%;
-    }
 
     article,aside,details,figcaption,figure,
     footer,header,hgroup,menu,nav,section { 

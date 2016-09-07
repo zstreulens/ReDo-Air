@@ -48,10 +48,6 @@ body {
 	color: rgb(255, 255, 255);
 }
 
-main {
-	padding: 2vh 15vw;
-}
-
 .wrapper {
 	max-width: 1100px;
 	margin: 0 auto;
@@ -107,14 +103,16 @@ h1, h2, h3, h4, h5, h6 {
 
 #globalContainer {
 	padding: .5rem;
-	margin: 2vw;
+	margin: 5vh 10vw;
 	min-height: 75vh;
 	background: rgba(28, 54, 85, .5);
 	border-radius: 25px;
+	position: relative;
 }
 
 #searchContainer {
 	position: absolute;
+	width: 95%;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
@@ -125,11 +123,41 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #globalContainer .ui-widget {
-	font-size: 1.5rem;
+	font-size: 2.5rem;
+	color: rgb(245, 245, 245);
+	margin: 1.5rem;
 }
 
 td {
 	padding: .5rem;
+}
+
+header nav.loginMenu td {
+	font-size: 1.6rem;
+	color: rgb(245, 245, 245);
+}
+
+header nav.mainMenu td {
+	font-size: 2.5rem;
+	color: rgb(245, 245, 245);
+}
+
+header nav.mainMenu a {
+	margin: 1rem;
+}
+
+#buttons\:navigationForm {
+	position: absolute;
+	bottom: 0.5rem;
+	width: 100%;
+}
+
+#buttons\:navigationForm\:previousButton {
+	
+}
+#buttons\:navigationForm\:nextButton {
+	position: absolute;
+	right: 0.5rem;	
 }
 
 #searchframe, #searchButtons {
@@ -142,6 +170,17 @@ td {
 	position: absolute;
 	left: 10vw;
 	bottom: 0;
+}
+
+#backgroundCarousel {
+	position: absolute;
+	height: 100vh;
+	width: 100vw;
+	z-index: 0;
+}
+
+#backgroundCarousel .carousel-inner img {
+	z-index: -100;
 }
 
 /*  Override Primefaces Default  */
@@ -232,6 +271,7 @@ header {
 header nav {
 	float: right;
 	opacity: 1;
+	padding: 1.5rem;
 }
 
 header nav ul {
@@ -263,30 +303,16 @@ nav.mainMenu {
 	font-family: "lato-regular", Helvetica, Arial, sans-serif;
 }
 
-a {
+nav.mainMenu a {
+	color: rgb(245, 245, 245);
 	text-decoration: none;
 }
 
 /*  Hero Section  */
-.fadeEffect {
-	z-index: -2;
-	height: 0.1px;
-	position: relative;
-	top: 0;
-}
-
-.backgroundSwitch {
-	width: 100vw;
-	height: auto;
-}
-
-
-
 #searchForm {
 	position: absolute;
 	bottom: 1rem;
 }
-
 
 /*  footer  */
 footer {
@@ -299,7 +325,6 @@ footer {
 	width: 100vw;
 	position: absolute;
 }
-
 
 /* STYLE  */
 div#earth {
@@ -357,7 +382,6 @@ to {
 		top: 95px;
 		left: 3.636363636363636%;
 		float: none;
-		z-index: 20;
 		overflow: hidden;
 		background: #fff;
 		border-top: 5px solid #bfd9f2;
