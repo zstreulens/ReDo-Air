@@ -64,5 +64,6 @@
 		price="280.0" />
 
 
+	<employee id="1" mailAddress="ziggy@test.be" password="test"/>
 
 </dataset>

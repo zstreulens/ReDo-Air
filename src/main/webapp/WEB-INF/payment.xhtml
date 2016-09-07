@@ -46,8 +46,8 @@
 					</p:inputText>
 				</h:panelGroup>
 			</h:panelGrid>
-			<p:commandButton value="Confirm payment"
-				action="#{paymentBean.pay()}"></p:commandButton>
+			<p:commandButton value="Add new creditcard"
+				action="#{paymentBean.addNewCreditcard()}"></p:commandButton>
 		</h:form>
 		<h:form>
 			<h2>Use creditcard</h2>
@@ -62,8 +62,6 @@
 						itemValue="#{creditcard}" />
 				</p:selectOneMenu>
 			</h:panelGrid>
-			<p:commandButton value="Confirm payment"
-				action="#{paymentBean.pay()}"></p:commandButton>
 		</h:form>
 
 		</div>

@@ -10,9 +10,12 @@ import javax.inject.Named;
 @Named
 @SessionScoped
 public class SearchFlightBean implements Serializable {
-
 	private String cabinClass;
 	boolean oneWay;
+
+	private Date currentDate = new Date();
+	private Date departureDate;
+	private Date returnDate;
 
 	public SearchFlightBean() {
 	}
@@ -20,10 +23,6 @@ public class SearchFlightBean implements Serializable {
 	public SearchFlightBean(boolean oneWay) {
 		this.oneWay = oneWay;
 	}
-
-	private Date currentDate = new Date();
-	private Date departureDate;
-	private Date returnDate;
 
 	@PostConstruct
 	public void setUp() {
@@ -73,5 +72,4 @@ public class SearchFlightBean implements Serializable {
 	public void setReturnDate(Date returnDate) {
 		this.returnDate = returnDate;
 	}
-
 }

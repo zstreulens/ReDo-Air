@@ -19,7 +19,6 @@ import com.realdolmen.service.LocationServiceBean;
 @Named
 @SessionScoped
 public class FlightBean implements Serializable {
-
 	List<Flight> allFlights;
 	List<Flight> outboundFlights;
 	List<Flight> inboundFlights;
@@ -49,6 +48,17 @@ public class FlightBean implements Serializable {
 	private Flight flight = new Flight();
 
 	public FlightBean() {
+	}
+
+	public void submitAction() {
+		outboundFlights = flightService.findFlightFromQuery(fromLocation, toLocation);
+		inboundFlights = flightService.findFlightFromQuery(toLocation, fromLocation);
+		setPage("outbound");
+	}
+
+	public void reset() {
+		setRendered(false);
+		RequestContext.getCurrentInstance().reset("form");
 	}
 
 	public Flight getFlight() {
@@ -127,26 +137,12 @@ public class FlightBean implements Serializable {
 		return "searchResults";
 	}
 
-	public void findFlightFromQuery() {
-	}
-
 	public boolean isRendered() {
 		return rendered;
 	}
 
 	public void setRendered(boolean rendered) {
 		this.rendered = rendered;
-	}
-
-	public void submitAction() {
-		outboundFlights = flightService.findFlightFromQuery(fromLocation, toLocation);
-		inboundFlights = flightService.findFlightFromQuery(toLocation, fromLocation);
-		setPage("outbound");
-	}
-
-	public void reset() {
-		setRendered(false);
-		RequestContext.getCurrentInstance().reset("form");
 	}
 
 	public void setPage(String page) {

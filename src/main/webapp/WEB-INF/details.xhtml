@@ -31,39 +31,37 @@
 		<h:outputText value="Price: " />
 		<h:outputText value="#{bookingBean.outboundFlight.price}" />
 	</p:panelGrid>
-	
-	
-	<h2>Inbound Flight</h2>
+
+	<h:panelGroup rendered="#{not searchFlightBean.oneWay}">
+		<h2>Inbound Flight</h2>
 		<p:panelGrid columns="2" layout="grid">
-		<h:outputText value="Departure location: " />
-		<h:outputText
-			value="#{bookingBean.inboundFlight.departureLocation.country}" />
+			<h:outputText value="Departure location: " />
+			<h:outputText
+				value="#{bookingBean.inboundFlight.departureLocation.country}" />
 
-		<h:outputText value="Departure airport: " />
-		<h:outputText
-			value="#{bookingBean.inboundFlight.departureLocation.name}" />
+			<h:outputText value="Departure airport: " />
+			<h:outputText
+				value="#{bookingBean.inboundFlight.departureLocation.name}" />
 
-		<h:outputText value="Arrival location: " />
-		<h:outputText
-			value="#{bookingBean.inboundFlight.arrivalLocation.country}" />
+			<h:outputText value="Arrival location: " />
+			<h:outputText
+				value="#{bookingBean.inboundFlight.arrivalLocation.country}" />
 
-		<h:outputText value="Arrival airport: " />
-		<h:outputText
-			value="#{bookingBean.inboundFlight.arrivalLocation.name}"></h:outputText>
+			<h:outputText value="Arrival airport: " />
+			<h:outputText
+				value="#{bookingBean.inboundFlight.arrivalLocation.name}"></h:outputText>
 
-		<h:outputText value="Departure: " />
-		<h:outputText value="#{bookingBean.inboundFlight.departureTime.date}" />
+			<h:outputText value="Departure: " />
+			<h:outputText value="#{bookingBean.inboundFlight.departureTime.date}" />
 
-		<h:outputText value="Price: " />
-		<h:outputText value="#{bookingBean.inboundFlight.price}" />
-	</p:panelGrid>
-	
-	
-	
+			<h:outputText value="Price: " />
+			<h:outputText value="#{bookingBean.inboundFlight.price}" />
+		</p:panelGrid>
+		</h:panelGroup>
 
-	<h:form>
-		<p:commandButton action="#{flightDetailsBean.bookFlight()}"
-			value="Book flight"></p:commandButton>
-	</h:form>
+		<h:form>
+			<p:commandButton action="#{flightDetailsBean.bookFlight()}"
+				value="Book flight"></p:commandButton>
+		</h:form>
 </ui:composition>
 </html>

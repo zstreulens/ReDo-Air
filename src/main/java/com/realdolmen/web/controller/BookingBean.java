@@ -11,11 +11,11 @@ import javax.inject.Named;
 import org.primefaces.event.SelectEvent;
 
 import com.realdolmen.domain.Flight;
+import com.realdolmen.web.controller.searchFunctionality.SearchFlightBean;
 
 @Named
 @SessionScoped
 public class BookingBean implements Serializable {
-
 	private Flight outboundFlight;
 	private Flight inboundFlight;
 	@Inject
@@ -24,6 +24,46 @@ public class BookingBean implements Serializable {
 	PaymentBean paymentBean;
 	@Inject
 	FlightBean flightBean;
+	@Inject
+	SearchFlightBean searchFlightbean;
+
+	public void bookOutboundFlight(SelectEvent event) {
+		Flight flight = (Flight) event.getObject();
+		setOutboundFlight(flight);
+
+		if (searchFlightbean.isOneWay() == true) {
+			setInboundFlight(null);
+			if (customerbean.getLoggedInCustomer() != null) {
+				flightBean.setPage("payment");
+			} else {
+				try {
+					FacesContext.getCurrentInstance().getExternalContext().redirect("login.jsf");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		} else {
+			flightBean.setPage("inbound");
+		}
+	}
+
+	public void bookInboundFlight(SelectEvent event) {
+		if (event.getObject() != null) {
+			Flight flight = (Flight) event.getObject();
+			setInboundFlight(flight);
+		}
+
+		if (customerbean.getLoggedInCustomer() != null) {
+			paymentBean.findFlight(inboundFlight.getId());
+			flightBean.setPage("payment");
+		} else {
+			try {
+				FacesContext.getCurrentInstance().getExternalContext().redirect("login.jsf");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
 	public Flight getOutboundFlight() {
 		return outboundFlight;
@@ -40,28 +80,4 @@ public class BookingBean implements Serializable {
 	public void setInboundFlight(Flight inboundFlight) {
 		this.inboundFlight = inboundFlight;
 	}
-
-	public void bookOutboundFlight(SelectEvent event) {
-		Flight flight = (Flight)event.getObject();
-		setOutboundFlight(flight);
-			flightBean.setPage("inbound");
-	}
-		
-		public void bookInboundFlight(SelectEvent event) {
-			Flight flight = (Flight)event.getObject();
-			setInboundFlight(flight);
-			if (customerbean.getLoggedInCustomer() != null) {
-				paymentBean.findFlight(inboundFlight.getId());
-				flightBean.setPage("payment");
-			} else {
-				try {
-					FacesContext.getCurrentInstance().getExternalContext().redirect("login.jsf");
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-	}
-
-	
-	
 }
