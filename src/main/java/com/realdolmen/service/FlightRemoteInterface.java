@@ -1,5 +1,6 @@
 package com.realdolmen.service;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Remote;
@@ -10,8 +11,8 @@ public interface FlightRemoteInterface {
 
 	List<Flight> findFlights();
 	Flight createFlight(Flight flight);
-	List<Flight> findFlightFromQuery(String departId, String arriveId);
 	public Flight findById(Long id);
+	List<Flight> findFlightFromQuery(String departId, String arriveId, Date departureDate, Date returnDate);
 
 }
 

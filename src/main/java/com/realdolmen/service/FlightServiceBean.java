@@ -1,5 +1,6 @@
 package com.realdolmen.service;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -27,8 +28,8 @@ public class FlightServiceBean implements FlightRemoteInterface{
 	}
 	
 	@Override
-	public List<Flight> findFlightFromQuery(String departId, String arriveId) {
-		return flightRepository.findFlightWithParams(departId, arriveId);
+	public List<Flight> findFlightFromQuery(String departId, String arriveId, Date departureDate, Date returnDate) {
+		return flightRepository.findFlightWithParams(departId, arriveId, departureDate, returnDate);
 	}
 	
 	public Flight findById(Long id) {
