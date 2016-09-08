@@ -29,26 +29,29 @@ public class FlightRepository {
 		return em.createQuery("select f from Flight f", Flight.class).getResultList();
 	}
 
-	public List<Flight> findFlightWithParams(String departId, String arriveId, Date departureDate, Date returnDate) {
-		Date departMinusOneDay;
-		Date departPlusOneDay;
-
+	public List<Flight> findFlightWithParams(String departId, String arriveId, Date departureDate) {
+		Date departMinusDays;
+		Date departPlusDays;
+		
 		if (departureDate == null) {
 			departureDate = new Date();
-			departMinusOneDay = addDays(departureDate, -1);
-			departPlusOneDay = addDays(departureDate, 30);
+			departMinusDays = addDays(departureDate, -1);
+			departPlusDays = addDays(departureDate, 30);
 		} else {
-			departMinusOneDay = addDays(departureDate, -1);
-			departPlusOneDay = addDays(departureDate, 1);
+			departMinusDays = addDays(departureDate, -1);
+			departPlusDays = addDays(departureDate, 1);
 		}
+		
+		
 
 		return em
 				.createQuery(
-						"SELECT f FROM Flight f WHERE f.departureLocation.country = :departLoc AND f.arrivalLocation.country = :arrivalLoc AND (f.departureTime BETWEEN :departMinusOneDay AND :departPlusOneDay))",
+						"SELECT f FROM Flight f WHERE f.departureLocation.country = :departLoc AND f.arrivalLocation.country = :arrivalLoc AND (f.departureTime BETWEEN :departMinusDays AND :departPlusDays))",
 						Flight.class)
 				.setParameter("arrivalLoc", arriveId).setParameter("departLoc", departId)
-				.setParameter("departMinusOneDay", departMinusOneDay, TemporalType.TIMESTAMP)
-				.setParameter("departPlusOneDay", departPlusOneDay, TemporalType.TIMESTAMP).getResultList();
+				.setParameter("departMinusDays", departMinusDays, TemporalType.TIMESTAMP)
+				.setParameter("departPlusDays", departPlusDays, TemporalType.TIMESTAMP)
+				.getResultList();
 	}
 
 	private Date addDays(Date originalDate, int addedDays) {

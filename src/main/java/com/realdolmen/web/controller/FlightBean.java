@@ -88,8 +88,8 @@ public void resetAction() {
 	}
 
 	public void submitAction() {
-		outboundFlights = flightService.findFlightFromQuery(fromLocation, toLocation, departureDate, returnDate);
-		inboundFlights = flightService.findFlightFromQuery(toLocation, fromLocation, departureDate, returnDate);
+		outboundFlights = flightService.findFlightFromQuery(fromLocation, toLocation, departureDate);
+		inboundFlights = flightService.findFlightFromQuery(toLocation, fromLocation, returnDate);
 		setPage("outbound");
 	}
 

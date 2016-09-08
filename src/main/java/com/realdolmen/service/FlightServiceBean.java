@@ -28,8 +28,8 @@ public class FlightServiceBean implements FlightRemoteInterface {
 	}
 
 	@Override
-	public List<Flight> findFlightFromQuery(String departId, String arriveId, Date departureDate, Date returnDate) {
-		return flightRepository.findFlightWithParams(departId, arriveId, departureDate, returnDate);
+	public List<Flight> findFlightFromQuery(String departId, String arriveId, Date departureDate) {
+		return flightRepository.findFlightWithParams(departId, arriveId, departureDate);
 	}
 
 	@Override
