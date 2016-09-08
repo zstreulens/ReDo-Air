@@ -30,43 +30,35 @@ public class FlightRepository {
 	}
 
 	public List<Flight> findFlightWithParams(String departId, String arriveId, Date departureDate, Date returnDate) {
-		Date departPlus = null;
-		Date returnPlus = null;
-		
+		Date departMinusOneDay;
+		Date departPlusOneDay;
+
 		if (departureDate == null) {
 			departureDate = new Date();
-			departPlus = addDays(departureDate, 200);
+			departMinusOneDay = addDays(departureDate, -1);
+			departPlusOneDay = addDays(departureDate, 30);
 		} else {
-			departPlus = addDays(departureDate, 2);
+			departMinusOneDay = addDays(departureDate, -1);
+			departPlusOneDay = addDays(departureDate, 1);
 		}
 
-		if (returnDate == null) {
-			returnDate = new Date();
-			returnPlus = addDays(returnDate, 200);
-		} else {
-			returnPlus = addDays(returnDate, 2);
-		}
-
-		return em.createQuery(
-				"SELECT f FROM Flight f WHERE f.arrivalLocation.country = :arrivalLoc AND f.departureLocation.country = :departLoc AND (f.arrivalTime BETWEEN :departDate AND :departPlus) AND (f.departureTime BETWEEN :returnDate AND :returnPlus)",
-				Flight.class)
-				.setParameter("arrivalLoc", (arriveId != null ? arriveId : "" ))
-				.setParameter("departLoc", (departId != null ? departId : "" ))
-				.setParameter("departDate", departureDate, TemporalType.TIMESTAMP)
-				.setParameter("departPlus", departPlus, TemporalType.TIMESTAMP)
-				.setParameter("returnDate", returnDate, TemporalType.TIMESTAMP)
-				.setParameter("returnPlus", returnPlus, TemporalType.TIMESTAMP)
-				.getResultList();
+		return em
+				.createQuery(
+						"SELECT f FROM Flight f WHERE f.departureLocation.country = :departLoc AND f.arrivalLocation.country = :arrivalLoc AND (f.departureTime BETWEEN :departMinusOneDay AND :departPlusOneDay))",
+						Flight.class)
+				.setParameter("arrivalLoc", arriveId).setParameter("departLoc", departId)
+				.setParameter("departMinusOneDay", departMinusOneDay, TemporalType.TIMESTAMP)
+				.setParameter("departPlusOneDay", departPlusOneDay, TemporalType.TIMESTAMP).getResultList();
 	}
-	
+
 	private Date addDays(Date originalDate, int addedDays) {
 		Calendar c = Calendar.getInstance();
 		c.setTime(originalDate);
 		c.add(Calendar.DAY_OF_MONTH, addedDays);
 		return c.getTime();
 	}
-	
-	public Flight update(Flight flight){
+
+	public Flight update(Flight flight) {
 		em.merge(flight);
 		return flight;
 	}

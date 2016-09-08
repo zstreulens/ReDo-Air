@@ -21,7 +21,7 @@
 			<p:dataTable id="inboundResults" var="flight"
 				value="#{flightBean.inboundFlights}" selectionMode="single"
 				rowKey="#{flight.id}" sortBy="#{flight.redoPrice}"
-				rendered="#{not searchFlightBean.oneWay}">
+				rendered="#{not flightBean.oneWay}">
 				<p:ajax event="rowSelect"
 					listener="#{bookingBean.bookInboundFlight}" update=":content">
 				</p:ajax>

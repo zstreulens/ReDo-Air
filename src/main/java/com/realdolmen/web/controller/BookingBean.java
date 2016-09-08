@@ -11,7 +11,6 @@ import javax.inject.Named;
 import org.primefaces.event.SelectEvent;
 
 import com.realdolmen.domain.Flight;
-import com.realdolmen.web.controller.searchFunctionality.SearchFlightBean;
 
 @Named
 @SessionScoped
@@ -24,14 +23,12 @@ public class BookingBean implements Serializable {
 	PaymentBean paymentBean;
 	@Inject
 	FlightBean flightBean;
-	@Inject
-	SearchFlightBean searchFlightbean;
 
 	public void bookOutboundFlight(SelectEvent event) {
 		Flight flight = (Flight) event.getObject();
 		setOutboundFlight(flight);
 
-		if (searchFlightbean.isOneWay() == true) {
+		if (flightBean.isOneWay() == true) {
 			setInboundFlight(null);
 			if (customerbean.getLoggedInCustomer() != null) {
 				flightBean.setPage("payment");

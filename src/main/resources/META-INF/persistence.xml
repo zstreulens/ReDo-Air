@@ -7,6 +7,13 @@
 
     <persistence-unit name="MyPersistenceUnit" transaction-type="JTA">
         <jta-data-source>java:/rd/datasources/ReDoAirSource</jta-data-source>
+        
+           <properties>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
+        
+        
     </persistence-unit>
 
     <!--

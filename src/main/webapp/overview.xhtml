@@ -8,6 +8,7 @@
 <ui:composition template="/facelet-template.xhtml">
 	<ui:define name="pageTitle">Overview</ui:define>
 	<ui:define name="pageContent">
+	<h1>Booking overview for #{customerBean.customer.fullName}</h1>
 		<p:dataTable id="bookingsForCustomer" var="bookings"
 			value="#{overviewBean.bookings}">
 			<p:ajax event="rowSelect"></p:ajax>

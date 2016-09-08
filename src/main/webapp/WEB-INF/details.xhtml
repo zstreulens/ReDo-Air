@@ -3,9 +3,15 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+      xmlns:rd="http://java.sun.com/jsf/composite/realdolmen">
 
 <ui:composition>
+
+	<rd:steps page="4" />
+	<div id="searchContainer">
+
+
 	<h1>Flight details</h1>
 	<h2>Outbound flights</h2>
 	<p:panelGrid columns="2" layout="grid">
@@ -32,7 +38,7 @@
 		<h:outputText value="#{bookingBean.outboundFlight.redoPrice}" />
 	</p:panelGrid>
 
-	<h:panelGroup rendered="#{not searchFlightBean.oneWay}">
+	<h:panelGroup rendered="#{not flightBean.oneWay}">
 		<h2>Inbound Flight</h2>
 		<p:panelGrid columns="2" layout="grid">
 			<h:outputText value="Departure location: " />
@@ -63,5 +69,8 @@
 			<p:commandButton action="#{flightDetailsBean.bookFlight()}"
 				value="Book flight"></p:commandButton>
 		</h:form>
+		
+			</div>
+		
 </ui:composition>
 </html>

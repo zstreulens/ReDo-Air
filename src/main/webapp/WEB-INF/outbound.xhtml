@@ -17,7 +17,7 @@
 			<h2>
 				<p:outputLabel for="outboundResults" value="Departure"  />
 			</h2>
-			<p:dataTable id="outboundResults" var="flight" scrollable="true" scrollHeight="100%"
+			<p:dataTable id="outboundResults" var="flight"
 				value="#{flightBean.outboundFlights}" selectionMode="single"
 				rowKey="#{flight.id}" sortBy="#{flight.redoPrice}">
 				<p:ajax event="rowSelect"

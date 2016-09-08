@@ -64,11 +64,15 @@ public void submitAction() {
 	inboundFlights = flightService.findFlightFromQuery(toLocation, fromLocation, departureDate, returnDate);
 	setPage("outbound");
 }
-
-public void reset() {
-	setRendered(false);
-	RequestContext.getCurrentInstance().reset("form");
+public void resetAction() {
+	fromLocation = "";
+	toLocation = "";
+	departureDate = null;
+	returnDate = null;
+	oneWay = true;
+	page = "search";
 }
+
 	public FlightServiceBean getFlightService() {
 		return flightService;
 	}

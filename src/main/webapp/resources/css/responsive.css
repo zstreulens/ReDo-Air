@@ -54,13 +54,15 @@ body {
 	position: relative;
 }
 
-h1, h2, h3, h4, h5, h6 {
+body h1, body h2, body h3, body h4, body h5, body h6 {
 	font-family: "lato-regular", Helvetica, Arial, sans-serif;
 	letter-spacing: 1px;
+	color: white;
 }
 
-h1 {
+body h1 {
 	font-size: 2em;
+	padding: 1rem;
 	margin: .67em 0
 }
 
@@ -113,19 +115,18 @@ h1, h2, h3, h4, h5, h6 {
 #searchContainer {
 	position: absolute;
 	width: 95%;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	max-height: 80%;
+	top: 12rem;
+	overflow: auto;
 }
 
-#searchContainer div {
-	
-}
 
 #globalContainer .ui-widget {
 	font-size: 2.5rem;
-	color: rgb(245, 245, 245);
 	margin: 1.5rem;
+}
+#globalContainer{
+	color: rgb(245, 245, 245);
 }
 
 td {
@@ -158,6 +159,10 @@ header nav.mainMenu a {
 #buttons\:navigationForm\:nextButton {
 	position: absolute;
 	right: 0.5rem;	
+}
+
+#form\:submitButton {
+	padding: 2rem;
 }
 
 #searchframe, #searchButtons {
@@ -258,6 +263,8 @@ header nav.mainMenu a {
 .ui-steps.custom .ui-state-highlight a {
 	color: #f9dd34;
 }
+
+
 
 /*  Header Section  */
 header {
