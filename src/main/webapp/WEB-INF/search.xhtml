@@ -9,9 +9,9 @@
 <ui:composition>
 	<rd:steps page="0" />
 
+	<h:form id="form">
 
-	<div id="searchContainer">
-		<h:form id="form">
+		<div id="searchContainer">
 			<!-- 		RADIO BUTTON  -->
 			<div id="oneWayFrame">
 				<h:panelGrid columns="2">
@@ -33,18 +33,19 @@
 					filterMatchMode="startsWith">
 					<p:ajax listener="#{flightBean.onDepartureCountryChange}"
 						update="departureAirport" />
-						<f:selectItem itemLabel="Select country" itemValue=""
+					<f:selectItem itemLabel="Select country" itemValue=""
 						noSelectionOption="true" />
 					<f:selectItems value="#{flightBean.countries}" var="location"
 						itemLabel="#{location}" itemValue="#{location}" />
 				</p:selectOneMenu>
 
 				<p:outputLabel for="departureAirport" value="From airport " />
-				<p:selectOneMenu id="departureAirport" value="#{flightBean.fromAirport}"
-					style="width:150px">
+				<p:selectOneMenu id="departureAirport"
+					value="#{flightBean.fromAirport}" style="width:150px">
 					<f:selectItem itemLabel="Select airport" itemValue=""
 						noSelectionOption="true" />
-					<f:selectItems value="#{flightBean.departureAirports}" itemLabel="#{flightBean.fromAirport}" />
+					<f:selectItems value="#{flightBean.departureAirports}"
+						itemLabel="#{flightBean.fromAirport}" />
 				</p:selectOneMenu>
 
 				<p:outputLabel for="arrivalLocation" value="To country" />
@@ -54,18 +55,19 @@
 					filterMatchMode="startsWith">
 					<p:ajax listener="#{flightBean.onArrivalCountryChange}"
 						update="arrivalAirport" />
-						<f:selectItem itemLabel="Select country" itemValue=""
+					<f:selectItem itemLabel="Select country" itemValue=""
 						noSelectionOption="true" />
 					<f:selectItems value="#{flightBean.countries}" var="location"
 						itemLabel="#{location}" itemValue="#{location}" />
 				</p:selectOneMenu>
-				
+
 				<p:outputLabel for="arrivalAirport" value="To airport " />
 				<p:selectOneMenu id="arrivalAirport" value="#{flightBean.toAirport}"
 					style="width:150px">
 					<f:selectItem itemLabel="Select airport" itemValue=""
 						noSelectionOption="true" />
-					<f:selectItems value="#{flightBean.arrivalAirports}" itemLabel="#{flightBean.toAirport}" />
+					<f:selectItems value="#{flightBean.arrivalAirports}"
+						itemLabel="#{flightBean.toAirport}" />
 				</p:selectOneMenu>
 
 				<p:outputLabel for="departureDate" value="Departure" />
@@ -99,22 +101,23 @@
 					<f:selectItem itemLabel="Brussels Airlines" itemValue="2" />
 					<f:selectItem itemLabel="ANA" itemValue="3" />
 				</p:selectOneMenu>
-				<p:commandButton styleClass="btn_style" id="submitButton"
-					actionListener="#{flightBean.submitAction}" value="Find"
-					update=":content">
-					<f:ajax execute="@form" render="@form" />
-				</p:commandButton>
-				<p:commandButton styleClass="btn_style" id="resetButton"
-					actionListener="#{flightBean.resetAction()}" value="Reset"
-					update=":content">
-					<f:ajax execute="@form" render="@form" />
-				</p:commandButton>
 			</h:panelGrid>
+		</div>
+		<div id="searchButtons">
+			<p:commandButton styleClass="btn_style" id="submitButton"
+				actionListener="#{flightBean.submitAction}" value="Find"
+				update=":content">
+				<f:ajax execute="@form" render="@form" />
+			</p:commandButton>
+			<p:commandButton styleClass="btn_style" id="resetButton"
+				actionListener="#{flightBean.resetAction()}" value="Reset"
+				update=":content">
+				<f:ajax execute="@form" render="@form" />
+			</p:commandButton>
+		</div>
+	</h:form>
 
-		</h:form>
-
-		<!-- 		SEARCH and RESET BUTTON  -->
-	</div>
+	<!-- 		SEARCH and RESET BUTTON  -->
 
 </ui:composition>
 </html>

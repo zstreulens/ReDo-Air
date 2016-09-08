@@ -148,7 +148,7 @@ header nav.mainMenu a {
 	margin: 1rem;
 }
 
-#buttons\:navigationForm {
+#buttons\:navigationForm, #searchButtons {
 	position: absolute;
 	bottom: 0.5rem;
 	width: 100%;
