@@ -51,7 +51,7 @@
 	</div>
 
 	<!-- 		SEARCH and RESET BUTTON  -->
-	<rd:searchButton id="buttons" nextPage="inbound" previousPage="search" />
+	<rd:searchButton id="buttons" nextPage="inbound" previousPage="search" disableNextPage="#{empty bookingBean.outboundFlight.id}"/>
 
 
 </ui:composition>

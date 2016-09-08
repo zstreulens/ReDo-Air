@@ -117,6 +117,7 @@ h1, h2, h3, h4, h5, h6 {
 	width: 95%;
 	max-height: 80%;
 	top: 12rem;
+	bottom: 10rem;
 	overflow: auto;
 }
 

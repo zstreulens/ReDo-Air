@@ -9,6 +9,7 @@
 <cc:interface>
 	<cc:attribute name="nextPage" />
 	<cc:attribute name="previousPage" />
+	<cc:attribute name="disableNextPage" />
 </cc:interface>
 
 <cc:implementation>
@@ -19,7 +20,7 @@
 			</p:commandButton>
 			<p:commandButton styleClass="btn_style" id="nextButton"
 				actionListener="#{flightBean.setPage(cc.attrs.nextPage)}"
-				value="Next" update=":content">
+				value="Next" update=":content" disabled="#{cc.attrs.disableNextPage}">
 			</p:commandButton>
 	</h:form>
 </cc:implementation>

@@ -33,7 +33,7 @@ public class FlightRepositoryTest extends JpaPersistenceTest {
 	
 	@Test
 	public void shouldFindFlightByParams(){
-		List<Flight> flights = flightRepository.findFlightWithParams("Belgium", "Spain", null, null);
+		List<Flight> flights = flightRepository.findFlightWithParams("Belgium", "Spain", null);
 		assertEquals(1, flights.size());
 	}
 }
