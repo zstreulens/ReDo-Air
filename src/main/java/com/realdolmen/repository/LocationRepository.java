@@ -28,8 +28,12 @@ public class LocationRepository {
 		return em.createQuery("SELECT DISTINCT l.country FROM Location l", String.class).getResultList();
 	}
 	
-	public Location findByCountry(String country){
-		return em.createNamedQuery("Location.findByCountry", Location.class).setParameter("country", country).getSingleResult();
+	public List<String> findAirports(){
+		return em.createQuery("SELECT DISTINCT l.name FROM Location l", String.class).getResultList();
+	}
+	
+	public Location findByAirport(String airport){
+		return em.createNamedQuery("Location.findByCountry", Location.class).setParameter("name", airport).getSingleResult();
 	}
 
 }

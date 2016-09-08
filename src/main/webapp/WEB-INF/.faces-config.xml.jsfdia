@@ -54,11 +54,26 @@
   SHAPE="32,337,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#company.xhtml:0" NAME="item"
    PATH="/company.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="success::#addFlight.xhtml" NAME="output"
+   <PROCESS-ITEM-OUTPUT ID="loggedIn::#addFlight.xhtml" NAME="output"
     PATH="/addFlight.xhtml" TARGET="rules:#addFlight.xhtml"
-    TITLE="success" model-entity="JSFProcessItemOutput"/>
+    TITLE="loggedIn" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="registered::#company.xhtml" NAME="output1"
+    PATH="/company.xhtml" TARGET="rules:#company.xhtml"
+    TITLE="registered" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="failure::#company.xhtml" NAME="output2"
+    PATH="/company.xhtml" TARGET="rules:#company.xhtml" TITLE="failure" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#addFlight.xhtml" PATH="/addFlight.xhtml"
-  SHAPE="240,353,0,0" model-entity="JSFProcessGroup"/>
+  SHAPE="240,353,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#addFlight.xhtml:0" NAME="item"
+   PATH="/addFlight.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="flightAdded::#addFlight.xhtml" NAME="output"
+    PATH="/addFlight.xhtml" TARGET="rules:#addFlight.xhtml"
+    TITLE="flightAdded" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="failure::#addFlight.xhtml" NAME="output1"
+    PATH="/addFlight.xhtml" TARGET="rules:#addFlight.xhtml"
+    TITLE="failure" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
 </PROCESS>

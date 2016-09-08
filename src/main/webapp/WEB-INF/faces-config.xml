@@ -49,7 +49,26 @@
 	<navigation-rule>
 		<from-view-id>/company.xhtml</from-view-id>
 		<navigation-case>
-			<from-outcome>success</from-outcome>
+			<from-outcome>loggedIn</from-outcome>
+			<to-view-id>/addFlight.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>registered</from-outcome>
+			<to-view-id>/company.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>failure</from-outcome>
+			<to-view-id>/company.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/addFlight.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>flightAdded</from-outcome>
+			<to-view-id>/addFlight.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>failure</from-outcome>
 			<to-view-id>/addFlight.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
