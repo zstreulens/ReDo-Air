@@ -1,6 +1,7 @@
 package com.realdolmen.web.controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -24,7 +25,9 @@ public class FlightBean implements Serializable {
 	List<Flight> outboundFlights;
 	List<Flight> inboundFlights;
 	List<String> countries;
-	List<String> airports;
+	List<String> allAirports;
+	List<String> departureAirports;
+	List<String> arrivalAirports;
 	Flight newFlight;
 	Location departureLocation;
 	Location arrivalLocation;
@@ -55,25 +58,28 @@ public class FlightBean implements Serializable {
 	public void setUp() {
 		allFlights = flightService.findFlights();
 		countries = locationService.findCountries();
-		airports = locationService.findAirports();
+		allAirports = locationService.findAirports();
 		outboundFlights = null;
 		page = "search";
 		oneWay = true;
 		currentDate = Calendar.getInstance().getTime();
 		newFlight = new Flight();
+		onDepartureCountryChange();
+		onArrivalCountryChange();
 	}
 
 	public FlightBean() {
 	}
 
-public void resetAction() {
-	fromLocation = "";
-	toLocation = "";
-	departureDate = null;
-	returnDate = null;
-	oneWay = true;
-	page = "search";
-}
+	public void resetAction() {
+		fromLocation = "";
+		toLocation = "";
+		departureDate = null;
+		returnDate = null;
+		oneWay = true;
+		page = "search";
+	}
+
 	public String addFlight() {
 		message = null;
 		try {
@@ -114,9 +120,41 @@ public void resetAction() {
 		setPage("outbound");
 	}
 
+	public void onDepartureCountryChange() {
+		if (fromLocation != null && !fromLocation.equals("")) {
+			departureAirports = locationService.findAirportsByCountry(fromLocation);
+		} else {
+			departureAirports = new ArrayList<>();
+		}
+	}
+
+	public void onArrivalCountryChange() {
+		if (toLocation != null && !toLocation.equals("")) {
+			arrivalAirports = locationService.findAirportsByCountry(toLocation);
+		} else {
+			arrivalAirports = new ArrayList<>();
+		}
+	}
+
 	public void reset() {
 		setRendered(false);
 		RequestContext.getCurrentInstance().reset("form");
+	}
+
+	public List<String> getDepartureAirports() {
+		return departureAirports;
+	}
+
+	public void setDepartureAirports(List<String> departureAirports) {
+		this.departureAirports = departureAirports;
+	}
+
+	public List<String> getArrivalAirports() {
+		return arrivalAirports;
+	}
+
+	public void setArrivalAirports(List<String> arrivalAirports) {
+		this.arrivalAirports = arrivalAirports;
 	}
 
 	public String getMessage() {
@@ -143,12 +181,12 @@ public void resetAction() {
 		this.toAirport = toAirport;
 	}
 
-	public List<String> getAirports() {
-		return airports;
+	public List<String> getAllAirports() {
+		return allAirports;
 	}
 
-	public void setAirports(List<String> airports) {
-		this.airports = airports;
+	public void setAllAirports(List<String> airports) {
+		this.allAirports = airports;
 	}
 
 	public Location getDepartureLocation() {

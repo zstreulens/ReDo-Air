@@ -19,7 +19,7 @@
 					converter="omnifaces.SelectItemsConverter"
 					value="#{flightBean.fromAirport}" var="f" filter="true"
 					filterMatchMode="startsWith">
-					<f:selectItems value="#{flightBean.airports}" var="location"
+					<f:selectItems value="#{flightBean.allAirports}" var="location"
 						itemLabel="#{location}" itemValue="#{location}" />
 				</p:selectOneMenu>
 
@@ -28,7 +28,7 @@
 					converter="omnifaces.SelectItemsConverter"
 					value="#{flightBean.toAirport}" var="f" filter="true"
 					filterMatchMode="startsWith">
-					<f:selectItems value="#{flightBean.airports}" var="location"
+					<f:selectItems value="#{flightBean.allAirports}" var="location"
 						itemLabel="#{location}" itemValue="#{location}" />
 				</p:selectOneMenu>
 

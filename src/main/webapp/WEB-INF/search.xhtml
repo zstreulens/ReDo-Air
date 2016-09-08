@@ -15,8 +15,7 @@
 			<!-- 		RADIO BUTTON  -->
 			<div id="oneWayFrame">
 				<h:panelGrid columns="2">
-					<p:selectOneRadio id="toggleReturn"
-						value="#{flightBean.oneWay}">
+					<p:selectOneRadio id="toggleReturn" value="#{flightBean.oneWay}">
 						<f:selectItem itemLabel="One way" itemValue="true" />
 						<f:selectItem id="return" itemLabel="Return" itemValue="false" />
 						<f:ajax render="returnDate" />
@@ -27,27 +26,50 @@
 
 			<!-- 		SELECTION  -->
 			<h:panelGrid columns="4">
-				<p:outputLabel for="departureLocation" value="From" />
+				<p:outputLabel for="departureLocation" value="From country " />
 				<p:selectOneMenu id="departureLocation"
 					converter="omnifaces.SelectItemsConverter"
 					value="#{flightBean.fromLocation}" var="f" filter="true"
 					filterMatchMode="startsWith">
+					<p:ajax listener="#{flightBean.onDepartureCountryChange}"
+						update="departureAirport" />
+						<f:selectItem itemLabel="Select country" itemValue=""
+						noSelectionOption="true" />
 					<f:selectItems value="#{flightBean.countries}" var="location"
 						itemLabel="#{location}" itemValue="#{location}" />
 				</p:selectOneMenu>
 
-				<p:outputLabel for="arrivalLocation" value="To" />
+				<p:outputLabel for="departureAirport" value="From airport " />
+				<p:selectOneMenu id="departureAirport" value="#{flightBean.fromAirport}"
+					style="width:150px">
+					<f:selectItem itemLabel="Select airport" itemValue=""
+						noSelectionOption="true" />
+					<f:selectItems value="#{flightBean.departureAirports}" itemLabel="#{flightBean.fromAirport}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel for="arrivalLocation" value="To country" />
 				<p:selectOneMenu id="arrivalLocation"
 					converter="omnifaces.SelectItemsConverter"
 					value="#{flightBean.toLocation}" var="f" filter="true"
 					filterMatchMode="startsWith">
+					<p:ajax listener="#{flightBean.onArrivalCountryChange}"
+						update="arrivalAirport" />
+						<f:selectItem itemLabel="Select country" itemValue=""
+						noSelectionOption="true" />
 					<f:selectItems value="#{flightBean.countries}" var="location"
 						itemLabel="#{location}" itemValue="#{location}" />
 				</p:selectOneMenu>
+				
+				<p:outputLabel for="arrivalAirport" value="To airport " />
+				<p:selectOneMenu id="arrivalAirport" value="#{flightBean.toAirport}"
+					style="width:150px">
+					<f:selectItem itemLabel="Select airport" itemValue=""
+						noSelectionOption="true" />
+					<f:selectItems value="#{flightBean.arrivalAirports}" itemLabel="#{flightBean.toAirport}" />
+				</p:selectOneMenu>
 
 				<p:outputLabel for="departureDate" value="Departure" />
-				<p:calendar id="departureDate"
-					value="#{flightBean.departureDate}"
+				<p:calendar id="departureDate" value="#{flightBean.departureDate}"
 					mindate="#{flightBean.currentDate}" pages="2"
 					placeholder="Enter date">
 					<p:ajax event="dateSelect" update="returnDate" />
@@ -61,18 +83,20 @@
 					placeholder="Enter date" />
 
 				<p:outputLabel for="cabinClass" value="Cabin class" />
-				<p:selectOneMenu id="cabinClass"
-					value="#{flightBean.cabinClass}" effect="fade">
-					<f:selectItem itemLabel="Select cabin class" itemValue="" noSelectionOption="true"/>
+				<p:selectOneMenu id="cabinClass" value="#{flightBean.cabinClass}"
+					effect="fade">
+					<f:selectItem itemLabel="Select cabin class" itemValue=""
+						noSelectionOption="true" />
 					<f:selectItem itemLabel="economy" itemValue="Economy" />
 					<f:selectItem itemLabel="business" itemValue="Business" />
 					<f:selectItem itemLabel="first class" itemValue="First Class" />
 				</p:selectOneMenu>
 
 				<p:outputLabel for="preferredAirline" value="Preferred airline" />
-				<p:selectOneMenu id="preferredAirline"
-					value="#{flightBean.airline}" effect="fade" >
-					<f:selectItem itemLabel="Select Airline" itemValue="" noSelectionOption="true"/>
+				<p:selectOneMenu id="preferredAirline" value="#{flightBean.airline}"
+					effect="fade">
+					<f:selectItem itemLabel="Select Airline" itemValue=""
+						noSelectionOption="true" />
 					<f:selectItem itemLabel="Lufthansa" itemValue="1" />
 					<f:selectItem itemLabel="Brussels Airlines" itemValue="2" />
 					<f:selectItem itemLabel="ANA" itemValue="3" />
