@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
-@NamedQuery(name = "Location.findByCountry", query = "SELECT l FROM Location l WHERE l.country = :country")
+@NamedQuery(name = "Location.findByCountry", query = "SELECT l FROM Location l WHERE l.name = :name")
 public class Location {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

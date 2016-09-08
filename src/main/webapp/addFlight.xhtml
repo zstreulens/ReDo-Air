@@ -10,40 +10,47 @@
 	<ui:define name="pageTitle">Add flight</ui:define>
 	<ui:define name="pageContent">
 
-		<h1>Add a new flight</h1>
+		<h1 style="color: white">Add a new flight</h1>
+		#{flightBean.message}
 		<h:form>
-		<h:panelGrid columns="2">
-			<p:outputLabel for="departureLocation" value="From " />
-			<p:selectOneMenu id="departureLocation"
-				converter="omnifaces.SelectItemsConverter"
-				value="#{flightBean.fromLocation}" var="f" filter="true"
-				filterMatchMode="startsWith">
-				<f:selectItems value="#{flightBean.countries}" var="location"
-					itemLabel="#{location}" itemValue="#{location}" />
-			</p:selectOneMenu>
+			<h:panelGrid columns="2">
+				<p:outputLabel for="departureLocation" value="From " />
+				<p:selectOneMenu id="departureLocation"
+					converter="omnifaces.SelectItemsConverter"
+					value="#{flightBean.fromAirport}" var="f" filter="true"
+					filterMatchMode="startsWith">
+					<f:selectItems value="#{flightBean.airports}" var="location"
+						itemLabel="#{location}" itemValue="#{location}" />
+				</p:selectOneMenu>
 
-			<p:outputLabel for="arrivalLocation" value="To " />
-			<p:selectOneMenu id="arrivalLocation"
-				converter="omnifaces.SelectItemsConverter"
-				value="#{flightBean.toLocation}" var="f" filter="true"
-				filterMatchMode="startsWith">
-				<f:selectItems value="#{flightBean.countries}" var="location"
-					itemLabel="#{location}" itemValue="#{location}" />
-			</p:selectOneMenu>
+				<p:outputLabel for="arrivalLocation" value="To " />
+				<p:selectOneMenu id="arrivalLocation"
+					converter="omnifaces.SelectItemsConverter"
+					value="#{flightBean.toAirport}" var="f" filter="true"
+					filterMatchMode="startsWith">
+					<f:selectItems value="#{flightBean.airports}" var="location"
+						itemLabel="#{location}" itemValue="#{location}" />
+				</p:selectOneMenu>
 
-			<p:outputLabel for="departureDate" value="Departure " />
-			<p:calendar id="departureDate" value="#{flightBean.newFlight.departureTime}"
-				mindate="#{flightBean.currentDate}" pages="2"
-				placeholder="Enter date">
-			</p:calendar>
-			<p:outputLabel for="arrivalDate" value="Arrival" />
-			<p:calendar id="arrivalDate" value="#{flightBean.newFlight.arrivalTime}"
-				mindate="#{flightBean.currentDate}" pages="2"
-				placeholder="Enter date" />
-			<p:outputLabel for="basePrice" value="Base price"/>
-			<p:inputText id="basePrice" value="#{flightBean.newFlight.basePrice}"/>
-		</h:panelGrid>
-		<p:commandButton value="Add flight" action="#{flightBean.addFlight()}"></p:commandButton>
+				<p:outputLabel for="departureDate" value="Departure " />
+				<p:calendar id="departureDate"
+					value="#{flightBean.newFlight.departureTime}"
+					mindate="#{flightBean.currentDate}" pages="2"
+					placeholder="Enter date">
+					<p:ajax event="dateSelect" update="arrivalDate"/>
+					<p:ajax event="change" update="arrivalDate"/>
+				</p:calendar>
+				<p:outputLabel for="arrivalDate" value="Arrival" />
+				<p:calendar id="arrivalDate"
+					value="#{flightBean.newFlight.arrivalTime}"
+					mindate="#{flightBean.newFlight.departureTime}" pages="2"
+					placeholder="Enter date" />
+				<p:outputLabel for="basePrice" value="Base price" />
+				<p:inputText id="basePrice"
+					value="#{flightBean.newFlight.basePrice}" />
+			</h:panelGrid>
+			<p:commandButton styleClass="btn_style" value="Add flight"
+				action="#{flightBean.addFlight}" id="addFlight"></p:commandButton>
 		</h:form>
 	</ui:define>
 </ui:composition>

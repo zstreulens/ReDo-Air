@@ -14,7 +14,6 @@ import org.primefaces.context.RequestContext;
 
 import com.realdolmen.domain.Flight;
 import com.realdolmen.domain.Location;
-import com.realdolmen.repository.LocationRepository;
 import com.realdolmen.service.FlightServiceBean;
 import com.realdolmen.service.LocationServiceBean;
 
@@ -25,6 +24,7 @@ public class FlightBean implements Serializable {
 	List<Flight> outboundFlights;
 	List<Flight> inboundFlights;
 	List<String> countries;
+	List<String> airports;
 	Flight newFlight;
 	Location departureLocation;
 	Location arrivalLocation;
@@ -35,6 +35,9 @@ public class FlightBean implements Serializable {
 
 	String fromLocation;
 	String toLocation;
+	String fromAirport;
+	String toAirport;
+	String message;
 	private Date currentDate;
 	private Date departureDate;
 	private Date returnDate;
@@ -46,14 +49,13 @@ public class FlightBean implements Serializable {
 	@Inject
 	FlightServiceBean flightService;
 	@Inject
-	LocationRepository locationRepository;
-	@Inject
 	LocationServiceBean locationService;
 
 	@PostConstruct
 	public void setUp() {
 		allFlights = flightService.findFlights();
 		countries = locationService.findCountries();
+		airports = locationService.findAirports();
 		outboundFlights = null;
 		page = "search";
 		oneWay = true;
@@ -73,18 +75,37 @@ public void resetAction() {
 	page = "search";
 }
 	public String addFlight() {
+		message = null;
 		try {
-			departureLocation = locationService.findLocationByCountry(fromLocation);
-			arrivalLocation = locationService.findLocationByCountry(toLocation);
+			departureLocation = locationService.findLocationByAirport(fromAirport);
+			arrivalLocation = locationService.findLocationByAirport(toAirport);
 			newFlight.setDepartureLocation(departureLocation);
 			newFlight.setArrivalLocation(arrivalLocation);
 			flightService.createFlight(newFlight);
-			return "success";
+			clean();
+			message = "Flight added succesfully.";
+			return "flightAdded";
 		} catch (Exception e) {
+			message = "Something went wrong.";
 			e.printStackTrace();
 			return "failure";
 		}
-		
+
+	}
+
+	public void clean() {
+		newFlight = new Flight();
+		fromLocation = null;
+		toLocation = null;
+		departureLocation = null;
+		arrivalLocation = null;
+		outboundFlights = null;
+		inboundFlights = null;
+		departureDate = null;
+		returnDate = null;
+		fromAirport = null;
+		toAirport = null;
+		allFlights = flightService.findFlights();
 	}
 
 	public void submitAction() {
@@ -96,6 +117,38 @@ public void resetAction() {
 	public void reset() {
 		setRendered(false);
 		RequestContext.getCurrentInstance().reset("form");
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public String getFromAirport() {
+		return fromAirport;
+	}
+
+	public void setFromAirport(String fromAirport) {
+		this.fromAirport = fromAirport;
+	}
+
+	public String getToAirport() {
+		return toAirport;
+	}
+
+	public void setToAirport(String toAirport) {
+		this.toAirport = toAirport;
+	}
+
+	public List<String> getAirports() {
+		return airports;
+	}
+
+	public void setAirports(List<String> airports) {
+		this.airports = airports;
 	}
 
 	public Location getDepartureLocation() {

@@ -10,5 +10,6 @@ public interface LocationRemoteInterface {
 	List<Location> findLocations();
 	List<String> findCountries();
 	Location createLocation(Location flight);
-	Location findLocationByCountry(String country);
+	Location findLocationByAirport(String airport);
+	List<String> findAirports();
 }

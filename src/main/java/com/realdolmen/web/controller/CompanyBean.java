@@ -32,9 +32,10 @@ public class CompanyBean implements Serializable {
 
 	public String register() {
 		try {
+			company.setPassword(password);
 			companyRepository.createCompany(company);
 			cleanCompany();
-			return "success";
+			return "registered";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "failure";
@@ -47,7 +48,7 @@ public class CompanyBean implements Serializable {
 			if (BCrypt.checkpw(password, company.getPassword())) {
 				loggedInCompany = company;
 				errorMessage = "";
-				return "success";
+				return "loggedIn";
 			} else {
 				errorMessage = "Password is incorrect.";
 				return "failure";
@@ -67,6 +68,7 @@ public class CompanyBean implements Serializable {
 	public void cleanCompany() {
 		company = new Company();
 		loggedInCompany = null;
+		password = null;
 	}
 
 	public String getErrorMessage() {
