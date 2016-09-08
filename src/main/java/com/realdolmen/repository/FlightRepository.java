@@ -29,7 +29,7 @@ public class FlightRepository {
 		return em.createQuery("select f from Flight f", Flight.class).getResultList();
 	}
 
-	public List<Flight> findFlightWithParams(String departId, String arriveId, Date departureDate) {
+	public List<Flight> findFlightWithParams(String departAirport, String arriveAirport, Date departureDate) {
 		Date departMinusDays;
 		Date departPlusDays;
 		
@@ -46,9 +46,9 @@ public class FlightRepository {
 
 		return em
 				.createQuery(
-						"SELECT f FROM Flight f WHERE f.departureLocation.country = :departLoc AND f.arrivalLocation.country = :arrivalLoc AND (f.departureTime BETWEEN :departMinusDays AND :departPlusDays))",
+						"SELECT f FROM Flight f WHERE f.departureLocation.name = :departPort AND f.arrivalLocation.name = :arrivalPort AND (f.departureTime BETWEEN :departMinusDays AND :departPlusDays))",
 						Flight.class)
-				.setParameter("arrivalLoc", arriveId).setParameter("departLoc", departId)
+				.setParameter("arrivalPort", arriveAirport).setParameter("departPort", departAirport)
 				.setParameter("departMinusDays", departMinusDays, TemporalType.TIMESTAMP)
 				.setParameter("departPlusDays", departPlusDays, TemporalType.TIMESTAMP)
 				.getResultList();
