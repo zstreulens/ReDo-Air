@@ -13,6 +13,7 @@ import javax.inject.Named;
 import org.primefaces.context.RequestContext;
 
 import com.realdolmen.domain.Flight;
+import com.realdolmen.domain.Location;
 import com.realdolmen.repository.LocationRepository;
 import com.realdolmen.service.FlightServiceBean;
 import com.realdolmen.service.LocationServiceBean;
@@ -24,6 +25,9 @@ public class FlightBean implements Serializable {
 	List<Flight> outboundFlights;
 	List<Flight> inboundFlights;
 	List<String> countries;
+	Flight newFlight;
+	Location departureLocation;
+	Location arrivalLocation;
 
 	private String cabinClass;
 	private String airline;
@@ -54,16 +58,12 @@ public class FlightBean implements Serializable {
 		page = "search";
 		oneWay = true;
 		currentDate = Calendar.getInstance().getTime();
+		newFlight = new Flight();
 	}
 
 	public FlightBean() {
 	}
 
-public void submitAction() {
-	outboundFlights = flightService.findFlightFromQuery(fromLocation, toLocation, departureDate, returnDate);
-	inboundFlights = flightService.findFlightFromQuery(toLocation, fromLocation, departureDate, returnDate);
-	setPage("outbound");
-}
 public void resetAction() {
 	fromLocation = "";
 	toLocation = "";
@@ -72,6 +72,55 @@ public void resetAction() {
 	oneWay = true;
 	page = "search";
 }
+	public String addFlight() {
+		try {
+			departureLocation = locationService.findLocationByCountry(fromLocation);
+			arrivalLocation = locationService.findLocationByCountry(toLocation);
+			newFlight.setDepartureLocation(departureLocation);
+			newFlight.setArrivalLocation(arrivalLocation);
+			flightService.createFlight(newFlight);
+			return "success";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "failure";
+		}
+		
+	}
+
+	public void submitAction() {
+		outboundFlights = flightService.findFlightFromQuery(fromLocation, toLocation, departureDate, returnDate);
+		inboundFlights = flightService.findFlightFromQuery(toLocation, fromLocation, departureDate, returnDate);
+		setPage("outbound");
+	}
+
+	public void reset() {
+		setRendered(false);
+		RequestContext.getCurrentInstance().reset("form");
+	}
+
+	public Location getDepartureLocation() {
+		return departureLocation;
+	}
+
+	public void setDepartureLocation(Location departureLocation) {
+		this.departureLocation = departureLocation;
+	}
+
+	public Location getArrivalLocation() {
+		return arrivalLocation;
+	}
+
+	public void setArrivalLocation(Location arrivalLocation) {
+		this.arrivalLocation = arrivalLocation;
+	}
+
+	public Flight getNewFlight() {
+		return newFlight;
+	}
+
+	public void setNewFlight(Flight newFlight) {
+		this.newFlight = newFlight;
+	}
 
 	public FlightServiceBean getFlightService() {
 		return flightService;
@@ -196,5 +245,5 @@ public void resetAction() {
 	public String getPage() {
 		return page;
 	}
-	
+
 }

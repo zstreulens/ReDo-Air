@@ -50,4 +50,15 @@
   SHAPE="512,17,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:WEB-INF#details.xhtml"
   PATH="WEB-INF/details.xhtml" SHAPE="512,337,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#company.xhtml" PATH="/company.xhtml"
+  SHAPE="32,337,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#company.xhtml:0" NAME="item"
+   PATH="/company.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success::#addFlight.xhtml" NAME="output"
+    PATH="/addFlight.xhtml" TARGET="rules:#addFlight.xhtml"
+    TITLE="success" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#addFlight.xhtml" PATH="/addFlight.xhtml"
+  SHAPE="240,353,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>
