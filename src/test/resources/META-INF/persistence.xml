@@ -43,6 +43,7 @@
 		<class>com.realdolmen.domain.Booking</class>
 		<class>com.realdolmen.domain.Creditcard</class>
 		<class>com.realdolmen.domain.Employee</class>
+		<class>com.realdolmen.domain.Company</class>
 
 
 		<properties>

@@ -7,26 +7,25 @@
 
 <ui:composition template="/facelet-template.xhtml">
 
-	<ui:define name="pageTitle">Employee login</ui:define>
+	<ui:define name="pageTitle">Company login</ui:define>
 	<ui:define name="pageContent">
 
 		<h1>Fill in your login information</h1>
-		#{employeeBean.errorMessage}
-		<h:form>
+	#{companyBean.errorMessage}
+	<h:form>
 			<h:panelGrid columns="2">
-				<p:outputText value="E-mail " />
+				<h:outputText value="Company name: " />
 				<h:panelGroup>
-					<p:inputText value="#{employeeBean.employee.mailAddress}" id="mail" />
+					<p:inputText value="#{companyBean.company.name}" id="name" />
 				</h:panelGroup>
-				<p:outputText value="Password " />
+				<h:outputText value="Password: " />
 				<h:panelGroup>
-					<p:password value="#{employeeBean.password}" id="password" />
+					<p:password value="#{companyBean.password}" id="password" />
 				</h:panelGroup>
 			</h:panelGrid>
 			<h:commandButton value="Login" id="login" styleClass="btn_style"
-				action="#{employeeBean.login}" />
+				action="#{companyBean.login}" />
 		</h:form>
 	</ui:define>
-
 </ui:composition>
 </html>
