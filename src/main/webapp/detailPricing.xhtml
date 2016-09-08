@@ -11,21 +11,25 @@
 	<ui:define name="pageContent">
 		<h1>Flight details</h1>
 		<h:form>
-		<h:panelGrid columns="2">
-		<h:outputText value="From: "/>
-		<h:outputText value="#{pricingBean.flightPricing.departureLocation.country}"/>
-		<h:outputText value="To: "/>
-		<h:outputText value="#{pricingBean.flightPricing.arrivalLocation.country}"/>
-		<h:outputText value="Depart: "/>
-		<h:outputText value="#{pricingBean.flightPricing.departureTime}" />
-		<h:outputText value="Arrive: "/>
-		<h:outputText value="#{pricingBean.flightPricing.arrivalTime}"/>
-		<h:outputText value="Base price: "/>
-		<h:outputText value="#{pricingBean.flightPricing.basePrice}"/>
-		<h:outputText value="Redo price: "/>
-		<h:inputText value="#{pricingBean.flightPricing.redoPrice}"/>
-		</h:panelGrid>
-		<p:commandButton value="Change price" action="#{pricingBean.updatePrice()}"></p:commandButton>
+			<p:panelGrid columns="2" layout="grid">
+				<h:outputText value="From: " />
+				<h:outputText
+					value="#{pricingBean.flightPricing.departureLocation.country}" />
+				<h:outputText value="To: " />
+				<h:outputText
+					value="#{pricingBean.flightPricing.arrivalLocation.country}" />
+				<h:outputText value="Depart: " />
+				<h:outputText value="#{pricingBean.flightPricing.departureTime}" />
+				<h:outputText value="Arrive: " />
+				<h:outputText value="#{pricingBean.flightPricing.arrivalTime}" />
+				<h:outputText value="Base price: " />
+				<h:outputText value="#{pricingBean.flightPricing.basePrice}" />
+				<h:outputText
+					value="Redo price: (Set value to 0 to set the standard price) " />
+				<h:inputText value="#{pricingBean.flightPricing.redoPrice}" />
+			</p:panelGrid>
+			<p:commandButton value="Change price"
+				action="#{pricingBean.updatePrice()}" />
 		</h:form>
 	</ui:define>
 </ui:composition>
