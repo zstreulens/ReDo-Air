@@ -115,8 +115,8 @@ public class FlightBean implements Serializable {
 	}
 
 	public void submitAction() {
-		outboundFlights = flightService.findFlightFromQuery(fromLocation, toLocation, departureDate);
-		inboundFlights = flightService.findFlightFromQuery(toLocation, fromLocation, returnDate);
+		outboundFlights = flightService.findFlightFromQuery(fromAirport, toAirport, departureDate);
+		inboundFlights = flightService.findFlightFromQuery(toAirport, fromAirport, returnDate);
 		setPage("outbound");
 	}
 
