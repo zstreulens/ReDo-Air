@@ -29,5 +29,10 @@ public class LocationServiceBean implements LocationRemoteInterface{
 	public List<String> findCountries() {
 		return locationRepository.findCountries();
 	}
+	
+	@Override
+	public Location findLocationByCountry(String country){
+		return locationRepository.findByCountry(country);
+	}
 
 }

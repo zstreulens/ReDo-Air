@@ -2,6 +2,7 @@ package com.realdolmen.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
@@ -10,7 +11,7 @@ import javax.persistence.NamedQuery;
 @NamedQuery(name="Booking.findBookingsCustomer", query = "SELECT b FROM Booking b WHERE b.customer.id = :customerId")
 public class Booking {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	@ManyToOne
 	private Customer customer;

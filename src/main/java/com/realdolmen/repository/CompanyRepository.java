@@ -10,22 +10,23 @@ import com.realdolmen.domain.Company;
 public class CompanyRepository {
 	@PersistenceContext
 	EntityManager entityManager;
-	
-	public Company createCompany(Company company){
+
+	public Company createCompany(Company company) {
 		entityManager.persist(company);
 		return company;
 	}
-	
-	public Company updateCompany(Company company){
+
+	public Company updateCompany(Company company) {
 		entityManager.merge(company);
 		return company;
 	}
-	
-	public Company findById(Integer id){
+
+	public Company findById(Integer id) {
 		return entityManager.find(Company.class, id);
 	}
-	
-	public Company findByName(String name){
-		return entityManager.createNamedQuery("Company.findByName", Company.class).setParameter("name", name).getSingleResult();
+
+	public Company findByName(String name) {
+		return entityManager.createNamedQuery("Company.findByName", Company.class).setParameter("name", name)
+				.getSingleResult();
 	}
 }
