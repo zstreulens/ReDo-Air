@@ -35,5 +35,10 @@ public class LocationRepository {
 	public Location findByAirport(String airport){
 		return em.createNamedQuery("Location.findByCountry", Location.class).setParameter("name", airport).getSingleResult();
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<String> findAirportsByCountry(String country){
+		return em.createQuery("SELECT l.name FROM Location l WHERE l.country = :country").setParameter("country", country).getResultList();
+	}
 
 }

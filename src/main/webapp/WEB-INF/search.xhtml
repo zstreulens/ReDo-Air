@@ -26,22 +26,46 @@
 
 			<!-- 		SELECTION  -->
 			<h:panelGrid columns="4">
-				<p:outputLabel for="departureLocation" value="From" />
+				<p:outputLabel for="departureLocation" value="From country " />
 				<p:selectOneMenu id="departureLocation"
 					converter="omnifaces.SelectItemsConverter"
 					value="#{flightBean.fromLocation}" var="f" filter="true"
 					filterMatchMode="startsWith">
+					<p:ajax listener="#{flightBean.onDepartureCountryChange}"
+						update="departureAirport" />
+						<f:selectItem itemLabel="Select country" itemValue=""
+						noSelectionOption="true" />
 					<f:selectItems value="#{flightBean.countries}" var="location"
 						itemLabel="#{location}" itemValue="#{location}" />
 				</p:selectOneMenu>
 
-				<p:outputLabel for="arrivalLocation" value="To" />
+				<p:outputLabel for="departureAirport" value="From airport " />
+				<p:selectOneMenu id="departureAirport" value="#{flightBean.fromAirport}"
+					style="width:150px">
+					<f:selectItem itemLabel="Select airport" itemValue=""
+						noSelectionOption="true" />
+					<f:selectItems value="#{flightBean.departureAirports}" itemLabel="#{flightBean.fromAirport}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel for="arrivalLocation" value="To country" />
 				<p:selectOneMenu id="arrivalLocation"
 					converter="omnifaces.SelectItemsConverter"
 					value="#{flightBean.toLocation}" var="f" filter="true"
 					filterMatchMode="startsWith">
+					<p:ajax listener="#{flightBean.onArrivalCountryChange}"
+						update="arrivalAirport" />
+						<f:selectItem itemLabel="Select country" itemValue=""
+						noSelectionOption="true" />
 					<f:selectItems value="#{flightBean.countries}" var="location"
 						itemLabel="#{location}" itemValue="#{location}" />
+				</p:selectOneMenu>
+				
+				<p:outputLabel for="arrivalAirport" value="To airport " />
+				<p:selectOneMenu id="arrivalAirport" value="#{flightBean.toAirport}"
+					style="width:150px">
+					<f:selectItem itemLabel="Select airport" itemValue=""
+						noSelectionOption="true" />
+					<f:selectItems value="#{flightBean.arrivalAirports}" itemLabel="#{flightBean.toAirport}" />
 				</p:selectOneMenu>
 
 				<p:outputLabel for="departureDate" value="Departure" />
