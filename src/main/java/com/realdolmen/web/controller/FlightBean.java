@@ -1,11 +1,12 @@
 package com.realdolmen.web.controller;
 
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -24,10 +25,17 @@ public class FlightBean implements Serializable {
 	List<Flight> inboundFlights;
 	List<String> countries;
 
+	private String cabinClass;
+	private String airline;
+	boolean oneWay;
+
 	String fromLocation;
 	String toLocation;
+	private Date currentDate;
+	private Date departureDate;
+	private Date returnDate;
 
-	String page = "search";
+	String page;
 
 	private boolean rendered;
 
@@ -43,32 +51,24 @@ public class FlightBean implements Serializable {
 		allFlights = flightService.findFlights();
 		countries = locationService.findCountries();
 		outboundFlights = null;
+		page = "search";
+		oneWay = true;
+		currentDate = Calendar.getInstance().getTime();
 	}
-
-	private Flight flight = new Flight();
 
 	public FlightBean() {
 	}
 
-	public void submitAction() {
-		outboundFlights = flightService.findFlightFromQuery(fromLocation, toLocation);
-		inboundFlights = flightService.findFlightFromQuery(toLocation, fromLocation);
-		setPage("outbound");
-	}
+public void submitAction() {
+	outboundFlights = flightService.findFlightFromQuery(fromLocation, toLocation, departureDate, returnDate);
+	inboundFlights = flightService.findFlightFromQuery(toLocation, fromLocation, departureDate, returnDate);
+	setPage("outbound");
+}
 
-	public void reset() {
-		setRendered(false);
-		RequestContext.getCurrentInstance().reset("form");
-	}
-
-	public Flight getFlight() {
-		return flight;
-	}
-
-	public void setFlight(Flight flight) {
-		this.flight = flight;
-	}
-
+public void reset() {
+	setRendered(false);
+	RequestContext.getCurrentInstance().reset("form");
+}
 	public FlightServiceBean getFlightService() {
 		return flightService;
 	}
@@ -109,6 +109,50 @@ public class FlightBean implements Serializable {
 		this.toLocation = toLocation;
 	}
 
+	public String getCabinClass() {
+		return cabinClass;
+	}
+
+	public void setCabinClass(String cabinClass) {
+		this.cabinClass = cabinClass;
+	}
+
+	public String getAirline() {
+		return airline;
+	}
+
+	public void setAirline(String airline) {
+		this.airline = airline;
+	}
+
+	public boolean isOneWay() {
+		return oneWay;
+	}
+
+	public void setOneWay(boolean oneWay) {
+		this.oneWay = oneWay;
+	}
+
+	public Date getDepartureDate() {
+		return departureDate;
+	}
+
+	public void setDepartureDate(Date departureDate) {
+		this.departureDate = departureDate;
+	}
+
+	public Date getReturnDate() {
+		return returnDate;
+	}
+
+	public void setReturnDate(Date returnDate) {
+		this.returnDate = returnDate;
+	}
+
+	public Date getCurrentDate() {
+		return currentDate;
+	}
+
 	public List<Flight> getOutboundFlights() {
 		return outboundFlights;
 	}
@@ -123,10 +167,6 @@ public class FlightBean implements Serializable {
 
 	public void setInboundFlights(List<Flight> inboundFlights) {
 		this.inboundFlights = inboundFlights;
-	}
-
-	public void addFlight() {
-		flightService.createFlight(flight);
 	}
 
 	public List<Flight> findAllFlights() {
@@ -152,4 +192,5 @@ public class FlightBean implements Serializable {
 	public String getPage() {
 		return page;
 	}
+	
 }

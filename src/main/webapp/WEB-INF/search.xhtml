@@ -16,7 +16,7 @@
 			<div id="oneWayFrame">
 				<h:panelGrid columns="2">
 					<p:selectOneRadio id="toggleReturn"
-						value="#{searchFlightBean.oneWay}">
+						value="#{flightBean.oneWay}">
 						<f:selectItem itemLabel="One way" itemValue="true" />
 						<f:selectItem id="return" itemLabel="Return" itemValue="false" />
 						<f:ajax render="returnDate" />
@@ -47,30 +47,30 @@
 
 				<p:outputLabel for="departureDate" value="Departure" />
 				<p:calendar id="departureDate"
-					value="#{searchFlightBean.departureDate}"
-					mindate="#{searchFlightBean.currentDate}" pages="2"
+					value="#{flightBean.departureDate}"
+					mindate="#{flightBean.currentDate}" pages="2"
 					placeholder="Enter date">
 					<p:ajax event="dateSelect" update="returnDate" />
 					<p:ajax event="change" update="returnDate" />
 				</p:calendar>
 
 				<p:outputLabel for="returnDate" value="Return" />
-				<p:calendar id="returnDate" value="#{searchFlightBean.returnDate}"
-					mindate="#{searchFlightBean.departureDate}" pages="2"
-					disabled="#{searchFlightBean.oneWay}" effect="fold"
+				<p:calendar id="returnDate" value="#{flightBean.returnDate}"
+					mindate="#{flightBean.departureDate}" pages="2"
+					disabled="#{flightBean.oneWay}" effect="fold"
 					placeholder="Enter date" />
 
 				<p:outputLabel for="cabinClass" value="Cabin class" />
 				<p:selectOneMenu id="cabinClass"
-					value="#{searchFlightBean.cabinClass}" effect="fade">
+					value="#{flightBean.cabinClass}" effect="fade">
 					<f:selectItem itemLabel="economy" itemValue="Economy" />
 					<f:selectItem itemLabel="business" itemValue="Business" />
-					<f:selectItem itemLabel="first class" itemValue="FirstClass" />
+					<f:selectItem itemLabel="first class" itemValue="First Class" />
 				</p:selectOneMenu>
 
 				<p:outputLabel for="preferredAirline" value="Preferred airline" />
 				<p:selectOneMenu id="preferredAirline"
-					value="#{searchFlightBean.cabinClass}" effect="fade">
+					value="#{flightBean.airline}" effect="fade" >
 					<f:selectItem itemLabel="Lufthansa" itemValue="1" />
 					<f:selectItem itemLabel="Brussels Airlines" itemValue="2" />
 					<f:selectItem itemLabel="ANA" itemValue="3" />

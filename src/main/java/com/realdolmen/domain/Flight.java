@@ -13,7 +13,6 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@NamedQuery(name = "findFlight", query = "SELECT f FROM Flight f WHERE f.arrivalLocation.country = :arrivalLoc AND f.departureLocation.country = :departLoc ")
 public class Flight implements Serializable {
 	// FIELDS
 	@Id

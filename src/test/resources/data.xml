@@ -1,6 +1,6 @@
 <dataset>
-	<location id="1" name="Brussels Airport"
-		code="BRU" country="Belgium" globalRegion="Europe" />
+	<location id="1" name="Brussels Airport" code="BRU" country="Belgium"
+		globalRegion="Europe" />
 	<location id="2" name="John F. Kennedy International Airport"
 		code="JFK" country="USA" globalRegion="North America" />
 	<location id="3"

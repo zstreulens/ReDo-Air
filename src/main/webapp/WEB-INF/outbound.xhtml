@@ -15,17 +15,14 @@
 		<h:form id="form">
 			<!-- 		SEARCH RESULTS  -->
 			<h2>
-				<p:outputLabel for="outboundResults" value="Departing flights" />
+				<p:outputLabel for="outboundResults" value="Departure"  />
 			</h2>
-			<p:dataTable id="outboundResults" var="flight"
+			<p:dataTable id="outboundResults" var="flight" scrollable="true" scrollHeight="100%"
 				value="#{flightBean.outboundFlights}" selectionMode="single"
 				rowKey="#{flight.id}" sortBy="#{flight.redoPrice}">
 				<p:ajax event="rowSelect"
 					listener="#{bookingBean.bookOutboundFlight}" update=":content">
 				</p:ajax>
-				<p:column headerText="Date" sortBy="#{flight.id}">
-					<h:outputText value="#{flight.departureTime.date}" />
-				</p:column>
 				<p:column headerText="From"
 					sortBy="#{flight.departureLocation.country}">
 					<h:outputText value="#{flight.departureLocation.country}" />
@@ -40,12 +37,12 @@
 					<h:outputText value="#{flight.arrivalTime}" />
 				</p:column>
 
-				<p:column headerText="Seats" sortBy="Seats">
+				<p:column headerText="#{flightBean.cabinClass} Seats Available" sortBy="#{flightBean.cabinClass}">
 					<h:outputText
-						value="#{searchFlightBean.cabinClass == 'economy' ? 'yes' : 'no'}" />
+						value="#{flightBean.cabinClass == 'Economy' ? flight.seatsEconomy : (flightBean.cabinClass == 'Business' ? flight.seatsBusiness : flight.seatsFirstClass)}" />
 				</p:column>
 
-				<p:column headerText="Price" sortBy="#{flight.redoPrice}">
+				<p:column headerText="Price per Ticket" sortBy="#{flight.redoPrice}">
 					<h:outputText value="#{flight.redoPrice}" />
 				</p:column>
 			</p:dataTable>
