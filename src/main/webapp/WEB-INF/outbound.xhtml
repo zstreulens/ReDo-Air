@@ -15,21 +15,14 @@
 		<h:form id="form">
 			<!-- 		SEARCH RESULTS  -->
 			<h2>
-				<p:outputLabel for="outboundResults" value="Departure"  />
+				<p:outputLabel for="outboundResults" value="Outbound flight: #{flightBean.fromLocation} - #{flightBean.toLocation}"  />
 			</h2>
 			<p:dataTable id="outboundResults" var="flight"
 				value="#{flightBean.outboundFlights}" selectionMode="single"
-				rowKey="#{flight.id}" sortBy="#{flight.redoPrice}">
+				rowKey="#{flight.id}" sortBy="#{flight.departureTime}">
 				<p:ajax event="rowSelect"
 					listener="#{bookingBean.bookOutboundFlight}" update=":content">
 				</p:ajax>
-				<p:column headerText="From"
-					sortBy="#{flight.departureLocation.country}">
-					<h:outputText value="#{flight.departureLocation.country}" />
-				</p:column>
-				<p:column headerText="To" sortBy="#{flight.arrivalLocation.country}">
-					<h:outputText value="#{flight.arrivalLocation.country}" />
-				</p:column>
 				<p:column headerText="Depart" sortBy="#{flight.departureTime.time}">
 					<h:outputText value="#{flight.departureTime}" />
 				</p:column>
@@ -43,7 +36,7 @@
 				</p:column>
 
 				<p:column headerText="Price per Ticket" sortBy="#{flight.redoPrice}">
-					<h:outputText value="#{flight.redoPrice}" />
+					<h:outputText value="#{flight.redoPrice} EUR" />
 				</p:column>
 			</p:dataTable>
 

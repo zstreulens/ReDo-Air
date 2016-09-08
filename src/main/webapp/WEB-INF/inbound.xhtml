@@ -15,12 +15,12 @@
 		<h:form id="form">
 			<!-- 		SEARCH RESULTS  -->
 			<h2>
-				<p:outputLabel for="inboundResults" value="Return flights" />
+				<p:outputLabel for="inboundResults" value="Inbound flight: #{flightBean.toLocation} - #{flightBean.fromLocation}"  />
 			</h2>
 		<h3><h:outputText value="You have selected a one way itinerary" rendered="#{flightBean.oneWay}"/></h3>
 			<p:dataTable id="inboundResults" var="flight"
 				value="#{flightBean.inboundFlights}" selectionMode="single"
-				rowKey="#{flight.id}" sortBy="#{flight.redoPrice}"
+				rowKey="#{flight.id}" sortBy="#{flight.departureTime}"
 				rendered="#{not flightBean.oneWay}">
 				<p:ajax event="rowSelect"
 					listener="#{bookingBean.bookInboundFlight}" update=":content">

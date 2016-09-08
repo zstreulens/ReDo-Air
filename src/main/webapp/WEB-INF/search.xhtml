@@ -15,8 +15,7 @@
 			<!-- 		RADIO BUTTON  -->
 			<div id="oneWayFrame">
 				<h:panelGrid columns="2">
-					<p:selectOneRadio id="toggleReturn"
-						value="#{flightBean.oneWay}">
+					<p:selectOneRadio id="toggleReturn" value="#{flightBean.oneWay}">
 						<f:selectItem itemLabel="One way" itemValue="true" />
 						<f:selectItem id="return" itemLabel="Return" itemValue="false" />
 						<f:ajax render="returnDate" />
@@ -46,8 +45,7 @@
 				</p:selectOneMenu>
 
 				<p:outputLabel for="departureDate" value="Departure" />
-				<p:calendar id="departureDate"
-					value="#{flightBean.departureDate}"
+				<p:calendar id="departureDate" value="#{flightBean.departureDate}"
 					mindate="#{flightBean.currentDate}" pages="2"
 					placeholder="Enter date">
 					<p:ajax event="dateSelect" update="returnDate" />
@@ -61,23 +59,29 @@
 					placeholder="Enter date" />
 
 				<p:outputLabel for="cabinClass" value="Cabin class" />
-				<p:selectOneMenu id="cabinClass"
-					value="#{flightBean.cabinClass}" effect="fade">
+				<p:selectOneMenu id="cabinClass" value="#{flightBean.cabinClass}"
+					effect="fade">
 					<f:selectItem itemLabel="economy" itemValue="Economy" />
 					<f:selectItem itemLabel="business" itemValue="Business" />
 					<f:selectItem itemLabel="first class" itemValue="First Class" />
 				</p:selectOneMenu>
 
 				<p:outputLabel for="preferredAirline" value="Preferred airline" />
-				<p:selectOneMenu id="preferredAirline"
-					value="#{flightBean.airline}" effect="fade" >
-					<f:selectItem itemLabel="Select Airline" itemValue="" noSelectionOption="true"/>
+				<p:selectOneMenu id="preferredAirline" value="#{flightBean.airline}"
+					effect="fade">
+					<f:selectItem itemLabel="Select Airline" itemValue=""
+						noSelectionOption="true" />
 					<f:selectItem itemLabel="Lufthansa" itemValue="1" />
 					<f:selectItem itemLabel="Brussels Airlines" itemValue="2" />
 					<f:selectItem itemLabel="ANA" itemValue="3" />
 				</p:selectOneMenu>
 				<p:commandButton styleClass="btn_style" id="submitButton"
 					actionListener="#{flightBean.submitAction}" value="Find"
+					update=":content">
+					<f:ajax execute="@form" render="@form" />
+				</p:commandButton>
+				<p:commandButton styleClass="btn_style" id="resetButton"
+					actionListener="#{flightBean.resetAction()}" value="Reset"
 					update=":content">
 					<f:ajax execute="@form" render="@form" />
 				</p:commandButton>

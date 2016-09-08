@@ -50,6 +50,8 @@ public class FlightBean implements Serializable {
 	FlightServiceBean flightService;
 	@Inject
 	LocationServiceBean locationService;
+	@Inject
+	BookingBean bookingBean;
 
 	@PostConstruct
 	public void setUp() {
@@ -72,7 +74,11 @@ public void resetAction() {
 	departureDate = null;
 	returnDate = null;
 	oneWay = true;
+	cabinClass = "economy";
+	airline = "";
 	page = "search";
+	bookingBean.setOutboundFlight(null);
+	bookingBean.setInboundFlight(null);
 }
 	public String addFlight() {
 		message = null;
