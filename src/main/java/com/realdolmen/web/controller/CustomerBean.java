@@ -42,12 +42,18 @@ public class CustomerBean implements Serializable {
 	}
 
 	public String register() {
-		try {
-			customerRepository.createCustomer(customer);
-			cleanCustomer();
-			return "success";
-		} catch (Exception e) {
-			e.printStackTrace();
+		if (customerRepository.findByMail(customer.getMailAddress()) == null) {
+			try {
+				customerRepository.createCustomer(customer);
+				cleanCustomer();
+				return "success";
+			} catch (Exception e) {
+				errorMessage = "Something went wrong.";
+				e.printStackTrace();
+				return "failure";
+			}
+		} else {
+			errorMessage = "E-mail already exists.";
 			return "failure";
 		}
 	}
@@ -110,10 +116,11 @@ public class CustomerBean implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public String goToLogin() {
 		return "login";
 	}
+
 	public String goToRegistration() {
 		return "register";
 	}

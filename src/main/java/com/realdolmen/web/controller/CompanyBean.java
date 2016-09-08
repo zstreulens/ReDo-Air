@@ -31,13 +31,19 @@ public class CompanyBean implements Serializable {
 	}
 
 	public String register() {
-		try {
-			company.setPassword(password);
-			companyRepository.createCompany(company);
-			cleanCompany();
-			return "registered";
-		} catch (Exception e) {
-			e.printStackTrace();
+		if (companyRepository.findByName(company.getName()) == null) {
+			try {
+				company.setPassword(password);
+				companyRepository.createCompany(company);
+				cleanCompany();
+				return "registered";
+			} catch (Exception e) {
+				e.printStackTrace();
+				errorMessage = "Something went wrong.";
+				return "failure";
+			}
+		} else {
+			errorMessage = "Company already exists.";
 			return "failure";
 		}
 	}

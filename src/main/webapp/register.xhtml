@@ -9,6 +9,7 @@
 	<ui:define name="pageTitle">User Registration</ui:define>
 	<ui:define name="pageContent">
 		<h1>Fill in this form to register yourself</h1>
+		#{customerBean.errorMessage}
 		<h:form>
 			<h:panelGrid columns="2">
 				<h:outputText value="First name: "></h:outputText>

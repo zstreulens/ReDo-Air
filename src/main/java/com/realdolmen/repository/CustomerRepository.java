@@ -26,6 +26,11 @@ public class CustomerRepository {
 	}
 	
 	public Customer findByMail(String mail){
-		return entityManager.createNamedQuery("Customer.findByMail", Customer.class).setParameter("mailAddress", mail).getSingleResult();
+		try {
+			return entityManager.createNamedQuery("Customer.findByMail", Customer.class).setParameter("mailAddress", mail).getSingleResult();
+
+		} catch (Exception e) {
+			return null;
+		}
 	}
 }

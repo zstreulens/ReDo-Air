@@ -26,7 +26,12 @@ public class CompanyRepository {
 	}
 
 	public Company findByName(String name) {
-		return entityManager.createNamedQuery("Company.findByName", Company.class).setParameter("name", name)
-				.getSingleResult();
+		try {
+			return entityManager.createNamedQuery("Company.findByName", Company.class).setParameter("name", name)
+					.getSingleResult();
+		} catch (Exception e) {
+			return null;
+		}
+
 	}
 }

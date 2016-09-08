@@ -3,6 +3,7 @@ package com.realdolmen.web.controller;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -60,7 +61,9 @@ public class FlightBean implements Serializable {
 	public void setUp() {
 		allFlights = flightService.findFlights();
 		countries = locationService.findCountries();
+		Collections.sort(countries);
 		allAirports = locationService.findAirports();
+		Collections.sort(allAirports);
 		outboundFlights = null;
 		page = "search";
 		oneWay = true;
@@ -84,6 +87,10 @@ public void resetAction() {
 	page = "search";
 	bookingBean.setOutboundFlight(null);
 	bookingBean.setInboundFlight(null);
+	toAirport = null;
+	fromAirport = null;
+	departureAirports = null;
+	arrivalAirports = null;
 }
 	public String addFlight() {
 		message = null;
@@ -128,6 +135,7 @@ public void resetAction() {
 	public void onDepartureCountryChange() {
 		if (fromLocation != null && !fromLocation.equals("")) {
 			departureAirports = locationService.findAirportsByCountry(fromLocation);
+			Collections.sort(departureAirports);
 		} else {
 			departureAirports = new ArrayList<>();
 		}
@@ -136,6 +144,7 @@ public void resetAction() {
 	public void onArrivalCountryChange() {
 		if (toLocation != null && !toLocation.equals("")) {
 			arrivalAirports = locationService.findAirportsByCountry(toLocation);
+			Collections.sort(arrivalAirports);
 		} else {
 			arrivalAirports = new ArrayList<>();
 		}
