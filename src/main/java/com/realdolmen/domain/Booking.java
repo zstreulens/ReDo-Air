@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @NamedQuery(name="Booking.findBookingsCustomer", query = "SELECT b FROM Booking b WHERE b.customer.id = :customerId")
@@ -14,10 +15,12 @@ public class Booking {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	@ManyToOne
+	@NotNull
 	private Customer customer;
 	@ManyToOne
 	private Flight inbound;
 	@ManyToOne
+	@NotNull
 	private Flight outbound;
 
 	public Booking() {

@@ -53,6 +53,7 @@ public class CustomerTest extends JpaPersistenceTest {
 		address.setCountry("Belgium");
 		customer.setAddress(address);
 		customer.setFirstName("Ziggy");
+		customer.setLastName("");
 		customer.setMailAddress("ziggy.streulens@realdolmen.com");
 		customer.setPassword("test");
 		Set<ConstraintViolation<Customer>> violations = validator.validate(customer);

@@ -18,24 +18,26 @@ import javax.validation.constraints.Size;
 
 import org.mindrot.BCrypt;
 
+import com.sun.istack.NotNull;
+
 @Entity
 @NamedQuery(name = "Customer.findByMail", query = "SELECT c FROM Customer c WHERE c.mailAddress = :mailAddress")
 public class Customer implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
-	@Size(min = 1, max = 30)
+	@Size(min = 2, max = 30)
 	private String firstName;
-	@Size(min = 1, max = 50)
+	@Size(min = 2, max = 50)
 	private String lastName;
 	@Transient
 	private String fullName;
 	@Embedded
 	@Valid
 	private Address address;
-	@Size(min = 1, max = 50)
+	@Size(min = 5, max = 50)
 	private String mailAddress;
-	@Size(min = 1)
+	@Size(min = 4)
 	private String password;
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "customer")
 	private List<Creditcard> creditcard;

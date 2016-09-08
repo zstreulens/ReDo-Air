@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @NamedQuery(name = "Employee.findByMail", query = "SELECT e FROM Employee e WHERE e.mailAddress = :mailAddress")
@@ -14,7 +16,10 @@ public class Employee implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
+	@NotNull
+	@Size(min = 7, max = 40)
 	private String mailAddress;
+	@NotNull
 	private String password;
 
 	public Integer getId() {
