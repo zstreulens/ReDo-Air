@@ -47,6 +47,7 @@ public class EmployeeBean implements Serializable {
 
 	public String logout() {
 		cleanEmployee();
+		errorMessage = "";
 		return "employee.xhtml";
 	}
 

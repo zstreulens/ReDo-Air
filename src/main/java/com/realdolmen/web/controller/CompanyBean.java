@@ -67,6 +67,7 @@ public class CompanyBean implements Serializable {
 
 	public String logout() {
 		cleanCompany();
+		errorMessage = "";
 		return "company.xhtml";
 	}
 

@@ -33,15 +33,15 @@
 				</p:selectOneMenu>
 
 				<p:outputLabel for="departureDate" value="Departure " />
-				<p:calendar id="departureDate"
+				<p:calendar id="departureDate" pattern="MM/dd/yyyy HH:mm"
 					value="#{flightBean.newFlight.departureTime}"
 					mindate="#{flightBean.currentDate}" pages="2"
 					placeholder="Enter date">
-					<p:ajax event="dateSelect" update="arrivalDate"/>
-					<p:ajax event="change" update="arrivalDate"/>
+					<p:ajax event="dateSelect" update="arrivalDate" />
+					<p:ajax event="change" update="arrivalDate" />
 				</p:calendar>
 				<p:outputLabel for="arrivalDate" value="Arrival" />
-				<p:calendar id="arrivalDate"
+				<p:calendar id="arrivalDate" pattern="MM/dd/yyyy HH:mm"
 					value="#{flightBean.newFlight.arrivalTime}"
 					mindate="#{flightBean.newFlight.departureTime}" pages="2"
 					placeholder="Enter date" />
@@ -50,7 +50,7 @@
 					value="#{flightBean.newFlight.basePrice}" />
 			</h:panelGrid>
 			<h:commandButton styleClass="btn_style" value="Add flight"
-				action="#{flightBean.addFlight}" id="addFlight"/>
+				action="#{flightBean.addFlight}" id="addFlight" />
 		</h:form>
 	</ui:define>
 </ui:composition>
