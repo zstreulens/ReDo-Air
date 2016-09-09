@@ -133,6 +133,7 @@ public void resetAction() {
 	}
 
 	public void onDepartureCountryChange() {
+		fromAirport = null;
 		if (fromLocation != null && !fromLocation.equals("")) {
 			departureAirports = locationService.findAirportsByCountry(fromLocation);
 			Collections.sort(departureAirports);
@@ -142,6 +143,7 @@ public void resetAction() {
 	}
 
 	public void onArrivalCountryChange() {
+		toAirport = null;
 		if (toLocation != null && !toLocation.equals("")) {
 			arrivalAirports = locationService.findAirportsByCountry(toLocation);
 			Collections.sort(arrivalAirports);

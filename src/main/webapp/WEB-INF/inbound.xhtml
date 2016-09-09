@@ -15,31 +15,35 @@
 		<h:form id="form">
 			<!-- 		SEARCH RESULTS  -->
 			<h2>
-				<p:outputLabel for="inboundResults" value="Inbound flight: #{flightBean.toLocation} - #{flightBean.fromLocation}"  />
+				<p:outputLabel for="inboundResults"
+					value="Inbound flight: #{flightBean.toLocation} - #{flightBean.fromLocation}" />
 			</h2>
-		<h3><h:outputText value="You have selected a one way itinerary" rendered="#{flightBean.oneWay}"/></h3>
+			<h3>
+				<h:outputText value="You have selected a one way itinerary"
+					rendered="#{flightBean.oneWay}" />
+			</h3>
 			<p:dataTable id="inboundResults" var="flight"
-				value="#{flightBean.inboundFlights}" selectionMode="single"
-				rowKey="#{flight.id}" sortBy="#{flight.departureTime}"
+				value="#{flightBean.inboundFlights}" selectionMode="single" selection="#{bookingBean.inboundFlight}"
+				rowKey="#{flight.id}" sortBy="#{flight.redoPrice}"
 				rendered="#{not flightBean.oneWay}">
 				<p:ajax event="rowSelect"
 					listener="#{bookingBean.bookInboundFlight}" update=":content">
 				</p:ajax>
-			<p:column headerText="From"
-					sortBy="#{flight.departureLocation.country}">
-					<h:outputText value="#{flight.departureLocation.country}" />
-				</p:column>
-				<p:column headerText="To" sortBy="#{flight.arrivalLocation.country}">
-					<h:outputText value="#{flight.arrivalLocation.country}" />
-				</p:column>
-				<p:column headerText="Depart" sortBy="#{flight.departureTime.time}">
-					<h:outputText value="#{flight.departureTime}" />
-				</p:column>
-				<p:column headerText="Arrive" sortBy="#{flight.arrivalTime}">
-					<h:outputText value="#{flight.arrivalTime}" />
+				<p:column headerText="Date" sortBy="#{flight.departureTime}">
+					<h:outputText
+						value="#{dateUtilBean.getDayOfWeek(flight.departureTime)}  #{flight.departureTime.date} #{dateUtilBean.getMonth(flight.departureTime)} #{dateUtilBean.getYear(flight.departureTime)}" />
 				</p:column>
 
-				<p:column headerText="#{flightBean.cabinClass} Seats Available" sortBy="#{flightBean.cabinClass}">
+				<p:column headerText="Depart" sortBy="#{flight.departureTime}">
+					<h:outputText value="#{dateUtilBean.getTime(flight.departureTime)}" />
+				</p:column>
+
+				<p:column headerText="Arrive" sortBy="#{flight.arrivalTime}">
+					<h:outputText value="#{dateUtilBean.getTime(flight.arrivalTime)}" />
+				</p:column>
+
+				<p:column headerText="#{flightBean.cabinClass} Seats Available"
+					sortBy="#{flightBean.cabinClass}">
 					<h:outputText
 						value="#{flightBean.cabinClass == 'Economy' ? flight.seatsEconomy : (flightBean.cabinClass == 'Business' ? flight.seatsBusiness : flight.seatsFirstClass)}" />
 				</p:column>
@@ -51,7 +55,8 @@
 	</div>
 	<!-- 		SEARCH and RESET BUTTON  -->
 	<rd:searchButton id="buttons" nextPage="payment"
-		previousPage="outbound" disableNextPage="#{empty bookingBean.inboundFlight.id and not flightBean.oneWay}" />
+		previousPage="outbound"
+		disableNextPage="#{empty bookingBean.inboundFlight.id and not flightBean.oneWay}" />
 
 
 </ui:composition>

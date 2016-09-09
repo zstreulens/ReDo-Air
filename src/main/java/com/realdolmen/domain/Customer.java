@@ -18,7 +18,6 @@ import javax.validation.constraints.Size;
 
 import org.mindrot.BCrypt;
 
-import com.sun.istack.NotNull;
 
 @Entity
 @NamedQuery(name = "Customer.findByMail", query = "SELECT c FROM Customer c WHERE c.mailAddress = :mailAddress")

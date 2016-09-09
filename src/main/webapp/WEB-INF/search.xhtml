@@ -39,14 +39,20 @@
 						itemLabel="#{location}" itemValue="#{location}" />
 				</p:selectOneMenu>
 
-				<p:outputLabel for="departureAirport" value="From airport " />
+				<p:outputLabel for="departureAirport" value="From airport ">
+					<p:tooltip id="ToolTipDepartDate" for="departureAirport"
+						style="font-size: 2rem" value="First select a country"
+						position="top" rendered="#{empty flightBean.fromLocation}" />
+				</p:outputLabel>
 				<p:selectOneMenu id="departureAirport"
-					value="#{flightBean.fromAirport}" style="width:150px">
+					value="#{flightBean.fromAirport}"
+					disabled="#{empty flightBean.fromLocation}">
 					<f:selectItem itemLabel="Select airport" itemValue=""
 						noSelectionOption="true" />
 					<f:selectItems value="#{flightBean.departureAirports}"
 						itemLabel="#{flightBean.fromAirport}" />
 				</p:selectOneMenu>
+
 
 				<p:outputLabel for="arrivalLocation" value="To country" />
 				<p:selectOneMenu id="arrivalLocation"
@@ -61,9 +67,13 @@
 						itemLabel="#{location}" itemValue="#{location}" />
 				</p:selectOneMenu>
 
-				<p:outputLabel for="arrivalAirport" value="To airport " />
+				<p:outputLabel for="arrivalAirport" value="To airport ">
+					<p:tooltip id="toolTipReturnDate" for="arrivalAirport"
+						style="font-size: 2rem" value="First select a country"
+						position="top" rendered="#{empty flightBean.toLocation}" />
+				</p:outputLabel>
 				<p:selectOneMenu id="arrivalAirport" value="#{flightBean.toAirport}"
-					style="width:150px">
+					disabled="#{empty flightBean.toLocation}">>
 					<f:selectItem itemLabel="Select airport" itemValue=""
 						noSelectionOption="true" />
 					<f:selectItems value="#{flightBean.arrivalAirports}"
@@ -82,7 +92,14 @@
 				<p:calendar id="returnDate" value="#{flightBean.returnDate}"
 					mindate="#{flightBean.departureDate}" pages="2"
 					disabled="#{flightBean.oneWay}" effect="fold"
-					placeholder="Enter date" />
+					placeholder="Enter date">
+					<p:tooltip id="toolTipFade" for="returnDate"
+						style="font-size: 2rem"
+						value="You have selected a one-way itinerary" position="top"
+						rendered="#{flightBean.oneWay}" />
+				</p:calendar>
+
+
 
 				<p:outputLabel for="cabinClass" value="Cabin class" />
 				<p:selectOneMenu id="cabinClass" value="#{flightBean.cabinClass}"
