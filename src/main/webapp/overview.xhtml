@@ -28,11 +28,11 @@
 					value="#{bookings.inbound.departureLocation.country} - #{bookings.inbound.arrivalLocation.country}"></h:outputText>
 			</p:column>
 			<p:column headerText="Departure"
-				sortBy="#{bookings.inbound.departureLocation.departureTime}">
+				sortBy="#{bookings.inbound.departureTime}">
 				<h:outputText value="#{bookings.inbound.departureTime}"></h:outputText>
 			</p:column>
 			<p:column headerText="Total price"
-				sortBy="#{overviewBean.completePrice}">
+				sortBy="#{bookings.outbound.redoPrice + bookings.inbound.redoPrice}">
 				<h:outputText value="#{bookings.outbound.redoPrice + bookings.inbound.redoPrice}"></h:outputText>
 			</p:column>
 		</p:dataTable>
