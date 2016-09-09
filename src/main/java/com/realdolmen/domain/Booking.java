@@ -11,7 +11,7 @@ import javax.persistence.NamedQuery;
 @NamedQuery(name="Booking.findBookingsCustomer", query = "SELECT b FROM Booking b WHERE b.customer.id = :customerId")
 public class Booking {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue
 	private Integer id;
 	@ManyToOne
 	private Customer customer;

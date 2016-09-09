@@ -121,12 +121,16 @@ h1, h2, h3, h4, h5, h6 {
 	overflow: auto;
 }
 
+.ui-datatable td {
+	text-align: center;
+}
 
 #globalContainer .ui-widget {
 	font-size: 2.5rem;
 	margin: 1.5rem;
 }
-#globalContainer{
+
+#globalContainer {
 	color: rgb(245, 245, 245);
 }
 
@@ -151,15 +155,19 @@ header nav.mainMenu a {
 #buttons\:navigationForm, #searchButtons {
 	position: absolute;
 	bottom: 0.5rem;
+}
+
+#buttons\:navigationForm {
 	width: 100%;
 }
 
 #buttons\:navigationForm\:previousButton {
 	
 }
+
 #buttons\:navigationForm\:nextButton {
 	position: absolute;
-	right: 0.5rem;	
+	right: 0.5rem;
 }
 
 #form\:submitButton {
@@ -167,7 +175,6 @@ header nav.mainMenu a {
 }
 
 #searchframe, #searchButtons {
-	width: 100%;
 	padding: .5rem;
 }
 
@@ -201,6 +208,11 @@ header nav.mainMenu a {
 
 .ui-datatable .ui-state-active {
 	background: rgba(0, 180, 255, .5);
+}
+
+#searchContainer .ui-selectonemenu, #form\:departureDate_input, #form\:returnDate_input {
+	min-width: 100% !important	;
+	width: 100%;
 }
 
 #searchPanelGrid .ui-widget-content {
@@ -264,8 +276,6 @@ header nav.mainMenu a {
 .ui-steps.custom .ui-state-highlight a {
 	color: #f9dd34;
 }
-
-
 
 /*  Header Section  */
 header {

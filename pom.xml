@@ -168,7 +168,6 @@
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<!-- This setting triggers maven to build a war without version number, 
 			which is convenient because it makes the remote JNDI lookups in the unit 

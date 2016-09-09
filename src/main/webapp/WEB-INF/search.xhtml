@@ -41,7 +41,7 @@
 
 				<p:outputLabel for="departureAirport" value="From airport " />
 				<p:selectOneMenu id="departureAirport"
-					value="#{flightBean.fromAirport}" style="width:150px">
+					value="#{flightBean.fromAirport}" disabled="#{empty flightBean.fromLocation}">
 					<f:selectItem itemLabel="Select airport" itemValue=""
 						noSelectionOption="true" />
 					<f:selectItems value="#{flightBean.departureAirports}"
@@ -62,8 +62,7 @@
 				</p:selectOneMenu>
 
 				<p:outputLabel for="arrivalAirport" value="To airport " />
-				<p:selectOneMenu id="arrivalAirport" value="#{flightBean.toAirport}"
-					style="width:150px">
+				<p:selectOneMenu id="arrivalAirport" value="#{flightBean.toAirport}" disabled="#{empty flightBean.toLocation}">>
 					<f:selectItem itemLabel="Select airport" itemValue=""
 						noSelectionOption="true" />
 					<f:selectItems value="#{flightBean.arrivalAirports}"
