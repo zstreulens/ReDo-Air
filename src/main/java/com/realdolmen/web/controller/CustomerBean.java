@@ -119,10 +119,10 @@ public class CustomerBean implements Serializable {
 	}
 
 	public String goToLogin() {
-		return "login";
+		return "login?faces-redirect=true";
 	}
 
 	public String goToRegistration() {
-		return "register";
+		return "register?faces-redirect=true";
 	}
 }

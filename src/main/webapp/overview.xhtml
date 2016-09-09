@@ -9,6 +9,7 @@
 	<ui:define name="pageTitle">Overview</ui:define>
 	<ui:define name="pageContent">
 	<h1>Booking overview for #{customerBean.customer.fullName}</h1>
+	<div id="overviewDiv">
 		<p:dataTable id="bookingsForCustomer" var="bookings"
 			value="#{overviewBean.bookings}">
 			<p:ajax event="rowSelect"></p:ajax>
@@ -35,6 +36,7 @@
 				<h:outputText value="#{bookings.outbound.redoPrice + bookings.inbound.redoPrice}"></h:outputText>
 			</p:column>
 		</p:dataTable>
+		</div>
 	</ui:define>
 </ui:composition>
 </html>

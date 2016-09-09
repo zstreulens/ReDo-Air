@@ -53,10 +53,10 @@ public class FlightDetailsBean implements Serializable {
 			overviewBean.findBookingsForCustomer(loggedInCustomer.getId());
 			bookingBean.setInboundFlight(null);
 			bookingBean.setOutboundFlight(null);
-			return "overview.xhtml";
+			return "overview?faces-redirect=true";
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "failure";
+			return "failure?faces-redirect=true";
 		}
 	}
 

@@ -112,7 +112,7 @@ h1, h2, h3, h4, h5, h6 {
 	position: relative;
 }
 
-#searchContainer {
+#searchContainer, #overviewDiv {
 	position: absolute;
 	width: 95%;
 	max-height: 80%;
@@ -120,6 +120,11 @@ h1, h2, h3, h4, h5, h6 {
 	bottom: 10rem;
 	overflow: auto;
 }
+
+#overviewDiv {
+		top: 10rem;
+	bottom: 5rem;
+	}
 
 #pricingContainer {
 	position: absolute;
@@ -193,7 +198,7 @@ header nav.mainMenu a {
 }
 
 #form\:submitButton, #bookForm\:bookFlightBtn {
-	padding: 2rem;
+	padding: 1.7rem;
 }
 
 #searchframe, #searchButtons {

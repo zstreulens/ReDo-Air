@@ -48,18 +48,18 @@
 				<h:panelGrid columns="2">
 					<h:form>
 						<h:commandLink actionListener="#{flightBean.resetAction()}"
-							action="flights.xhtml">
+							action="flights?faces-redirect=true">
 							<h:outputText id="find" value="Find Flights" />
 						</h:commandLink>
-						<h:commandLink action="overview.xhtml"
+						<h:commandLink action="overview?faces-redirect=true"
 							rendered="#{user.id != null}">
 							<h:outputText id="overview" value="Overview" />
 						</h:commandLink>
-						<h:commandLink action="pricing.xhtml"
+						<h:commandLink action="pricing?faces-redirect=true"
 							rendered="#{employee.id != null}">
 							<h:outputText id="pricing" value="Pricing" />
 						</h:commandLink>
-						<h:commandLink action="addFlight.xhtml"
+						<h:commandLink action="addFlight?faces-redirect=true"
 							rendered="#{company.id != null}">
 							<h:outputText id="allFlights" value="Add flights" />
 						</h:commandLink>
