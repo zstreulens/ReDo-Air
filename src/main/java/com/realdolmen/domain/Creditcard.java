@@ -13,19 +13,24 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Creditcard implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
+	@Size(min = 14, max = 16)
 	private String number;
 	@Temporal(TemporalType.DATE)
+	@NotNull
 	private Date expiryDate;
 	private String controlnumber;
 	@Enumerated(EnumType.STRING)
 	private CreditcardType creditcardType;
 	@ManyToOne(cascade = CascadeType.PERSIST)
+	@NotNull
 	private Customer customer;
 
 	public Integer getId() {
