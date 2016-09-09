@@ -13,6 +13,11 @@ public class DateUtilBean implements Serializable {
 
 	Calendar c = Calendar.getInstance();
 
+	public String getFullDate(Date date) {
+		return getDayOfWeek(date) + " " + getDayOfMonh(date) + " " + getMonth(date) + " " + getYear(date);
+	}
+	
+	
 	public String getDayOfWeek(Date date) {
 		c.setTime(date);
 		int day = c.get(Calendar.DAY_OF_WEEK);

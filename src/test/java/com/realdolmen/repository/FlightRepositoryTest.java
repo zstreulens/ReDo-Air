@@ -58,7 +58,7 @@ public class FlightRepositoryTest extends JpaPersistenceTest {
 	@Test
 	public void shouldFindFlightByParams() throws ParseException{
 		Date departureDate = sdf.parse("2016-09-27");
-		List<Flight> flights = flightRepository.findFlightWithParams("London Heathrow Airport", "John F. Kennedy International Airport", departureDate);
+		List<Flight> flights = flightRepository.findFlightWithParams("UK", "London Heathrow Airport", "USA", "John F. Kennedy International Airport", departureDate);
 		assertEquals(1, flights.size());
 	}
 	

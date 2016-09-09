@@ -112,7 +112,7 @@ h1, h2, h3, h4, h5, h6 {
 	position: relative;
 }
 
-#searchContainer {
+#searchContainer, #overviewDiv {
 	position: absolute;
 	width: 95%;
 	max-height: 80%;
@@ -120,6 +120,11 @@ h1, h2, h3, h4, h5, h6 {
 	bottom: 10rem;
 	overflow: auto;
 }
+
+#overviewDiv {
+		top: 10rem;
+	bottom: 5rem;
+	}
 
 #pricingContainer {
 	position: absolute;
@@ -155,6 +160,10 @@ h1, h2, h3, h4, h5, h6 {
 td {
 	padding: .5rem;
 }
+.ui-selectonemenu-panel .ui-selectonemenu-item {
+    font-size: 2rem;
+}
+
 
 header nav.loginMenu td {
 	font-size: 1.6rem;
@@ -188,8 +197,8 @@ header nav.mainMenu a {
 	right: 0.5rem;
 }
 
-#form\:submitButton {
-	padding: 2rem;
+#form\:submitButton, #bookForm\:bookFlightBtn {
+	padding: 1.7rem;
 }
 
 #searchframe, #searchButtons {
@@ -366,8 +375,13 @@ footer {
 footer p {
 	display: flex;
 	align-items: center;
+<<<<<<< HEAD
+	  justify-content: center;
+		font-size: 2rem;
+=======
 	justify-content: center;
 	font-size: 2rem;
+>>>>>>> 20b196c32b10250d04770e7a80106b7bca091347
 }
 
 /* STYLE  */

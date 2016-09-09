@@ -23,15 +23,20 @@
 					rendered="#{flightBean.oneWay}" />
 			</h3>
 			<p:dataTable id="inboundResults" var="flight"
-				value="#{flightBean.inboundFlights}" selectionMode="single" selection="#{bookingBean.inboundFlight}"
-				rowKey="#{flight.id}" sortBy="#{flight.redoPrice}"
-				rendered="#{not flightBean.oneWay}">
+				value="#{flightBean.inboundFlights}" selectionMode="single"
+				selection="#{bookingBean.inboundFlight}" rowKey="#{flight.id}"
+				sortBy="#{flight.redoPrice}" rendered="#{not flightBean.oneWay}">
 				<p:ajax event="rowSelect"
 					listener="#{bookingBean.bookInboundFlight}" update=":content">
 				</p:ajax>
 				<p:column headerText="Date" sortBy="#{flight.departureTime}">
 					<h:outputText
-						value="#{dateUtilBean.getDayOfWeek(flight.departureTime)}  #{flight.departureTime.date} #{dateUtilBean.getMonth(flight.departureTime)} #{dateUtilBean.getYear(flight.departureTime)}" />
+						value="#{dateUtilBean.getFullDate(flight.departureTime)}" />
+				</p:column>
+
+				<p:column headerText="Airport"
+					sortBy="#{flight.departureLocation.name}">
+					<h:outputText value="#{flight.departureLocation.name}" />
 				</p:column>
 
 				<p:column headerText="Depart" sortBy="#{flight.departureTime}">
@@ -42,11 +47,6 @@
 					<h:outputText value="#{dateUtilBean.getTime(flight.arrivalTime)}" />
 				</p:column>
 
-				<p:column headerText="#{flightBean.cabinClass} Seats Available"
-					sortBy="#{flightBean.cabinClass}">
-					<h:outputText
-						value="#{flightBean.cabinClass == 'Economy' ? flight.seatsEconomy : (flightBean.cabinClass == 'Business' ? flight.seatsBusiness : flight.seatsFirstClass)}" />
-				</p:column>
 				<p:column headerText="Price per Ticket" sortBy="#{flight.redoPrice}">
 					<h:outputText value="#{flight.redoPrice} EUR" />
 				</p:column>

@@ -13,6 +13,9 @@ import com.realdolmen.domain.Flight;
 
 @Stateless
 public class FlightRepository {
+	Date departMinusDays;
+	Date departPlusDays;
+	
 	@PersistenceContext
 	EntityManager em;
 
@@ -29,9 +32,11 @@ public class FlightRepository {
 		return em.createQuery("select f from Flight f", Flight.class).getResultList();
 	}
 
-	public List<Flight> findFlightWithParams(String departAirport, String arriveAirport, Date departureDate) {
-		Date departMinusDays;
-		Date departPlusDays;
+	
+	
+	
+	
+	public List<Flight> findFlightWithParams(String departCountry, String departAirport, String arriveCountry, String arriveAirport, Date departureDate) {
 		
 		if (departureDate == null) {
 			departureDate = new Date();
@@ -42,17 +47,39 @@ public class FlightRepository {
 			departPlusDays = addDays(departureDate, 1);
 		}
 		
-		
-
-		return em
-				.createQuery(
-						"SELECT f FROM Flight f WHERE f.departureLocation.name = :departPort AND f.arrivalLocation.name = :arrivalPort AND (f.departureTime BETWEEN :departMinusDays AND :departPlusDays))",
-						Flight.class)
-				.setParameter("arrivalPort", arriveAirport).setParameter("departPort", departAirport)
-				.setParameter("departMinusDays", departMinusDays, TemporalType.TIMESTAMP)
-				.setParameter("departPlusDays", departPlusDays, TemporalType.TIMESTAMP)
-				.getResultList();
+		if ((departAirport == null || departAirport.isEmpty()) && (arriveAirport == null || arriveAirport.isEmpty())) {
+			return findFlightByCountries(departCountry, arriveCountry, departureDate);
+		} else {
+			return findFlightByAirport(departAirport, arriveAirport, departureDate);
+		}
+	
 	}
+	
+	private List<Flight> findFlightByAirport(String departAirport, String arriveAirport, Date departureDate) {
+		
+	return em
+			.createQuery(
+					"SELECT f FROM Flight f WHERE f.departureLocation.name = :departAirport AND f.arrivalLocation.name = :arriveAirport AND (f.departureTime BETWEEN :departMinusDays AND :departPlusDays))",
+					Flight.class)
+			.setParameter("arriveAirport", arriveAirport).setParameter("departAirport", departAirport)
+			.setParameter("departMinusDays", departMinusDays, TemporalType.TIMESTAMP)
+			.setParameter("departPlusDays", departPlusDays, TemporalType.TIMESTAMP)
+			.getResultList();
+}
+	
+	
+	private List<Flight> findFlightByCountries(String departCountry, String arriveCountry, Date departureDate) {
+		
+	return em
+			.createQuery(
+					"SELECT f FROM Flight f WHERE f.departureLocation.country = :departCountry AND f.arrivalLocation.country = :arriveCountry AND (f.departureTime BETWEEN :departMinusDays AND :departPlusDays))",
+					Flight.class)
+			.setParameter("arriveCountry", arriveCountry).setParameter("departCountry", departCountry)
+			.setParameter("departMinusDays", departMinusDays, TemporalType.TIMESTAMP)
+			.setParameter("departPlusDays", departPlusDays, TemporalType.TIMESTAMP)
+			.getResultList();
+}
+		
 
 	private Date addDays(Date originalDate, int addedDays) {
 		Calendar c = Calendar.getInstance();

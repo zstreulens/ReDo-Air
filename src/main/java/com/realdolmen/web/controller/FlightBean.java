@@ -76,6 +76,11 @@ public class FlightBean implements Serializable {
 	public FlightBean() {
 	}
 
+	
+	public void toggleReturnButton() {
+		setOneWay(!isOneWay());
+	}
+	
 public void resetAction() {
 	fromLocation = "";
 	toLocation = "";
@@ -127,8 +132,8 @@ public void resetAction() {
 	}
 
 	public void submitAction() {
-		outboundFlights = flightService.findFlightFromQuery(fromAirport, toAirport, departureDate);
-		inboundFlights = flightService.findFlightFromQuery(toAirport, fromAirport, returnDate);
+		outboundFlights = flightService.findFlightFromQuery(fromLocation, fromAirport, toLocation, toAirport, departureDate);
+		inboundFlights = flightService.findFlightFromQuery(toLocation, toAirport, fromLocation, fromAirport, returnDate);
 		setPage("outbound");
 	}
 
@@ -288,7 +293,7 @@ public void resetAction() {
 	public boolean isOneWay() {
 		return oneWay;
 	}
-
+	
 	public void setOneWay(boolean oneWay) {
 		this.oneWay = oneWay;
 	}
