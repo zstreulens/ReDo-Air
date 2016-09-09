@@ -11,6 +11,11 @@ public class EmployeeRepository {
 	@PersistenceContext
 	EntityManager entityManager;
 	
+	public Employee createEmployee(Employee employee){
+		entityManager.persist(employee);
+		return employee;
+	}
+	
 	public Employee findByMail(String mail){
 		return entityManager.createNamedQuery("Employee.findByMail", Employee.class).setParameter("mailAddress", mail).getSingleResult();
 	}
