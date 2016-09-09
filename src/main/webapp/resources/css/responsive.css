@@ -210,8 +210,9 @@ header nav.mainMenu a {
 	background: rgba(0, 180, 255, .5);
 }
 
-#searchContainer .ui-selectonemenu, #form\:departureDate_input, #form\:returnDate_input {
-	min-width: 100% !important	;
+#searchContainer .ui-selectonemenu, #form\:departureDate_input,
+	#form\:returnDate_input {
+	min-width: 100% !important;
 	width: 100%;
 }
 
@@ -335,13 +336,20 @@ nav.mainMenu a {
 /*  footer  */
 footer {
 	display: flex;
-	justify-content: center;
 	padding: 1rem;
 	background: rgb(0, 90, 150);
+	color: rgb(250, 250, 250);
 	position: absolute;
 	bottom: 0;
 	width: 100vw;
 	position: absolute;
+}
+
+footer p {
+	display: flex;
+	align-items: center;
+	  justify-content: center;
+	font-size: 2rem;
 }
 
 /* STYLE  */
