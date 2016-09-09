@@ -76,6 +76,11 @@ public class FlightBean implements Serializable {
 	public FlightBean() {
 	}
 
+	
+	public void toggleReturnButton() {
+		setOneWay(!isOneWay());
+	}
+	
 public void resetAction() {
 	fromLocation = "";
 	toLocation = "";
@@ -288,7 +293,7 @@ public void resetAction() {
 	public boolean isOneWay() {
 		return oneWay;
 	}
-
+	
 	public void setOneWay(boolean oneWay) {
 		this.oneWay = oneWay;
 	}
