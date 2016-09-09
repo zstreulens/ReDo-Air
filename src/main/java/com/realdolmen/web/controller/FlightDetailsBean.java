@@ -11,6 +11,7 @@ import com.realdolmen.domain.Booking;
 import com.realdolmen.domain.Customer;
 import com.realdolmen.domain.Flight;
 import com.realdolmen.repository.BookingRepository;
+import com.realdolmen.service.BookingServiceBean;
 import com.realdolmen.service.FlightServiceBean;
 
 @Named
@@ -27,10 +28,10 @@ public class FlightDetailsBean implements Serializable {
 	@Inject
 	CustomerBean customerBean;
 	@Inject
-	BookingRepository bookingRepository;
+	BookingServiceBean bookingService;
 	@Inject
 	OverviewBean overviewBean;
-	
+
 	@PostConstruct
 	public void init() {
 		loggedInCustomer = customerBean.getLoggedInCustomer();
@@ -48,11 +49,11 @@ public class FlightDetailsBean implements Serializable {
 			} else {
 				booking = new Booking(loggedInCustomer, bookingBean.getOutboundFlight());
 			}
-			bookingRepository.createBooking(booking);
+			bookingService.createBooking(booking);
 			overviewBean.findBookingsForCustomer(loggedInCustomer.getId());
 			bookingBean.setInboundFlight(null);
 			bookingBean.setOutboundFlight(null);
-			return "overview.xhtml"; 
+			return "overview.xhtml";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "failure";

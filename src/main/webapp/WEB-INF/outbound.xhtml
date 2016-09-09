@@ -45,11 +45,6 @@
 					<h:outputText value="#{dateUtilBean.getTime(flight.arrivalTime)}" />
 				</p:column>
 
-				<p:column headerText="#{flightBean.cabinClass} Seats Available"
-					sortBy="#{flightBean.cabinClass}">
-					<h:outputText
-						value="#{flightBean.cabinClass == 'Economy' ? flight.seatsEconomy : (flightBean.cabinClass == 'Business' ? flight.seatsBusiness : flight.seatsFirstClass)}" />
-				</p:column>
 				<p:column headerText="Price per Ticket" sortBy="#{flight.redoPrice}">
 					<h:outputText value="#{flight.redoPrice} EUR" />
 				</p:column>

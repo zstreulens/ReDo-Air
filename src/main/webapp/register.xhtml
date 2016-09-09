@@ -8,82 +8,99 @@
 <ui:composition template="/facelet-template.xhtml">
 	<ui:define name="pageTitle">User Registration</ui:define>
 	<ui:define name="pageContent">
+
 		<h1>Fill in this form to register yourself</h1>
-		#{customerBean.errorMessage}
-		<h:form>
-			<h:panelGrid columns="2">
-				<h:outputText value="First name: "></h:outputText>
-				<h:panelGroup>
-					<p:inputText value="#{customerBean.customer.firstName}" id="fname">
-					<f:ajax event="blur" render="fnameMsg"/></p:inputText>
-					<font color="red">* </font>
-					<h:message for="fname" id="fnameMsg"></h:message>
-				</h:panelGroup>
-				<h:outputText value="Last name: "></h:outputText>
-				<h:panelGroup>
-					<p:inputText value="#{customerBean.customer.lastName}" id="lname">
-					<f:ajax event="blur" render="lnameMsg"/></p:inputText>
-					<font color="red">* </font>
-					<h:message for="lname" id="lnameMsg"></h:message>
-				</h:panelGroup>
-				<h:outputText value="Street"></h:outputText>
-				<h:panelGroup>
-					<p:inputText value="#{customerBean.customer.address.street}"
-						id="street">
-						<f:ajax event="blur" render="streetMsg"/></p:inputText>
-					<font color="red">* </font>
-					<h:message for="street" id="streetMsg"></h:message>
-				</h:panelGroup>
-				<h:outputText value="House number: "></h:outputText>
-				<h:panelGroup>
-					<p:inputText value="#{customerBean.customer.address.number}"
-						id="houseNumber">
-						<f:ajax event="blur" render="houseNumberMsg"/></p:inputText>
-					<font color="red">* </font>
-					<h:message for="houseNumber" id="houseNumberMsg"></h:message>
-				</h:panelGroup>
-				<h:outputText value="Zipcode: "></h:outputText>
-				<h:panelGroup>
-					<p:inputText value="#{customerBean.customer.address.zipcode}"
-						id="zipcode">
-						<f:ajax event="blur" render="zipcodeMsg"/></p:inputText>
-					<font color="red">* </font>
-					<h:message for="zipcode" id="zipcodeMsg"></h:message>
-				</h:panelGroup>
-				<h:outputText value="City: "></h:outputText>
-				<h:panelGroup>
-					<p:inputText value="#{customerBean.customer.address.city}"
-						id="city">
-						<f:ajax event="blur" render="cityMsg"/></p:inputText>
-					<font color="red">* </font>
-					<h:message for="city" id="cityMsg"></h:message>
-				</h:panelGroup>
-				<h:outputText value="Country: "></h:outputText>
-				<h:panelGroup>
-					<p:inputText value="#{customerBean.customer.address.country}"
-						id="country">
-						<f:ajax event="blur" render="countryMsg"/></p:inputText>
-					<font color="red">* </font>
-					<h:message for="country" id="countryMsg"></h:message>
-				</h:panelGroup>
-				<h:outputText value="E-mail: "></h:outputText>
-				<h:panelGroup>
-					<p:inputText value="#{customerBean.customer.mailAddress}" id="mail">
-					<f:ajax event="blur" render="mailMsg"/></p:inputText>
-					<font color="red">* </font>
-					<h:message for="mail" id="mailMsg"></h:message>
-				</h:panelGroup>
-				<h:outputText value="Password: "></h:outputText>
-				<h:panelGroup>
-					<p:password value="#{customerBean.customer.password}" id="password">
-					<f:ajax event="blur" render="passwordMsg"/></p:password>
-					<font color="red">* </font>
-					<h:message for="password" id="passwordMsg"></h:message>
-				</h:panelGroup>
-			</h:panelGrid>
-			<p:commandButton value="Register" id="register"
-				action="#{customerBean.register()}" styleClass="btn_style" />
+			#{customerBean.errorMessage}
+			<h:form>
+			<div id="registerContainer">
+				<h:panelGrid columns="4" width="100%">
+					<h:outputText value="First name: "></h:outputText>
+					<h:panelGroup>
+						<p:inputText value="#{customerBean.customer.firstName}" id="fname">
+							<f:ajax event="blur" render="fnameMsg" />
+						</p:inputText>
+						<font color="red">* </font>
+						<h:message for="fname" id="fnameMsg"></h:message>
+					</h:panelGroup>
+					<h:outputText value=" Last name: "></h:outputText>
+					<h:panelGroup>
+						<p:inputText value="#{customerBean.customer.lastName}" id="lname">
+							<f:ajax event="blur" render="lnameMsg" />
+						</p:inputText>
+						<font color="red">* </font>
+						<h:message for="lname" id="lnameMsg"></h:message>
+					</h:panelGroup>
+					<h:outputText value="Street"></h:outputText>
+					<h:panelGroup>
+						<p:inputText value="#{customerBean.customer.address.street}"
+							id="street">
+							<f:ajax event="blur" render="streetMsg" />
+						</p:inputText>
+						<font color="red">* </font>
+						<h:message for="street" id="streetMsg"></h:message>
+					</h:panelGroup>
+					<h:outputText value=" House number: "></h:outputText>
+					<h:panelGroup>
+						<p:inputText value="#{customerBean.customer.address.number}"
+							id="houseNumber">
+							<f:ajax event="blur" render="houseNumberMsg" />
+						</p:inputText>
+						<font color="red">* </font>
+						<h:message for="houseNumber" id="houseNumberMsg"></h:message>
+					</h:panelGroup>
+					<h:outputText value="Zipcode: "></h:outputText>
+					<h:panelGroup>
+						<p:inputText value="#{customerBean.customer.address.zipcode}"
+							id="zipcode">
+							<f:ajax event="blur" render="zipcodeMsg" />
+						</p:inputText>
+						<font color="red">* </font>
+						<h:message for="zipcode" id="zipcodeMsg"></h:message>
+					</h:panelGroup>
+					<h:outputText value=" City: "></h:outputText>
+					<h:panelGroup>
+						<p:inputText value="#{customerBean.customer.address.city}"
+							id="city">
+							<f:ajax event="blur" render="cityMsg" />
+						</p:inputText>
+						<font color="red">* </font>
+						<h:message for="city" id="cityMsg"></h:message>
+					</h:panelGroup>
+					<h:outputText value="Country: "></h:outputText>
+					<h:panelGroup>
+						<p:inputText value="#{customerBean.customer.address.country}"
+							id="country">
+							<f:ajax event="blur" render="countryMsg" />
+						</p:inputText>
+						<font color="red">* </font>
+						<h:message for="country" id="countryMsg"></h:message>
+					</h:panelGroup>
+					<h:outputText/>
+					<h:outputText/>
+					<h:outputText value="E-mail: "></h:outputText>
+					<h:panelGroup>
+						<p:inputText value="#{customerBean.customer.mailAddress}"
+							id="mail">
+							<f:ajax event="blur" render="mailMsg" />
+						</p:inputText>
+						<font color="red">* </font>
+						<h:message for="mail" id="mailMsg"></h:message>
+					</h:panelGroup>
+					<h:outputText value=" Password: "></h:outputText>
+					<h:panelGroup>
+						<p:password value="#{customerBean.customer.password}"
+							id="password">
+							<f:ajax event="blur" render="passwordMsg" />
+						</p:password>
+						<font color="red">* </font>
+						<h:message for="password" id="passwordMsg"></h:message>
+					</h:panelGroup>
+				</h:panelGrid>
+				<p:commandButton value="Register" id="register"
+					action="#{customerBean.register()}" styleClass="btn_style" />
+			</div>
 		</h:form>
+
 	</ui:define>
 </ui:composition>
 </html>

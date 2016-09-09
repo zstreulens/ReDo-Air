@@ -121,6 +121,24 @@ h1, h2, h3, h4, h5, h6 {
 	overflow: auto;
 }
 
+#pricingContainer {
+	position: absolute;
+	width: 98%;
+	max-height: 100%;
+	top: 12rem;
+	bottom: 10rem;
+	overflow: auto;
+}
+
+#registerContainer {
+	position: absolute;
+	width: 95%;
+	max-height: 100%;
+	top: 12rem;
+	bottom: 10rem;
+	overflow: auto;
+}
+
 .ui-datatable td {
 	text-align: center;
 }
@@ -352,8 +370,13 @@ footer {
 footer p {
 	display: flex;
 	align-items: center;
+<<<<<<< HEAD
 	  justify-content: center;
 		font-size: 2rem;
+=======
+	justify-content: center;
+	font-size: 2rem;
+>>>>>>> 20b196c32b10250d04770e7a80106b7bca091347
 }
 
 /* STYLE  */

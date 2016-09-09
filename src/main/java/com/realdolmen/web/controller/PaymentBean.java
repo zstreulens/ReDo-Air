@@ -16,6 +16,8 @@ import com.realdolmen.domain.Flight;
 import com.realdolmen.repository.BookingRepository;
 import com.realdolmen.repository.CreditcardRepository;
 import com.realdolmen.repository.CustomerRepository;
+import com.realdolmen.service.CreditcardServiceBean;
+import com.realdolmen.service.CustomerServiceBean;
 import com.realdolmen.service.FlightServiceBean;
 
 @Named
@@ -28,11 +30,7 @@ public class PaymentBean implements Serializable {
 	@Inject
 	CustomerBean customerBean;
 	@Inject
-	CustomerRepository customerRepository;
-	@Inject
-	BookingRepository bookingRepository;
-	@Inject
-	CreditcardRepository creditcardRepository;
+	CreditcardServiceBean creditcardService;
 	@Inject
 	FlightServiceBean flightService;
 	@Inject
@@ -52,7 +50,7 @@ public class PaymentBean implements Serializable {
 		System.out.println("Adding new creditcard");
 		if (newCreditcard.getNumber() != "") {
 			newCreditcard.setCustomer(loggedInCustomer);
-			creditcardRepository.createCreditcard(newCreditcard);
+			creditcardService.createCreditcard(newCreditcard);
 		}
 	}
 

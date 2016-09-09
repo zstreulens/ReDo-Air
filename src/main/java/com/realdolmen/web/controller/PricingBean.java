@@ -51,10 +51,10 @@ public class PricingBean implements Serializable {
 			}
 		}
 	}
-	
-	public String updatePrice(){
-		if (flightPricing.getRedoPrice() == 0 || flightPricing.getRedoPrice() == null){
-			flightPricing.setRedoPrice(flightPricing.getBasePrice()*0.05 + flightPricing.getBasePrice());
+
+	public String updatePrice() {
+		if (flightPricing.getRedoPrice() == 0 || flightPricing.getRedoPrice() == null) {
+			flightPricing.setRedoPrice(flightPricing.getBasePrice() * 0.05 + flightPricing.getBasePrice());
 		}
 		flightService.updateFlight(flightPricing);
 		return "pricing.xhtml";
@@ -67,7 +67,7 @@ public class PricingBean implements Serializable {
 	public void setFlights(List<Flight> flights) {
 		this.flights = flights;
 	}
-	
+
 	public Flight getFlightPricing() {
 		return flightPricing;
 	}
