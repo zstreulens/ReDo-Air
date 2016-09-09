@@ -56,6 +56,8 @@ public class FlightBean implements Serializable {
 	LocationServiceBean locationService;
 	@Inject
 	BookingBean bookingBean;
+	@Inject
+	PricingBean pricingBean;
 
 	@PostConstruct
 	public void setUp() {
@@ -107,6 +109,7 @@ public class FlightBean implements Serializable {
 			flightService.createFlight(newFlight);
 			clean();
 			message = "Flight added succesfully.";
+			pricingBean.updateFlights();
 			return "flightAdded";
 		} catch (Exception e) {
 			message = "Something went wrong.";

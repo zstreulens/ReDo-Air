@@ -24,7 +24,8 @@ public class CustomerBean implements Serializable {
 	private Customer customer;
 	private String password;
 	private Customer loggedInCustomer;
-	private String errorMessage;
+	private String loginErrorMessage;
+	private String registerErrorMessage;
 
 	@PostConstruct
 	public void init() {
@@ -38,13 +39,15 @@ public class CustomerBean implements Serializable {
 			if (customerService.findByMail(customer.getMailAddress()) == null) {
 				customerService.createCustomer(customer);
 				cleanCustomer();
+				registerErrorMessage = "";
+				loginErrorMessage = "";
 				return "success";
 			} else {
-				errorMessage = "E-mail already exists.";
+				registerErrorMessage = "E-mail already exists.";
 				return "failure";
 			}
 		} catch (Exception e) {
-			errorMessage = "Something went wrong.";
+			registerErrorMessage = "Something went wrong.";
 			e.printStackTrace();
 			return "failure";
 		}
@@ -55,19 +58,20 @@ public class CustomerBean implements Serializable {
 			customer = customerService.findByMail(customer.getMailAddress());
 			if (BCrypt.checkpw(password, customer.getPassword())) {
 				loggedInCustomer = customer;
-				errorMessage = "";
+				loginErrorMessage = "";
+				registerErrorMessage = "";
 				if (bookingBean.getOutboundFlight() != null) {
 					return "flights";
 				} else {
 					return "success";
 				}
 			} else {
-				errorMessage = "Password is incorrect.";
+				loginErrorMessage = "Password is incorrect.";
 				return "failure";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			errorMessage = "E-mail is incorrect.";
+			loginErrorMessage = "E-mail is incorrect.";
 			return "failure";
 		}
 	}
@@ -83,12 +87,20 @@ public class CustomerBean implements Serializable {
 		loggedInCustomer = null;
 	}
 
-	public String getErrorMessage() {
-		return errorMessage;
+	public String getLoginErrorMessage() {
+		return loginErrorMessage;
 	}
 
-	public void setErrorMessage(String errorMessage) {
-		this.errorMessage = errorMessage;
+	public void setLoginErrorMessage(String loginErrorMessage) {
+		this.loginErrorMessage = loginErrorMessage;
+	}
+
+	public String getRegisterErrorMessage() {
+		return registerErrorMessage;
+	}
+
+	public void setRegisterErrorMessage(String registerErrorMessage) {
+		this.registerErrorMessage = registerErrorMessage;
 	}
 
 	@Produces

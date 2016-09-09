@@ -28,6 +28,10 @@ public class PricingBean implements Serializable {
 
 	@PostConstruct
 	public void setUp() {
+		updateFlights();
+	}
+	
+	public void updateFlights(){
 		flights = flightService.findFlights();
 	}
 
