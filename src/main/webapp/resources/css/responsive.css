@@ -137,6 +137,10 @@ h1, h2, h3, h4, h5, h6 {
 td {
 	padding: .5rem;
 }
+.ui-selectonemenu-panel .ui-selectonemenu-item {
+    font-size: 2rem;
+}
+
 
 header nav.loginMenu td {
 	font-size: 1.6rem;
@@ -170,7 +174,7 @@ header nav.mainMenu a {
 	right: 0.5rem;
 }
 
-#form\:submitButton {
+#form\:submitButton, #bookForm\:bookFlightBtn {
 	padding: 2rem;
 }
 
@@ -349,7 +353,7 @@ footer p {
 	display: flex;
 	align-items: center;
 	  justify-content: center;
-	font-size: 2rem;
+		font-size: 2rem;
 }
 
 /* STYLE  */

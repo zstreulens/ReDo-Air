@@ -127,8 +127,8 @@ public void resetAction() {
 	}
 
 	public void submitAction() {
-		outboundFlights = flightService.findFlightFromQuery(fromAirport, toAirport, departureDate);
-		inboundFlights = flightService.findFlightFromQuery(toAirport, fromAirport, returnDate);
+		outboundFlights = flightService.findFlightFromQuery(fromLocation, fromAirport, toLocation, toAirport, departureDate);
+		inboundFlights = flightService.findFlightFromQuery(toLocation, toAirport, fromLocation, fromAirport, returnDate);
 		setPage("outbound");
 	}
 

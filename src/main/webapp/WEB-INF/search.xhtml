@@ -18,7 +18,7 @@
 					<p:selectOneRadio id="toggleReturn" value="#{flightBean.oneWay}">
 						<f:selectItem itemLabel="One way" itemValue="true" />
 						<f:selectItem id="return" itemLabel="Return" itemValue="false" />
-						<f:ajax render="returnDate" />
+						<f:ajax update="returnDate" />
 					</p:selectOneRadio>
 				</h:panelGrid>
 			</div>
@@ -91,7 +91,7 @@
 				<p:outputLabel for="returnDate" value="Return" />
 				<p:calendar id="returnDate" value="#{flightBean.returnDate}"
 					mindate="#{flightBean.departureDate}" pages="2"
-					disabled="#{flightBean.oneWay}" effect="fold"
+					disabled="#{flightBean.oneWay}"
 					placeholder="Enter date">
 					<p:tooltip id="toolTipFade" for="returnDate"
 						style="font-size: 2rem"

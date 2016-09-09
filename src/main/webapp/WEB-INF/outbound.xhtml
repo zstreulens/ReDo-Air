@@ -29,7 +29,12 @@
 
 				<p:column headerText="Date" sortBy="#{flight.departureTime}">
 					<h:outputText
-						value="#{dateUtilBean.getDayOfWeek(flight.departureTime)}  #{flight.departureTime.date} #{dateUtilBean.getMonth(flight.departureTime)} #{dateUtilBean.getYear(flight.departureTime)}" />
+						value="#{dateUtilBean.getFullDate(flight.departureTime)}" />
+				</p:column>
+
+				<p:column headerText="Airport" sortBy="#{flight.departureLocation.name}">
+					<h:outputText
+						value="#{flight.departureLocation.name}" />
 				</p:column>
 
 				<p:column headerText="Depart" sortBy="#{flight.departureTime}">
