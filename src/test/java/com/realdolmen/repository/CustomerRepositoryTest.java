@@ -10,6 +10,7 @@ import com.realdolmen.utilities.JpaPersistenceTest;
 public class CustomerRepositoryTest extends JpaPersistenceTest {
 	private CustomerRepository customerRepository;
 	private Customer customer;
+	private Customer customer2;
 
 	@Before
 	public void initializeRepository() {
@@ -25,14 +26,29 @@ public class CustomerRepositoryTest extends JpaPersistenceTest {
 		customer.setAddress(address);
 		customer.setFirstName("Ziggy");
 		customer.setLastName("Streulens");
-		customer.setMailAddress("ziggy.streulens@realdolmen.com");
+		customer.setMailAddress("ziggy@test.be");
 		customer.setPassword("test");
+
+		customer2 = new Customer();
+		Address address2 = new Address();
+		address2.setStreet("Prinsenpad");
+		address2.setNumber("134");
+		address2.setCity("Rijkevorsel");
+		address2.setZipcode("2310");
+		address2.setCountry("Belgium");
+		customer2.setAddress(address2);
+		customer2.setFirstName("Cato");
+		customer2.setLastName("Streulens");
+		customer2.setMailAddress("cato@test.be");
+		customer2.setPassword("test");
 	}
 
 	@Test
 	public void shouldSaveCustomer() {
 		customerRepository.createCustomer(customer);
+		customerRepository.createCustomer(customer2);
 		assertNotNull(customer.getId());
+		assertNotNull(customer2.getId());
 	}
 
 	@Test
@@ -56,7 +72,7 @@ public class CustomerRepositoryTest extends JpaPersistenceTest {
 	@Test
 	public void shouldFindCustomerByMail() {
 		customerRepository.createCustomer(customer);
-		Customer foundCustomer = customerRepository.findByMail("ziggy.streulens@realdolmen.com");
+		Customer foundCustomer = customerRepository.findByMail("ziggy@test.be");
 		assertEquals("Ziggy", foundCustomer.getFirstName());
 	}
 }

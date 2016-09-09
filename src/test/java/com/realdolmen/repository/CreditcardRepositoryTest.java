@@ -65,4 +65,10 @@ public class CreditcardRepositoryTest extends JpaPersistenceTest {
 		creditcardRepository.updateCreditcard(creditcard);
 		assertSame(creditcard, creditcardRepository.findById(creditcard.getId()));
 	}
+	
+	@Test
+	public void shouldFindCreditcardById(){
+		creditcardRepository.createCreditcard(creditcard);
+		assertSame(creditcard, creditcardRepository.findById(creditcard.getId()));
+	}
 }

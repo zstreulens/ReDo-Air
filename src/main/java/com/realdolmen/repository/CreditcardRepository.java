@@ -12,7 +12,7 @@ public class CreditcardRepository {
 	EntityManager entityManager;
 	
 	public Creditcard createCreditcard(Creditcard creditcard){
-		entityManager.merge(creditcard);
+		entityManager.persist(creditcard);
 		return creditcard;
 	}
 	
