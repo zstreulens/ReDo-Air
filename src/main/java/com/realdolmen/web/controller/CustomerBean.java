@@ -43,18 +43,18 @@ public class CustomerBean implements Serializable {
 	}
 
 	public String register() {
-		if (customerService.findByMail(customer.getMailAddress()) == null) {
-			try {
+		try {
+			if (customerService.findByMail(customer.getMailAddress()) == null) {
 				customerService.createCustomer(customer);
 				cleanCustomer();
 				return "success";
-			} catch (Exception e) {
-				errorMessage = "Something went wrong.";
-				e.printStackTrace();
+			} else {
+				errorMessage = "E-mail already exists.";
 				return "failure";
 			}
-		} else {
-			errorMessage = "E-mail already exists.";
+		} catch (Exception e) {
+			errorMessage = "Something went wrong.";
+			e.printStackTrace();
 			return "failure";
 		}
 	}
@@ -123,6 +123,7 @@ public class CustomerBean implements Serializable {
 	}
 
 	public String goToRegistration() {
+		cleanCustomer();
 		return "register";
 	}
 }

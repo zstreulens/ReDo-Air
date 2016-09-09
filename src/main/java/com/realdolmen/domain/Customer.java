@@ -14,16 +14,16 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.validation.Valid;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.mindrot.BCrypt;
-
 
 @Entity
 @NamedQuery(name = "Customer.findByMail", query = "SELECT c FROM Customer c WHERE c.mailAddress = :mailAddress")
 public class Customer implements Serializable {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@Size(min = 2, max = 30)
 	private String firstName;
@@ -35,6 +35,8 @@ public class Customer implements Serializable {
 	@Valid
 	private Address address;
 	@Size(min = 5, max = 50)
+	@Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\." + "[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@"
+			+ "(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "{invalid.email}")
 	private String mailAddress;
 	@Size(min = 4)
 	private String password;

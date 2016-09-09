@@ -2,6 +2,7 @@
 <faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+	
 	<navigation-rule>
 		<from-view-id>/payment.xhtml</from-view-id>
 		<navigation-case>
@@ -9,6 +10,7 @@
 			<to-view-id>/overview.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
 	<navigation-rule>
 		<from-view-id>/register.xhtml</from-view-id>
 		<navigation-case>
@@ -20,6 +22,7 @@
 			<to-view-id>/register.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
 	<navigation-rule>
 		<from-view-id>/login.xhtml</from-view-id>
 		<navigation-case>
@@ -35,6 +38,7 @@
 			<to-view-id>/login.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
 	<navigation-rule>
 		<from-view-id>/details.xhtml</from-view-id>
 		<navigation-case>
@@ -46,6 +50,7 @@
 			<to-view-id>/details.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
 	<navigation-rule>
 		<from-view-id>/company.xhtml</from-view-id>
 		<navigation-case>
@@ -61,6 +66,7 @@
 			<to-view-id>/company.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
 	<navigation-rule>
 		<from-view-id>/addFlight.xhtml</from-view-id>
 		<navigation-case>
