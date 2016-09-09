@@ -11,24 +11,25 @@ import javax.inject.Named;
 
 import com.realdolmen.domain.Booking;
 import com.realdolmen.repository.BookingRepository;
+import com.realdolmen.service.BookingServiceBean;
 
 @Named
 @SessionScoped
-public class OverviewBean implements Serializable{
+public class OverviewBean implements Serializable {
 	private List<Booking> bookings;
 	@Inject
-	BookingRepository bookingRepository;
+	BookingServiceBean bookingService;
 	@Inject
 	CustomerBean customerbean;
-	
+
 	@PostConstruct
-	public void setup(){
+	public void setup() {
 		bookings = new ArrayList<>();
-		bookings = bookingRepository.findBookingsCustomer(customerbean.getLoggedInCustomer().getId());
+		bookings = bookingService.findBookingsCustomer(customerbean.getLoggedInCustomer().getId());
 	}
-	
-	public void findBookingsForCustomer(Integer customerId){
-		bookings = bookingRepository.findBookingsCustomer(customerId);
+
+	public void findBookingsForCustomer(Integer customerId) {
+		bookings = bookingService.findBookingsCustomer(customerId);
 	}
 
 	public List<Booking> getBookings() {
@@ -38,5 +39,5 @@ public class OverviewBean implements Serializable{
 	public void setBookings(List<Booking> bookings) {
 		this.bookings = bookings;
 	}
-	
+
 }

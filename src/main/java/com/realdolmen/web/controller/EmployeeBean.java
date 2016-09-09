@@ -12,12 +12,13 @@ import com.realdolmen.domain.Address;
 import com.realdolmen.domain.Customer;
 import com.realdolmen.domain.Employee;
 import com.realdolmen.repository.EmployeeRepository;
+import com.realdolmen.service.EmployeeServiceBean;
 
 @Named
 @SessionScoped
 public class EmployeeBean implements Serializable {
 	@Inject
-	EmployeeRepository employeeRepository;
+	EmployeeServiceBean employeeServiceBean;
 	private Employee employee;
 	private String password;
 	private Employee loggedInEmployee;
@@ -31,7 +32,7 @@ public class EmployeeBean implements Serializable {
 
 	public String login() {
 		try {
-			employee = employeeRepository.findByMail(employee.getMailAddress());
+			employee = employeeServiceBean.findByMail(employee.getMailAddress());
 			if (password.equals(employee.getPassword())) {
 				loggedInEmployee = employee;
 				errorMessage = "";

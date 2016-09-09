@@ -13,12 +13,13 @@ import org.mindrot.BCrypt;
 import com.realdolmen.domain.Address;
 import com.realdolmen.domain.Customer;
 import com.realdolmen.repository.CustomerRepository;
+import com.realdolmen.service.CustomerServiceBean;
 
 @Named
 @SessionScoped
 public class CustomerBean implements Serializable {
 	@Inject
-	CustomerRepository customerRepository;
+	CustomerServiceBean customerService;
 	@Inject
 	BookingBean bookingBean;
 	private Customer customer;
@@ -42,9 +43,9 @@ public class CustomerBean implements Serializable {
 	}
 
 	public String register() {
-		if (customerRepository.findByMail(customer.getMailAddress()) == null) {
+		if (customerService.findByMail(customer.getMailAddress()) == null) {
 			try {
-				customerRepository.createCustomer(customer);
+				customerService.createCustomer(customer);
 				cleanCustomer();
 				return "success";
 			} catch (Exception e) {
@@ -60,7 +61,7 @@ public class CustomerBean implements Serializable {
 
 	public String login() {
 		try {
-			customer = customerRepository.findByMail(customer.getMailAddress());
+			customer = customerService.findByMail(customer.getMailAddress());
 			if (BCrypt.checkpw(password, customer.getPassword())) {
 				loggedInCustomer = customer;
 				errorMessage = "";

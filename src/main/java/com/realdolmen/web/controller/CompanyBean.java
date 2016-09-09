@@ -13,12 +13,13 @@ import org.mindrot.BCrypt;
 import com.realdolmen.domain.Company;
 import com.realdolmen.repository.CompanyRepository;
 import com.realdolmen.repository.CustomerRepository;
+import com.realdolmen.service.CompanyServiceBean;
 
 @Named
 @SessionScoped
 public class CompanyBean implements Serializable {
 	@Inject
-	CompanyRepository companyRepository;
+	CompanyServiceBean companyService;
 	private Company company;
 	private String password;
 	private Company loggedInCompany;
@@ -31,10 +32,10 @@ public class CompanyBean implements Serializable {
 	}
 
 	public String register() {
-		if (companyRepository.findByName(company.getName()) == null) {
+		if (companyService.findByName(company.getName()) == null) {
 			try {
 				company.setPassword(password);
-				companyRepository.createCompany(company);
+				companyService.createCompany(company);
 				cleanCompany();
 				return "registered";
 			} catch (Exception e) {
@@ -50,7 +51,7 @@ public class CompanyBean implements Serializable {
 
 	public String login() {
 		try {
-			company = companyRepository.findByName(company.getName());
+			company = companyService.findByName(company.getName());
 			if (BCrypt.checkpw(password, company.getPassword())) {
 				loggedInCompany = company;
 				errorMessage = "";
