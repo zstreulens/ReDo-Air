@@ -7,7 +7,6 @@ import java.util.Date;
 
 import javax.inject.Named;
 
-
 @Named
 public class DateUtilBean implements Serializable {
 
@@ -16,8 +15,7 @@ public class DateUtilBean implements Serializable {
 	public String getFullDate(Date date) {
 		return getDayOfWeek(date) + " " + getDayOfMonh(date) + " " + getMonth(date) + " " + getYear(date);
 	}
-	
-	
+
 	public String getDayOfWeek(Date date) {
 		c.setTime(date);
 		int day = c.get(Calendar.DAY_OF_WEEK);
@@ -55,17 +53,17 @@ public class DateUtilBean implements Serializable {
 		SimpleDateFormat printFormat = new SimpleDateFormat("HH:mm:ss");
 		return printFormat.format(date);
 	}
-	
+
 	public int getDayOfMonh(Date date) {
 		c.setTime(date);
 		return c.get(Calendar.DAY_OF_MONTH);
 	}
-	
-	public String getMonth (Date date) {
+
+	public String getMonth(Date date) {
 		c.setTime(date);
 		int i = c.get(Calendar.MONTH);
 		String month;
-		
+
 		switch (i) {
 		case 0:
 			month = "jan";
@@ -77,7 +75,7 @@ public class DateUtilBean implements Serializable {
 			month = "mar";
 			break;
 		case 3:
-			month ="apr";
+			month = "apr";
 			break;
 		case 4:
 			month = "may";
@@ -105,14 +103,14 @@ public class DateUtilBean implements Serializable {
 			break;
 		default:
 			month = "";
-			
+
 		}
 		return month;
 	}
-	
+
 	public int getYear(Date date) {
 		c.setTime(date);
 		return c.get(Calendar.YEAR);
 	}
-	
+
 }

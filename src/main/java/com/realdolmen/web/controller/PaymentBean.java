@@ -8,16 +8,11 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.realdolmen.domain.Booking;
 import com.realdolmen.domain.Creditcard;
 import com.realdolmen.domain.CreditcardType;
 import com.realdolmen.domain.Customer;
 import com.realdolmen.domain.Flight;
-import com.realdolmen.repository.BookingRepository;
-import com.realdolmen.repository.CreditcardRepository;
-import com.realdolmen.repository.CustomerRepository;
 import com.realdolmen.service.CreditcardServiceBean;
-import com.realdolmen.service.CustomerServiceBean;
 import com.realdolmen.service.FlightServiceBean;
 
 @Named

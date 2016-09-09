@@ -10,7 +10,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.realdolmen.domain.Booking;
-import com.realdolmen.repository.BookingRepository;
 import com.realdolmen.service.BookingServiceBean;
 
 @Named

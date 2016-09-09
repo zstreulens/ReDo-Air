@@ -76,27 +76,27 @@ public class FlightBean implements Serializable {
 	public FlightBean() {
 	}
 
-	
 	public void toggleReturnButton() {
 		setOneWay(!isOneWay());
 	}
-	
-public void resetAction() {
-	fromLocation = "";
-	toLocation = "";
-	departureDate = null;
-	returnDate = null;
-	oneWay = true;
-	cabinClass = "economy";
-	airline = "";
-	page = "search";
-	bookingBean.setOutboundFlight(null);
-	bookingBean.setInboundFlight(null);
-	toAirport = null;
-	fromAirport = null;
-	departureAirports = null;
-	arrivalAirports = null;
-}
+
+	public void resetAction() {
+		fromLocation = "";
+		toLocation = "";
+		departureDate = null;
+		returnDate = null;
+		oneWay = true;
+		cabinClass = "economy";
+		airline = "";
+		page = "search";
+		bookingBean.setOutboundFlight(null);
+		bookingBean.setInboundFlight(null);
+		toAirport = null;
+		fromAirport = null;
+		departureAirports = null;
+		arrivalAirports = null;
+	}
+
 	public String addFlight() {
 		message = null;
 		try {
@@ -113,7 +113,6 @@ public void resetAction() {
 			e.printStackTrace();
 			return "failure";
 		}
-
 	}
 
 	public void clean() {
@@ -132,8 +131,10 @@ public void resetAction() {
 	}
 
 	public void submitAction() {
-		outboundFlights = flightService.findFlightFromQuery(fromLocation, fromAirport, toLocation, toAirport, departureDate);
-		inboundFlights = flightService.findFlightFromQuery(toLocation, toAirport, fromLocation, fromAirport, returnDate);
+		outboundFlights = flightService.findFlightFromQuery(fromLocation, fromAirport, toLocation, toAirport,
+				departureDate);
+		inboundFlights = flightService.findFlightFromQuery(toLocation, toAirport, fromLocation, fromAirport,
+				returnDate);
 		setPage("outbound");
 	}
 
@@ -293,7 +294,7 @@ public void resetAction() {
 	public boolean isOneWay() {
 		return oneWay;
 	}
-	
+
 	public void setOneWay(boolean oneWay) {
 		this.oneWay = oneWay;
 	}
@@ -357,5 +358,4 @@ public void resetAction() {
 	public String getPage() {
 		return page;
 	}
-
 }

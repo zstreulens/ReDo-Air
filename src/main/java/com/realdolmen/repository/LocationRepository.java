@@ -6,7 +6,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.realdolmen.domain.Flight;
 import com.realdolmen.domain.Location;
 
 @Stateless
@@ -27,18 +26,20 @@ public class LocationRepository {
 	public List<String> findCountries() {
 		return em.createQuery("SELECT DISTINCT l.country FROM Location l", String.class).getResultList();
 	}
-	
-	public List<String> findAirports(){
+
+	public List<String> findAirports() {
 		return em.createQuery("SELECT DISTINCT l.name FROM Location l", String.class).getResultList();
 	}
-	
-	public Location findByAirport(String airport){
-		return em.createNamedQuery("Location.findByCountry", Location.class).setParameter("name", airport).getSingleResult();
+
+	public Location findByAirport(String airport) {
+		return em.createNamedQuery("Location.findByCountry", Location.class).setParameter("name", airport)
+				.getSingleResult();
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public List<String> findAirportsByCountry(String country){
-		return em.createQuery("SELECT l.name FROM Location l WHERE l.country = :country").setParameter("country", country).getResultList();
+	public List<String> findAirportsByCountry(String country) {
+		return em.createQuery("SELECT l.name FROM Location l WHERE l.country = :country")
+				.setParameter("country", country).getResultList();
 	}
 
 }

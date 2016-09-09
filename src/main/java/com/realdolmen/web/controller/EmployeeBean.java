@@ -8,10 +8,7 @@ import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.realdolmen.domain.Address;
-import com.realdolmen.domain.Customer;
 import com.realdolmen.domain.Employee;
-import com.realdolmen.repository.EmployeeRepository;
 import com.realdolmen.service.EmployeeServiceBean;
 
 @Named

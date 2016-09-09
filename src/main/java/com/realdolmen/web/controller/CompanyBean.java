@@ -11,8 +11,6 @@ import javax.inject.Named;
 import org.mindrot.BCrypt;
 
 import com.realdolmen.domain.Company;
-import com.realdolmen.repository.CompanyRepository;
-import com.realdolmen.repository.CustomerRepository;
 import com.realdolmen.service.CompanyServiceBean;
 
 @Named

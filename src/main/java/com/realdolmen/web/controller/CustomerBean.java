@@ -12,7 +12,6 @@ import org.mindrot.BCrypt;
 
 import com.realdolmen.domain.Address;
 import com.realdolmen.domain.Customer;
-import com.realdolmen.repository.CustomerRepository;
 import com.realdolmen.service.CustomerServiceBean;
 
 @Named
@@ -26,14 +25,6 @@ public class CustomerBean implements Serializable {
 	private String password;
 	private Customer loggedInCustomer;
 	private String errorMessage;
-
-	public String getErrorMessage() {
-		return errorMessage;
-	}
-
-	public void setErrorMessage(String errorMessage) {
-		this.errorMessage = errorMessage;
-	}
 
 	@PostConstruct
 	public void init() {
@@ -90,6 +81,14 @@ public class CustomerBean implements Serializable {
 		customer = new Customer();
 		customer.setAddress(new Address());
 		loggedInCustomer = null;
+	}
+
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
 	}
 
 	@Produces
