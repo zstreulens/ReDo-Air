@@ -55,7 +55,7 @@ public class FlightDetailsBean implements Serializable {
 			return "overview?faces-redirect=true";
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "failure?faces-redirect=true";
+			return "failure";
 		}
 	}
 

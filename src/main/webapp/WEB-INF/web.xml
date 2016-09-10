@@ -1,25 +1,53 @@
-<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
-        version="3.1">
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
 
-    <servlet>
-        <servlet-name>facesServlet</servlet-name>
-        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-    </servlet>
+	<servlet>
+		<servlet-name>facesServlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+	</servlet>
 
-    <servlet-mapping>
-        <servlet-name>facesServlet</servlet-name>
-        <url-pattern>*.jsf</url-pattern>
-    </servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>facesServlet</servlet-name>
+		<url-pattern>*.jsf</url-pattern>
+	</servlet-mapping>
 
-    <welcome-file-list>
-        <welcome-file>/index.jsf</welcome-file>
-    </welcome-file-list>
+	<welcome-file-list>
+		<welcome-file>/flights.jsf</welcome-file>
+	</welcome-file-list>
 
-<context-param>  
-    <param-name>primefaces.THEME</param-name>  
-    <param-value>cupertino</param-value>  
-</context-param>  
+	<context-param>
+		<param-name>primefaces.THEME</param-name>
+		<param-value>cupertino</param-value>
+	</context-param>
+	<error-page>
+		<error-code>400</error-code>
+		<location>/WEB-INF/errorpages/errorpage.jsf</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/errorpages/error404.jsf</location>
+	</error-page>
+	<error-page>
+		<error-code>418</error-code>
+		<location>/WEB-INF/errorpages/error418.jsf</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/errorpages/errorpage.jsf</location>
+	</error-page>
+	<error-page>
+		<error-code>401</error-code>
+		<location>/WEB-INF/errorpages/errorpage.jsf</location>
+	</error-page>
+	<error-page>
+		<error-code>403</error-code>
+		<location>/WEB-INF/errorpages/errorpage.jsf</location>
+	</error-page>
+	<error-page>
+		<exception-type>java.lang.Exception</exception-type>
+		<location>/WEB-INF/errorpages/errorpage.jsf</location>
+	</error-page>
+
 
 </web-app>
