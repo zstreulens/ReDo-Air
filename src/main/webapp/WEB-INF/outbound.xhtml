@@ -42,7 +42,7 @@
 				</p:column>
 
 				<p:column headerText="Arrive" sortBy="#{flight.arrivalTime}">
-					<h:outputText value="#{dateUtilBean.getTime(flight.arrivalTime)}" />
+					<h:outputText value="#{dateUtilBean.getTime(flight.arrivalTime)} #{flight.arrivalTime.hours lt flight.departureTime.hours ? '(+1 day)':''}"/>
 				</p:column>
 
 				<p:column headerText="Price per Ticket" sortBy="#{flight.redoPrice}">
