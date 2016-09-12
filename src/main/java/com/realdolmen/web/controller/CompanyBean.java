@@ -18,6 +18,10 @@ import com.realdolmen.service.CompanyServiceBean;
 public class CompanyBean implements Serializable {
 	@Inject
 	CompanyServiceBean companyService;
+	@Inject
+	CustomerBean customerBean;
+	@Inject
+	EmployeeBean employeeBean;
 	private Company company;
 	private String password;
 	private Company loggedInCompany;
@@ -48,6 +52,8 @@ public class CompanyBean implements Serializable {
 	}
 
 	public String login() {
+		customerBean.logout();
+		employeeBean.logout();
 		try {
 			company = companyService.findByName(company.getName());
 			if (BCrypt.checkpw(password, company.getPassword())) {

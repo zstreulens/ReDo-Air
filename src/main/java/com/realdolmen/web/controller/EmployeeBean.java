@@ -15,7 +15,11 @@ import com.realdolmen.service.EmployeeServiceBean;
 @SessionScoped
 public class EmployeeBean implements Serializable {
 	@Inject
-	EmployeeServiceBean employeeServiceBean;
+	EmployeeServiceBean employeeServiceBean; 
+	@Inject
+	CustomerBean customerBean;
+	@Inject
+	CompanyBean companyBean;
 	private Employee employee;
 	private String password;
 	private Employee loggedInEmployee;
@@ -28,6 +32,8 @@ public class EmployeeBean implements Serializable {
 	}
 
 	public String login() {
+		customerBean.logout();
+		companyBean.logout();
 		try {
 			employee = employeeServiceBean.findByMail(employee.getMailAddress());
 			if (password.equals(employee.getPassword())) {
